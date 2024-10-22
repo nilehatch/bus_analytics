@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>3&nbsp; Epistemology – An Introduction to Business Analytics for Entrepreneurs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./ds_ent.html" rel="next">
+<link href="./uncertainty.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./uncertainty.html">Uncertainty</a></li><li class="breadcrumb-item"><a href="./epistemology.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Epistemology</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">An Introduction to Business Analytics for Entrepreneurs</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Uncertainty and Entrepreneurship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epistemology.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Epistemology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ds_ent.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Business Analytics in Evidence-based Entrepreneurship</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./public_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Public Data Sources for Business Analytics in Entrepreneurship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./private_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Private Data Sources for Business Analytics in Entrepreneurship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./customer_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Customer Data Sources for Business Analytics in Entrepreneurship</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data in R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Analytics in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Installing R, RStudio, and Libraries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./use_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Using R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Importing Data into R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inspect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inspecting and Understanding Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">EDA</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis (EDA)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Transforming Data</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Modeling Data</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#how-do-you-know" id="toc-how-do-you-know" class="nav-link active" data-scroll-target="#how-do-you-know"><span class="header-section-number">3.1</span> How do you know?</a>
+  <ul class="collapse">
+  <li><a href="#authoritarianism" id="toc-authoritarianism" class="nav-link" data-scroll-target="#authoritarianism"><span class="header-section-number">3.1.1</span> Authoritarianism</a></li>
+  <li><a href="#rationalism" id="toc-rationalism" class="nav-link" data-scroll-target="#rationalism"><span class="header-section-number">3.1.2</span> Rationalism</a></li>
+  <li><a href="#empiricism" id="toc-empiricism" class="nav-link" data-scroll-target="#empiricism"><span class="header-section-number">3.1.3</span> Empiricism</a></li>
+  <li><a href="#statistical-empiricism" id="toc-statistical-empiricism" class="nav-link" data-scroll-target="#statistical-empiricism"><span class="header-section-number">3.1.4</span> Statistical Empiricism</a></li>
+  <li><a href="#pragmatism" id="toc-pragmatism" class="nav-link" data-scroll-target="#pragmatism"><span class="header-section-number">3.1.5</span> Pragmatism</a></li>
+  <li><a href="#fabrication" id="toc-fabrication" class="nav-link" data-scroll-target="#fabrication"><span class="header-section-number">3.1.6</span> Fabrication</a></li>
+  <li><a href="#science" id="toc-science" class="nav-link" data-scroll-target="#science"><span class="header-section-number">3.1.7</span> Science</a></li>
+  <li><a href="#scholarship" id="toc-scholarship" class="nav-link" data-scroll-target="#scholarship"><span class="header-section-number">3.1.8</span> Scholarship</a></li>
+  </ul></li>
+  <li><a href="#skepticism-the-anti-epistemology" id="toc-skepticism-the-anti-epistemology" class="nav-link" data-scroll-target="#skepticism-the-anti-epistemology"><span class="header-section-number">3.2</span> Skepticism: The Anti-Epistemology</a></li>
+  <li><a href="#using-epistemology-in-entrepreneurship" id="toc-using-epistemology-in-entrepreneurship" class="nav-link" data-scroll-target="#using-epistemology-in-entrepreneurship"><span class="header-section-number">3.3</span> Using Epistemology in Entrepreneurship</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./uncertainty.html">Uncertainty</a></li><li class="breadcrumb-item"><a href="./epistemology.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Epistemology</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Epistemology</span></h1>
+<p class="subtitle lead">The Point Is to Know What You Know</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+.wrapfig {
+    float: right; 
+    margin: 0 20px 10px 0; /* adjust space around the image */
+    width: 40%; /* adjust image width */
+}
+</style>
+<p><br></p>
+<blockquote class="blockquote">
+<p><em>It is good to know. But it is better to know that you know (Chauncey C. Riddle).</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+</blockquote>
+<section id="how-do-you-know" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="how-do-you-know"><span class="header-section-number">3.1</span> How do you know?</h2>
+<p>Entrepreneurship lives in a world of uncertainty defined by what we do not know. We can guess (and fail) or we can reduce the uncertainty by acquiring (some of) the knowledge that is missing. How do we know that we know? Sometimes we believe we know something when we really don’t. It’s important to distinguish between what we think we know and what we truly know.</p>
+<p>The study of how we know things is called “epistemology.” This term comes from the Greek words <em>episteme</em> (knowledge) and <em>logy</em> (study or theory). Understanding someone’s way of knowing—how they determine what’s true—can reveal a lot about them.</p>
+<p>Epistemology explores the methods and foundations of knowledge, including the limits of what we can know. It examines how we acquire knowledge through natural and divine means, and the strengths and limitations of each approach. This makes epistemology one of the most fundamental areas of philosophy.</p>
+<section id="authoritarianism" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="authoritarianism"><span class="header-section-number">3.1.1</span> Authoritarianism</h3>
+<p><strong>Definition:</strong> Relying on the knowledge and testimony of others.</p>
+<p>In this approach, we form and accept ideas based on what others tell us. It’s the easiest way of knowing—if you want to know something, you simply ask someone you trust as an authority on the subject. For example, we often ask our parents about events we don’t remember, like where we were born or who our grandparents are.</p>
+<p><strong>Authoritarianism in Entrepreneurship</strong>: An advisor or investor with experience and success in entrepreneurship who instructs an entrepreneur to lower their price.</p>
+<p>While relying on authorities is convenient, there are challenges:</p>
+<ul>
+<li><p><strong>Identifying Authorities:</strong> If you already know who the true expert is, you might not need their help. But if you don’t, you rely on others to guide you, which can be risky.</p></li>
+<li><p><strong>Effective Communication:</strong> Even if you find a genuine authority, you must communicate clearly. Did they understand your question? Did you understand their answer?</p></li>
+</ul>
+<p>Assuming you find a reliable expert and communicate well, this approach can provide valuable insights efficiently. That’s why we consult doctors, lawyers, mechanics, and other professionals when we need expert advice.</p>
+<p>How do you identify an authority? Common devices others use to get us to trust them as authorities include:</p>
+<ol type="1">
+<li>Official position (titles)</li>
+<li>Familiarity</li>
+<li>Age</li>
+<li>Jargon</li>
+<li>Prowess</li>
+<li>Testimonials</li>
+<li>Degrees</li>
+<li>Printed words</li>
+<li>Blood (lineage)</li>
+<li>Official stationery</li>
+<li>Past triumphs</li>
+<li>Clothing (vestments)</li>
+<li>Force, strength</li>
+<li>Lavish surroundings (banks)</li>
+</ol>
+<p><strong>To Ponder:</strong></p>
+<ul>
+<li><em>Dependence on Authority:</em> About 90 percent of what most people believe is supported by authority rather than personal experience or evidence.</li>
+<li><em>Value of Human Testimony:</em> The value of testimony varies. The biggest challenge is knowing whom to trust as an authority. You need some expertise to identify trustworthy authorities.</li>
+<li><em>Imperfect Indicators of Authority:</em> Be cautious of devices that make someone appear authoritative without real substance, such as official titles, jargon, age, or past successes.</li>
+</ul>
+<p><strong>Critical Thinking:</strong> Beyond appearances, seek additional evidence to verify what an authority claims. This approach ensures you base decisions on reliable information.</p>
+<p>In entrepreneurship, you must critically evaluate the advice and information received from experts. While expertise is valuable, it’s crucial to balance it with your own judgment and insights, ensuring that the guidance aligns with your broader vision and values.</p>
+</section>
+<section id="rationalism" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="rationalism"><span class="header-section-number">3.1.2</span> Rationalism</h3>
+<p><strong>Definition:</strong> Using reason and logic to verify an idea. Rationalism involves certifying an idea because it aligns with or can be deduced from premises you already accept. It requires three things:</p>
+<ol type="1">
+<li>A reliable system of reasoning (like logic or mathematics).</li>
+<li>Premises or ideas that you want to analyze.</li>
+<li>General premises that allow you to draw conclusions.</li>
+</ol>
+<p><strong>General Examples of Rationalism:</strong></p>
+<ol type="1">
+<li>Theorems in geometry.</li>
+<li>Logical reasoning (e.g., “If all men are mortal, and I am a man, then I am mortal”).</li>
+<li>Predicting the paths of planets based on their history.</li>
+</ol>
+<p><strong>Rationalism in Entrepreneurship:</strong></p>
+<p>Imagine you’re running an online store. At the beginning of the month, you know your store’s cash balance. Throughout the month, you track your sales, expenses, and refunds using a spreadsheet. Here’s how rationalism applies:</p>
+<ol type="1">
+<li><em>System:</em> Basic arithmetic and logic.</li>
+<li><em>Premises:</em> You know your cash balance at the start of the month, and you track every transaction (sales, expenses, and refunds).</li>
+<li><em>General Premise:</em> Only transactions you record can affect your cash balance.</li>
+</ol>
+<p>By using these premises and the system of arithmetic, you can confidently calculate how much money remains in your account at any given time, ensuring your cash flow is under control.</p>
+<p>Rationalism is a reliable way of knowing when all the key factors are in place. However, reason alone can’t guarantee that those factors are accurate. Rationalism often needs support from other ways of knowing to be fully effective.</p>
+<p><strong>To Ponder:</strong></p>
+<ol type="1">
+<li>The weakness of rationalism is that it must begin with premises, and no more can be gained from the conclusions than was originally found in the premises. If one starts with wrong premises, then nothing is sure.</li>
+<li>The strength of rationalism is that it can show inconsistency, which is usually a sign that something is drastically wrong. Thus, it functions in practice as a negative, rather than as a positive test of truth.</li>
+<li>The basic processes of reasoning are:
+<ol type="1">
+<li><em>Deduction:</em> Deriving a necessary conclusion from given premises by given rules of inference. Example: Given the premises: All A is B, and All B is C, one may conclude by the rules of syllogistic reasoning that All A is C.</li>
+<li><em>Induction:</em> Deriving a conclusion about a whole class of things (anything) on the basis of evidence about characteristics of part of that same class or population. Example: If by inspection I see that one of a pair of shoes is worn out, I may conclude that the other one of the pair is also worn out (the pair is worn out). (This, as induction always is, is a guess.)</li>
+<li><em>Abduction:</em> Creating premises from which a given conclusion may be deduced in accordance with given rules of inference. (There are in most systems of thinking an infinite number of sets of premises from which a given premise may be deduced.) As an individual uses this process to find or to create the reasons why he does something, we call the process rationalization. In science, the process is called <strong>hypothesizing</strong>, and usually is the process of theory construction.</li>
+</ol></li>
+</ol>
+</section>
+<section id="empiricism" class="level3" data-number="3.1.3">
+<h3 data-number="3.1.3" class="anchored" data-anchor-id="empiricism"><span class="header-section-number">3.1.3</span> Empiricism</h3>
+<p><strong>Definition:</strong> Knowing through direct observation and experience. Empiricism involves learning by using your senses—seeing, hearing, touching, etc.</p>
+<p>Empiricism is highly effective when you can directly observe what you want to know. For example, it’s useful for:</p>
+<ol type="1">
+<li>Checking if you’re driving on the correct side of the road.</li>
+<li>Knowing the time by looking at a clock.</li>
+<li>Finding something you’ve misplaced</li>
+<li>Spotting someone in a crowd.</li>
+</ol>
+<p><strong>Empiricism in Entrepreneurship:</strong> Observing that customers are lining up for a product in one location while there is no line at another.</p>
+<p>However, empiricism has limitations. It doesn’t work well for understanding abstract concepts or things you can’t perceive directly with your senses such as what a potential customer is thinking or feeling.</p>
+<p><strong>To Ponder:</strong></p>
+<ol type="1">
+<li>The strength of empiricism is that for things capable of being sensed it provides an excellent test of assertions. Unfortunately, many important things cannot be sensed (such as the future, the past, causation, etc.).</li>
+<li>Empiricism is helpful when one is already well experienced in a matter and has well-developed concepts. An experienced sports fan can tell much about a team just by looking at it. But empiricism is not very useful when there are no concepts in place, such as when most persons look at a potential market to enter</li>
+<li>Empiricism may mislead, either because we cannot sense with clarity or we do not have a clear concept to start with. (e.g.&nbsp;How does a straight stick look when placed in a clear glass of water?)</li>
+<li>The great flaw in empiricism as an epistemology is that it must have a non-empirical concept base in which to operate.<br>
+</li>
+<li>Gathering empirical information by observation is the process of pattern recognition (seeing familiar things, the concepts we already have) and at the same time seeing or forming new patterns of things we have not before observed, or seeing old concepts in new arrangements.</li>
+</ol>
+</section>
+<section id="statistical-empiricism" class="level3" data-number="3.1.4">
+<h3 data-number="3.1.4" class="anchored" data-anchor-id="statistical-empiricism"><span class="header-section-number">3.1.4</span> Statistical Empiricism</h3>
+<p><strong>Definition:</strong> Statistical empiricism involves using data and statistical methods to draw conclusions that go beyond simple observation.</p>
+<p>This approach works well when you need to analyze large amounts of data. For example, if you want to know which brand of tires lasts the longest, you can’t just test one tire—you need to test many tires across different brands and use statistical analysis to find the answer.</p>
+<p><strong>Statistical Empiricism in Entrepreneurship</strong>:</p>
+<ol type="1">
+<li>Measuring market size</li>
+<li>Measuring market trends</li>
+<li>Measuring expected profitability</li>
+</ol>
+<p>Statistical empiricism is powerful but requires careful sampling and data interpretation.</p>
+<p><strong>To Ponder:</strong></p>
+<ol type="1">
+<li><strong>Correlation vs.&nbsp;Causation:</strong> Statistical empiricism can show us patterns and correlations but doesn’t always explain why things happen (causation).</li>
+<li><strong>Confirmation Bias:</strong> Be cautious of gathering data just to confirm what you already believe. This can lead to misleading conclusions.</li>
+<li>Empiricism tells us what things happen, but only statistical empiricism can tell us under what regular conditions things happen. This is not a knowledge of causation, but of correlation.</li>
+<li>In every statistical inquiry one must make many assumptions or hypotheses. Sometimes these are so powerful that they overwhelm any data gathered. Doing a valid statistical study is a difficult task.</li>
+<li>All statistical data must be manipulated by some rational process to produce any result. The rational process should be chosen with great care before the data is gathered.</li>
+</ol>
+</section>
+<section id="pragmatism" class="level3" data-number="3.1.5">
+<h3 data-number="3.1.5" class="anchored" data-anchor-id="pragmatism"><span class="header-section-number">3.1.5</span> Pragmatism</h3>
+<p><strong>Definition:</strong> Pragmatism is about doing what works. If a certain action consistently gives good results, it makes sense to continue doing it, even if you’re unsure why it works.</p>
+<p><strong>Pragmatism in Entrepreneurship:</strong></p>
+<ol type="1">
+<li>You notice that offering free shipping on your online store increases sales. Even though you’re not entirely sure why it’s working, the results are positive, so you decide to keep offering free shipping because it seems to help your business grow.</li>
+<li>You raise the price of your product and observe that you generate more revenue. You might maintain that price because it seems to help.</li>
+</ol>
+<p>Pragmatism helps us navigate uncertainty by focusing on what gets results, even when the reasons aren’t fully understood. It rescues us from our frustration with not knowing when we need to make decisions under uncertainty. It is the attitude of being careful, of rejecting anything where the evidence is slight or inconclusive, to be sure of knowing only that which is fully manifest and apparent.</p>
+<p><strong>To ponder:</strong></p>
+<ol type="1">
+<li>Pragmatism is most useful when you don’t have clear answers or when conventional wisdom isn’t working. It allows you to start finding what works, even if you don’t fully understand why.<br>
+</li>
+<li>Pragmatism is not a substitute for a firm grasp on the truth. But it may be an important beginning of finding the truth. When all else fails, each of us tends to become pragmatic, especially in entrepreneurship.</li>
+<li>The danger in pragmatism is that we may settle for it, not recognizing that we must seek further.</li>
+<li>Pragmatism also may lead one to comfort oneself with the idea that the end justifies the means. If I get my way every time I become angry, I am tempted to use anger to get my way, then to comfort myself by justifying the anger because it produces such desirable results.</li>
+</ol>
+</section>
+<section id="fabrication" class="level3" data-number="3.1.6">
+<h3 data-number="3.1.6" class="anchored" data-anchor-id="fabrication"><span class="header-section-number">3.1.6</span> Fabrication</h3>
+<p><strong>Definition</strong>: Fabrication is the making of ideas, using imagination, to satisfy our desire to know the answer to some question. Inventing ideas to fill in the holes in our knowledge.</p>
+<p>Fabrication involves the creation or construction of ideas, systems, or theories without direct empirical support. It’s about constructing models, hypotheses, or frameworks to fill gaps in knowledge when concrete data or established premises are unavailable. Fabrication validates creativity as an epistemology, where innovation and invention play a key role in forming knowledge.</p>
+<p>Fabrication is different from rationalism, which relies on logical deductions from known premises. Instead, fabrication is a creative process, building new ideas that might not yet have empirical grounding. It is the act of making something up—often speculatively—in response to uncertainty. This process is essential in fields like entrepreneurship, where the future is often unknown and data may be incomplete or non-existent.</p>
+<ul>
+<li><strong>Rationalism</strong> works within the bounds of existing knowledge to deduce conclusions logically.</li>
+<li><strong>Fabrication</strong>, by contrast, is speculative, creatively inventing new models or ideas to bridge the gap where knowledge is lacking.</li>
+</ul>
+<p><strong>Fabrication in Entrepreneurship</strong>:</p>
+<p>Imagine an entrepreneur entering a brand-new market. With little available data, they might fabricate a new business model or marketing strategy based on assumptions, creativity, and hypothetical scenarios. This process is not purely rational; it’s about envisioning possibilities and constructing a model to test and refine over time, even without immediate evidence that it will succeed.</p>
+<p>Another example is product innovation—designing a new product concept based on a perceived need or trend. The entrepreneur might not have all the data, but they fabricate the concept and test it in the market, adjusting it as they gather feedback and information.</p>
+<p><strong>Points to Ponder</strong>:</p>
+<ol type="1">
+<li><strong>When is fabrication most useful?</strong> Consider how fabrication allows you to bridge gaps in knowledge and create new models when data is incomplete.</li>
+<li><strong>How does fabrication differ from rationalism in decision-making?</strong> Reflect on the role of creativity versus logic in forming ideas and strategies when faced with uncertainty.</li>
+<li><strong>What are the risks and rewards of fabrication?</strong> Explore how embracing creativity and fabrication can lead to breakthrough innovations, while also considering the risks of acting on untested ideas.</li>
+</ol>
+</section>
+<section id="science" class="level3" data-number="3.1.7">
+<h3 data-number="3.1.7" class="anchored" data-anchor-id="science"><span class="header-section-number">3.1.7</span> Science</h3>
+<p><strong>Definition</strong>: Science is a complex epistemology that synthesizes multiple ways of knowing—such as empiricism, rationalism, skepticism, pragmatism, and fabrication—to construct reliable assertions about the universe. It is a systematic process for generating knowledge that is continually tested and refined. Science builds factual assertions, laws, theories, and principles through a combination of observation, experimentation, and logical reasoning.</p>
+<p>Science is not a single method of knowing but rather a process that incorporates various epistemologies to develop a coherent understanding of the world. For example:</p>
+<ul>
+<li><strong>Empiricism</strong>: Science relies on observation and data collection to form evidence-based conclusions.</li>
+<li><strong>Rationalism</strong>: Logical reasoning and deduction help to build theories and interpret data.</li>
+<li><strong>Skepticism</strong>: Doubt and critical questioning are integral to testing hypotheses and challenging assumptions.</li>
+<li><strong>Fabrication</strong>: Hypotheses and models are created to explain phenomena that are not yet fully understood, providing a framework for further inquiry.</li>
+</ul>
+<p>Science continually evolves by questioning and testing its own claims, making it both a method of knowledge creation and a strategy for improving existing knowledge. It stands as an essential epistemology for educated individuals because it provides a structured way to approach complex problems and uncertainties.</p>
+<p><strong>Example in Entrepreneurship</strong>:<br>
+Imagine an entrepreneur developing a new technology product. The scientific method would involve:</p>
+<ol type="1">
+<li><strong>Observation</strong>: Noticing a gap in the market for a specific technology.</li>
+<li><strong>Hypothesis Formation</strong>: Creating a theory about why this product could solve the gap.</li>
+<li><strong>Experimentation</strong>: Building prototypes and conducting experiments with potential users.</li>
+<li><strong>Data Collection</strong>: Gathering empirical evidence about user interaction, feedback, and performance.</li>
+<li><strong>Rational Interpretation</strong>: Analyzing the data to refine the product, iterating on its design and features based on what works and what doesn’t.</li>
+</ol>
+<p>Science enables the entrepreneur to move from speculation to reliable conclusions by systematically testing assumptions and refining the product.</p>
+<p><strong>To Ponder</strong>:</p>
+<ol type="1">
+<li><strong>What role does science play in validating business ideas?</strong> Explore how entrepreneurs can use scientific methods to reduce uncertainty and validate assumptions in their ventures.</li>
+<li><strong>How does science differ from other epistemologies in entrepreneurship?</strong> Reflect on how science relies on empirical testing and rational analysis to form reliable conclusions, as opposed to relying solely on experience or intuition.</li>
+<li><strong>What are the limitations of science in entrepreneurship?</strong> Consider situations where data might be scarce or experimentation impractical. How does an entrepreneur balance the scientific method with the need for quick decision-making?</li>
+</ol>
+</section>
+<section id="scholarship" class="level3" data-number="3.1.8">
+<h3 data-number="3.1.8" class="anchored" data-anchor-id="scholarship"><span class="header-section-number">3.1.8</span> Scholarship</h3>
+<p><strong>Definition</strong>: Scholarship involves the systematic gathering, interpretation, and synthesis of knowledge to inform decision-making. In the entrepreneurial context, scholarship is about drawing on existing research, data, and insights to shape strategy, identify opportunities, and reduce uncertainty.</p>
+<p>Modern scholarship in entrepreneurship involves research and synthesis rather than just historical study. Entrepreneurs use scholarship to:</p>
+<ul>
+<li><strong>Research existing literature and market studies</strong>: This helps entrepreneurs understand trends, market conditions, and patterns that may influence their business decisions.</li>
+<li><strong>Synthesize information from various sources</strong>: Entrepreneurs gather knowledge from academic papers, industry reports, market analyses, and case studies to form a comprehensive view of their field.</li>
+<li><strong>Fabricate informed assertions</strong>: Based on research, entrepreneurs develop insights and strategies, fabricating assertions about market dynamics, consumer behavior, or industry shifts.</li>
+</ul>
+<p>Just as scholars use historical documents to create narratives about the past, entrepreneurs use data and research to shape narratives about the future of their markets and industries.</p>
+<p><strong>Scholarship in Entrepreneurship</strong>:<br>
+An entrepreneur exploring the renewable energy market might:</p>
+<ol type="1">
+<li><strong>Research Past Developments</strong>: Study the evolution of renewable energy technologies and how regulations or market conditions have changed.</li>
+<li><strong>Synthesize Data</strong>: Combine findings from industry reports, academic research, and case studies to build an understanding of opportunities and challenges.</li>
+<li><strong>Fabricate Insights</strong>: Use the synthesis of knowledge to hypothesize where the market is heading and how their product fits within the broader industry trends.</li>
+</ol>
+<p><strong>To Ponder</strong>:</p>
+<ol type="1">
+<li><strong>How can scholarship be applied in modern entrepreneurship?</strong> Reflect on how studying past trends and synthesizing research can help inform entrepreneurial decision-making.</li>
+<li><strong>What are the limitations of relying on past knowledge?</strong> Consider the risks of over-relying on past information in fast-changing industries.</li>
+<li><strong>How does scholarship intersect with innovation?</strong> Explore how synthesizing past knowledge can guide innovation without constraining new ideas and opportunities.</li>
+</ol>
+</section>
+</section>
+<section id="skepticism-the-anti-epistemology" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="skepticism-the-anti-epistemology"><span class="header-section-number">3.2</span> Skepticism: The Anti-Epistemology</h2>
+<p><strong>Definition</strong>: Rejection of all assertions for which there is contrary or insufficient support.</p>
+<p>Skepticism is the critical approach to questioning the certainty and justification of knowledge claims. Rather than providing a method for acquiring knowledge, it challenges the assumptions, methods, and conclusions of epistemologies, ensuring that beliefs are well-founded and not accepted prematurely. It seeks to be sure sure of knowing only that which IS fully manifest and apparent.</p>
+<p>Skepticism acts as an anti-epistemology—standing in opposition to the typical quest for knowledge. It serves as a guardrail, pushing back against the tendency to accept knowledge too easily or too soon. Instead of being a way to gain knowledge, skepticism helps us determine when we don’t yet have enough information to confidently make a claim.</p>
+<p>Skepticism maintains the boundaries of useful knowledge by challenging the validity and limits of epistemological approaches. Whether through doubt, inquiry, or demanding higher standards of proof, skepticism ensures that claims of knowledge are rigorously scrutinized.</p>
+<p>In entrepreneurship, skepticism prevents us from blindly accepting trends, assumptions, or data without thorough investigation. It is a defense mechanism against making decisions based on incomplete or misleading information.</p>
+<p><strong>Skepticism in Entrepreneurship</strong>:</p>
+<p>Consider an entrepreneur who is advised to invest in a trendy new market that promises high returns. Without skepticism, they might jump in without questioning the validity of the data, the assumptions behind the trend, or the credibility of the sources. A skeptical entrepreneur would ask:</p>
+<ul>
+<li>Are the data sources credible?</li>
+<li>Is the market trend sustainable, or is it just a short-lived bubble?</li>
+<li>Have others tested this market successfully, or are we relying on speculation?</li>
+</ul>
+<p>By critically evaluating these factors, skepticism helps the entrepreneur avoid potential pitfalls and make better-informed decisions.</p>
+<p><strong>To Ponder</strong>:</p>
+<ol type="1">
+<li><strong>When should skepticism be applied?</strong> In what scenarios is it useful to question the validity of data or advice, and when might skepticism become a barrier to progress?</li>
+<li><strong>How does skepticism balance with action?</strong> Entrepreneurs must strike a balance between critical thinking and decisiveness. How much skepticism is necessary to ensure sound decisions without causing over-analysis or paralysis?</li>
+<li><strong>What are the dangers of too much skepticism?</strong> Excessive skepticism can prevent taking necessary risks. How can entrepreneurs avoid over-thinking and missing valuable opportunities?</li>
+</ol>
+</section>
+<section id="using-epistemology-in-entrepreneurship" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="using-epistemology-in-entrepreneurship"><span class="header-section-number">3.3</span> Using Epistemology in Entrepreneurship</h2>
+<p>When evaluating any assertion, ask yourself:</p>
+<ol type="1">
+<li><strong>How do you know?</strong></li>
+<li><strong>How do you know that you know?</strong></li>
+</ol>
+<p><strong>Key Points</strong>:</p>
+<ul>
+<li><p>Every assertion, whether in life or in business, is supported by some form of evidence, reasoning, or intuition. In entrepreneurship, this could range from market data to gut instincts, each of which can be scrutinized through different epistemological lenses.</p></li>
+<li><p>To evaluate the support for an assertion, entrepreneurs must understand and utilize various epistemological approaches:</p>
+<ul>
+<li><strong>Empiricism</strong>: Test and validate ideas through observation and experimentation.</li>
+<li><strong>Rationalism</strong>: Use logical reasoning to connect data points and inform decisions.</li>
+<li><strong>Pragmatism</strong>: Focus on what works, refining strategies based on practical results.</li>
+<li><strong>Skepticism</strong>: Guard against accepting assumptions too quickly, always questioning the strength of the evidence.</li>
+<li><strong>Fabrication</strong>: Create and innovate in the face of uncertainty, using creativity to bridge knowledge gaps.</li>
+</ul></li>
+<li><p>A wise entrepreneur combines these epistemologies to navigate uncertainty and make informed decisions. This includes using research, empirical data, logical reasoning, and, when necessary, intuition or creative insights to move forward with confidence.</p></li>
+<li><p>Entrepreneurs should be able to explain how they arrived at their conclusions and decisions, much like sharing a testimony of knowledge. This reflective practice not only strengthens the validity of their choices but also helps communicate their reasoning to others—whether it’s to investors, customers, or collaborators.</p></li>
+<li><p>Ultimately, the ability to act on knowledge and adjust course when new information arises is a key mark of an effective entrepreneur. As entrepreneurs gain experience, they develop the skill of integrating multiple ways of knowing, helping them become more adaptable and resilient.</p></li>
+</ul>
+<blockquote class="blockquote">
+<p>It is good to know. But it is better to know that we know.</p>
+</blockquote>
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+WyJkYXRhL2hhbG9fYWxlcnQueGxzeCIsImRhdGEvfiRjaW5uYW1vbl9yb2xscy54bHN4IiwiZGF0YS9tdXNjbGVfY29sYS5jc3YiLCJkYXRhL2hhbG9fYWxlcnQuY3N2IiwiZGF0YS9jaW5uYW1vbl9yb2xscy5jc3YiLCJkYXRhL2xpYmVydHlfc2hpcC54bHN4IiwiZGF0YS9tdXNjbGVfY29sYS5yZHMiLCJkYXRhL2N1cGNha2VzLnhsc3giLCJkYXRhL2Npbm5hbW9uX3JvbGxzLnhsc3giLCJkYXRhL2N1cGNha2VzLmNzdiIsImRhdGEvbGliZXJ0eV9zaGlwLmNzdiIsImRhdGEvbXVzY2xlX2NvbGEueGxzeCJd
+</script>
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>Created from class notes from Chauncey Riddle combined with his blog post on <a href="https://chaunceyriddle.org/the-point-is-to-know-what-you-know/">epistemology</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./uncertainty.html" class="pagination-link" aria-label="Uncertainty and Entrepreneurship">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Uncertainty and Entrepreneurship</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./ds_ent.html" class="pagination-link" aria-label="Business Analytics in Evidence-based Entrepreneurship">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Business Analytics in Evidence-based Entrepreneurship</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

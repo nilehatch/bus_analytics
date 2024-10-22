@@ -1,0 +1,436 @@
+---
+title: "Inspecting and Understanding Data"
+format:
+  live-html:
+    webr:
+      packages:
+##        - tidyverse
+##        - ggplot2
+        - dplyr
+        - tibble
+        - janitor
+      render-df: default
+      toc: true
+engine: knitr
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| output: false
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+library(scales)
+library(gt)
+library(janitor)
+knitr::opts_chunk$set(echo = TRUE) 
+
+entrepreneur_data <- tibble(
+  name = c("Alice", "Bob", "Charlie", "Diana", "Eve", "Frank", "Alice", "Gina", "Hank", NA),
+  age = c(34, 42, 29, NA, 25, 37, 34, 31, 48, 29),
+  gender = c("Female", "Male", "Male", "Female", "Female", "Male", "Female", "Female", "Male", "Male"),
+  sector = c("Tech", "Finance", "Tech", "Health", "Tech", "Health", "Tech", "Finance", "Health", "Tech"),
+  revenue_million = c(1.2, 2.3, 0.9, 1.8, NA, 1.1, 1.2, 2.4, 3.0, NA),
+  funding_million = c(3.5, 1.0, 0.5, 2.0, 1.8, NA, 3.5, 1.1, 2.8, 0.5),
+  years_experience = c(10, 15, 5, 12, 2, 8, 10, 7, 20, 5)
+)
+
+entrepreneur_data  <- entrepreneur_data %>% 
+  mutate(years_experience = as.integer(years_experience),
+           gender = as.factor(gender)
+           )
+```
+
+The first step in any data analysis project is to inspect and understand the data. This process allows you to familiarize yourself with the dataset, identify potential issues, and ensure that it is in a state that can be worked with. In this chapter, we'll simplify data inspection using the `janitor` package and combine it with a few select functions from base R and `tidyverse` for deeper understanding.
+
+Let's practice with a dataset of entrepreneurs named `entrepreneur_data` that has already been imported into R (and this document).
+
+```{r}
+#| label:  Call the data
+entrepreneur_data
+```
+The variables include:
+
+-   `name`: Name of the entrepreneur
+-   `age`: Age of the entrepreneur
+-   `gender`: Gender of the entrepreneur
+-   `sector`: The industry sector of the startup
+-   `revenue_million`: The revenue of the startup in millions
+-   `funding_million`: The amount of funding received in millions
+-   `years_experience`: Years of experience the entrepreneur has
+
+
+-----
+
+<br>
+
+## Overview of Your Data
+
+<br>
+
+
+To begin, let's get an overall sense of the dataset using the `adorn_totals()` function from the `janitor` library and `glimpse()` function from the `dplyr` package in `tidyverse`. The `janitor` library offers some simple and useful functions for inspecting data that are not found in `glimpse()`.
+
+### With `adorn_totals()` from `janitor`
+
+`adorn_totals()` provides the sum (Total) of every variable (column) of the dataset:
+```{r}
+## load the janitor library for access to the adorn_total function
+library(janitor)
+
+## adorn_totals to calculate the totals of each variable
+adorn_totals(entrepreneur_data)
+```
+
+### With `glimpse()` from `tidyverse`
+
+`glimpse()` provides a transposed view of your data with variables listed as rows:
+```{r}
+glimpse(entrepreneur_data)
+```
+
+This shows us the structure of the data with variable names, types, and some of the values in each column.[^1]
+
+[^1]: In this small dataset with only 10 rows, `adorn_totals` and `glimpse()` are both able to show all of the data. For larger datasets, they show a subset of the first several values of each row.
+
+-----
+
+<br>
+
+## Inspecting Specific Rows
+Use the following functions to quickly view specific rows:
+
+### With `head()` and `tail()`
+
+These functions allow us to see the first and last rows of the dataset, respectively.
+
+```{r}
+head(entrepreneur_data, 3)  ## Show first 3 rows
+tail(entrepreneur_data, 2)  ## Show last 2 rows
+```
+
+::: {.callout-note} 
+By default, head() shows the first 6 rows, but you can adjust this by specifying the number of rows you'd like to see. 
+:::
+
+```{webr}
+#| exercise: ex_head
+#| setup: true
+
+entrepreneur_data <- tibble(
+  name = c("Alice", "Bob", "Charlie", "Diana", "Eve", "Frank", "Alice", "Gina", "Hank", NA),
+  age = c(34, 42, 29, NA, 25, 37, 34, 31, 48, 29),
+  gender = c("Female", "Male", "Male", "Female", "Female", "Male", "Female", "Female", "Male", "Male"),
+  sector = c("Tech", "Finance", "Tech", "Health", "Tech", "Health", "Tech", "Finance", "Health", "Tech"),
+  revenue_million = c(1.2, 2.3, 0.9, 1.8, NA, 1.1, 1.2, 2.4, 3.0, NA),
+  funding_million = c(3.5, 1.0, 0.5, 2.0, 1.8, NA, 3.5, 1.1, 2.8, 0.5),
+  years_experience = c(10, 15, 5, 12, 2, 8, 10, 7, 20, 5)
+)
+
+entrepreneur_data  <- entrepreneur_data %>% 
+  mutate(years_experience = as.integer(years_experience),
+           gender = as.factor(gender)
+           )
+```
+
+<br>
+
+
+##### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+Change the code to display the first 7 rows of `entrepreneur_data`.
+
+```{webr}
+#| exercise: ex_head
+head(entrepreneur_data)
+```
+
+::: {.hint exercise="ex_head"}
+::: {.callout-note collapse="false"}
+### Hint 1
+
+`head()` shows 6 rows by default. Consider what argument you can add to vary from the default number of rows.
+:::
+:::
+
+::: {.hint exercise="ex_head"}
+::: {.callout-note collapse="false"}
+### Hint 2
+
+Add the desired number of rows (7) as an argument to the function.
+
+``` r
+head(entrepreneur_data, 3)
+```
+:::
+:::
+
+::: {.solution exercise="ex_head"}
+::: {.callout-tip collapse="false"}
+### Fully worked solution:
+
+Add the desired number of rows to the function as an argument in addition to the tibble name.
+
+``` r
+head(entrepreneur_data, 3)  
+```
+
+:::
+:::
+
+<br>
+
+Now change the code to display the last 4 rows of the dataset.
+```{webr}
+#| exercise: ex_tail
+#| setup: true
+
+entrepreneur_data <- tibble(
+  name = c("Alice", "Bob", "Charlie", "Diana", "Eve", "Frank", "Alice", "Gina", "Hank", NA),
+  age = c(34, 42, 29, NA, 25, 37, 34, 31, 48, 29),
+  gender = c("Female", "Male", "Male", "Female", "Female", "Male", "Female", "Female", "Male", "Male"),
+  sector = c("Tech", "Finance", "Tech", "Health", "Tech", "Health", "Tech", "Finance", "Health", "Tech"),
+  revenue_million = c(1.2, 2.3, 0.9, 1.8, NA, 1.1, 1.2, 2.4, 3.0, NA),
+  funding_million = c(3.5, 1.0, 0.5, 2.0, 1.8, NA, 3.5, 1.1, 2.8, 0.5),
+  years_experience = c(10, 15, 5, 12, 2, 8, 10, 7, 20, 5)
+)
+
+entrepreneur_data  <- entrepreneur_data %>% 
+  mutate(years_experience = as.integer(years_experience),
+           gender = as.factor(gender)
+           )
+```
+```{webr}
+#| exercise: ex_tail
+tail(entrepreneur_data)
+```
+
+::: {.hint exercise="ex_tail"}
+::: {.callout-note collapse="false"}
+### Hint 1
+
+`tail())` shows 6 rows by default. Consider what argument you can add to vary from the default number of rows.
+:::
+:::
+
+::: {.hint exercise="ex_tail"}
+::: {.callout-note collapse="false"}
+### Hint 2
+
+Add the desired number of rows (4) as an argument to the function.
+
+``` r
+tail(entrepreneur_data, 4)
+```
+:::
+:::
+
+::: {.solution exercise="ex_tail"}
+::: {.callout-tip collapse="false"}
+### Fully worked solution:
+
+Add the desired number of rows to the function as an argument in addition to the tibble name.
+
+``` r
+tail(entrepreneur_data, 4)  
+```
+
+:::
+:::
+
+<hr style="border:2px solid #3370F4">
+
+-----
+
+<br>
+
+## Inspecting Data Structure and Summary
+
+### Data Dimensions
+
+- `dim()`: Returns the number of rows and columns in the data.
+- `nrow()` and `ncol()`: Return the number of rows or columns separately.
+
+```{r}
+dim(entrepreneur_data) ## shows that there are 10 rows and 7 columns
+nrow(entrepreneur_data) ## shows that there are 10 rows
+ncol(entrepreneur_data) ## shows that there are 7 columns
+```
+
+### Summary of Columns
+
+`summary()` provides a quick overview of each column, showing descriptive statistics for numeric variables and frequencies for categorical variables.
+
+```{r}
+summary(entrepreneur_data) ## summarizes every variable
+```
+::: {.callout-note} 
+This function is great for spotting potential outliers or missing values. 
+:::
+
+-----
+
+<br>
+
+## Inspecting Data Types and Values
+Understanding the types of variables you're working with is essential:
+
+#### Structure of the Dataset
+Use `str()` to check the structure of the dataset.
+
+```{r}
+str(entrepreneur_data) ## shows the data type of every variable
+```
+Looking closely, we can also see an indicator between the name of the variable and its values. This is an indicator of the data type:
+
+-   `name` <chr> indicates a character variable meaning that the values of the name variable are made of characters (letters rather than numbers).
+-   `age` <dbl> indicates numeric data and, more specifically, double-precision data (numbers that can have decimals).
+-   `gender` <fct> is a category variable which is known as a factor in R.
+-   `sector` <chr> is a character variable for the startup's industry sector.[^2]
+-   `revenue_million` <dbl> indicates double-precision numeric data representing revenue in units of million dollars.
+-   `funding_million` <dbl> is double-precision numeric data representing funding in units of million dollars.
+-   `years_experience` <int> indicates numeric data in integer form (numbers can only be whole numbers).
+
+[^2]: `sector` is probably better classified as a factor type. We will learn how to convert it from character to factor in another chapter.
+
+
+#### Checking Types for Specific Variables
+You can also check the data type of specific variables with `typeof()`:
+
+```{r}
+typeof(entrepreneur_data$name) ## shows that "name" is character data
+typeof(entrepreneur_data$age) ## shows that "age" is a numeric (double precision) variable
+```
+If you find incorrect data types (e.g., dates stored as strings, numerical values stored as characters), this inspection identifies which variables need to be transformed.
+
+-----
+
+<br>
+
+## Identifying Missing Data
+Missing data can affect your analysis so let's check for missing values.
+
+#### Check for Missing Values with `is.na()`
+
+__is.na()__: detects missing values in the dataset.
+
+```{r}
+sum(is.na(entrepreneur_data))           ## Total missing values
+colSums(is.na(entrepreneur_data))       ## Missing values per column
+```
+
+
+
+#### Check for Missing Values with `tabyl()`
+
+You can also use `tabyl()` from the `janitor` library to get a cleaner breakdown of missing values for a specific variable.
+
+```{r}
+## load the janitor library
+library(janitor)
+
+## get a summary of gender from tabyl()
+entrepreneur_data |> tabyl(gender, show_na = TRUE)
+
+## get a summary of gender and sector from tabyl()
+entrepreneur_data |> tabyl(gender, sector, show_na = TRUE)
+```
+
+#### Check for missing values with `skim()`
+
+`skim()` (from the `skimr` package): Provides a more detailed overview of missing values along with summary statistics.
+
+```{r}
+#| label: skim
+#| echo: true
+library(skimr) ## load the library
+skim(entrepreneur_data) ## 
+```
+
+-----
+
+<br>
+
+## Checking for Duplicates
+Duplicate data can skew your analysis. Use `janitor` to find duplicates.
+
+#### Identify and Remove Duplicates
+
+```{r}
+library(janitor) ## load the library
+entrepreneur_data |> get_dupes()
+```
+This finds rows that have duplicate values across all columns.
+
+
+-----
+
+<br>
+
+## Examining Distributions and Outliers
+
+It’s essential to check for extreme values or outliers that could distort your analysis.
+
+### Visualizing Outliers
+Use a simple boxplot to spot outliers.
+
+```{r}
+boxplot(entrepreneur_data$revenue_million)
+```
+
+
+### Counting Categorical Frequencies
+Use `tabyl()` from the `janitor` library can also summarize categorical data frequencies.
+
+```{r}
+library(janitor) ## load the library
+entrepreneur_data |> tabyl(sector) ## use tabyl to check for outliers in sector
+```
+
+This shows a breakdown of the counts in the `sector` column.
+
+
+### Summary
+
+As mentioned earlier, `summary()` from base R provides a quick way to identify outliers in numeric columns by showing the minimum, maximum, and quartiles.
+
+```{r}
+entrepreneur_data |> summary() ## use summary() to check for outliers 
+```
+-----
+
+<br>
+
+## Next Steps
+In the next chapter, we'll explore how to clean and transform data using the tools introduced here. You'll also learn how to tidy datasets and handle missing values more effectively.
+
+
+
+```{=html}
+<!-- 6. Understanding Relationships Between Variables
+To understand how variables in your dataset relate to each other, you can start by calculating correlations for numeric data or contingency tables for categorical data:
+
+cor(): Calculate correlation between numeric variables.
+
+r
+Copy code
+cor(data$var1, data$var2)
+table(): Create a contingency table to show the frequency of combinations of categorical variables.
+
+r
+Copy code
+table(data$category1, data$category2)
+ggplot2: Begin visualizing relationships between variables using scatterplots, histograms, or bar charts.
+
+r
+Copy code
+ggplot(data, aes(x = var1, y = var2)) + geom_point()
+Conclusion
+Inspecting and understanding your data is an essential first step in the data wrangling process. By getting familiar with the structure, identifying issues like missing values or incorrect data types, and understanding the relationships between variables, you set yourself up for success in the data cleaning and transformation stages.
+-->
+```
+In the next chapter, we will explore how to take what we’ve learned from inspecting the data and apply the principles of tidy data to organize and clean our datasets effectively.

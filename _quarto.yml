@@ -1,0 +1,61 @@
+project:
+  type: book
+
+book:
+  title: "An Introduction to Business Analytics for Entrepreneurs"
+  author: "Nile Hatch"
+  date: "10/21/2024"
+  chapters:
+    - index.qmd
+    - intro.qmd
+    
+    - part: "Uncertainty"
+      chapters:
+        - uncertainty.qmd
+        - epistemology.qmd
+        - ds_ent.qmd
+    - part: "Data"
+      chapters:
+        - data.qmd
+        - public_data.qmd
+        - private_data.qmd
+        - customer_data.qmd
+    - part: "Data in R"
+      chapters:
+        - R.qmd
+        - install.qmd
+        - use_R.qmd
+        - import.qmd
+        - inspect.qmd
+    - part: "EDA"
+      chapters:
+        - eda.qmd
+    - part: "Transforming Data"
+
+    - part: "Modeling Data"
+
+    - summary.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+format:
+  live-html:
+    resources:
+      - data
+    webr:
+      packages:
+#        - tidyverse
+#        - ggplot2
+        - dplyr
+        - tibble
+        - readr
+#        - vroom        
+        - readxl
+        - here
+      render-df: default
+engine: knitr
+editor: source
+
+execute:
+  echo: false

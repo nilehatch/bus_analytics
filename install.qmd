@@ -1,0 +1,207 @@
+---
+title: "Installing R, RStudio, and Libraries"
+---
+
+```{r}
+#| output: false
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+library(scales)
+library(gt)
+knitr::opts_chunk$set(echo = TRUE) 
+
+
+```
+
+```{=html}
+<style>
+.wrapfig {
+    float: right; 
+    margin: 0 20px 10px 0; /* adjust space around the image */
+    width: 40%; /* adjust image width */
+}
+</style>
+```
+
+
+
+In this chapter, we’ll walk through the process of installing R, RStudio, and the libraries you’ll need for this course, including the tidyverse. These tools will form the foundation of your data wrangling, analysis, and visualization work.
+
+## Getting Started with R
+
+R is the programming language you’ll be using throughout this course for data analysis. To get started, you’ll first need to install R on your computer.
+
+### Download R
+To download R, go to the official CRAN (Comprehensive R Archive Network) website:
+
+- [Download R for Windows](https://cran.r-project.org/bin/windows/base/)
+- [Download R for macOS](https://cran.r-project.org/bin/macosx/)
+- [Download R for Linux](https://cran.r-project.org/bin/linux/)
+
+Click on the appropriate link for your operating system, and follow the instructions to download the latest version of R.
+
+### Install R
+Once the R installer is downloaded:
+
+- **Windows**: Double-click the `.exe` file and follow the installation instructions.
+- **macOS**: Open the `.pkg` file and follow the instructions.
+- **Linux**: Follow the instructions for your distribution, typically by using a package manager like `apt` or `yum`. For example, on Ubuntu, you can run: `sudo apt-get install r-base`
+
+
+<br>
+
+## Installing RStudio
+
+RStudio is an integrated development environment (IDE) for R. It provides a user-friendly interface to write, run, and manage your R scripts. RStudio is highly recommended for R users because it offers enhanced features like syntax highlighting, code completion, and a variety of helpful panes for managing plots, files, and data.
+
+### Download RStudio
+
+To download RStudio, go to the official website:
+
+- [Download RStudio](https://www.rstudio.com/products/rstudio/download/)
+
+Choose the __free version__ and download the installer for your operating system (Windows, macOS, or Linux).
+
+### Install RStudio
+Once the RStudio installer is downloaded:
+
+- Windows: Double-click the `.exe` file and follow the installation instructions.
+- macOS: Open the `.dmg` file and drag RStudio to your Applications folder.
+- Linux: Follow the instructions on the RStudio website for your distribution.
+
+### Understanding the RStudio Interface
+
+Once you have installed RStudio and opened it for the first time, you’ll notice that the interface is divided into four main panes or panes. Each of these panes has a specific function and will help you navigate your R coding and data analysis more efficiently. Let's break them down:
+
+#### 1. Source Pane (Top-Left)
+The **Source Pane** is where you write and edit your R scripts. Think of it as your coding workspace. When you create new R scripts, R Markdown documents, or any other files, they will appear here. You can open multiple tabs in the Source Pane, allowing you to work on several scripts or documents at once.
+
+- **Purpose**: Writing and editing code or text documents.
+- **How to use**: You can write code, comments, or text for R Markdown in this pane. To execute a line or block of code from the Source Pane, you can highlight the code and press `Ctrl + Enter` (or `Cmd + Enter` on macOS). The code will run in the Console Pane (bottom-left).
+
+#### 2. Console Pane (Bottom-Left)
+The **Console Pane** is where your R code is executed. This is the most direct way to interact with R: anything you type here is immediately executed by R, and the results are shown in the same pane.
+
+- **Purpose**: Running R code interactively.
+- **How to use**: You can type individual commands here and press `Enter` to execute them. It’s particularly useful for trying out quick snippets of code or for running one-off commands that you don’t need to save in a script.
+
+#### 3. Environment/History Pane (Top-Right)
+This pane typically shows two tabs:
+
+- **Environment Tab**: Displays all the objects, datasets, and variables you’ve created during your R session. You can think of it as a workspace viewer.
+- **History Tab**: Shows a history of all the commands you’ve entered in the Console. This can be handy if you want to revisit commands you previously ran.
+
+- **Purpose**: Monitoring your data objects and tracking the history of your commands.
+- **How to use**: In the Environment Tab, you can click on objects (like data frames or vectors) to inspect their structure. The History Tab allows you to browse through commands you’ve executed and rerun them with a click.
+
+#### 4. Files-Plots-Packages-Help Pane (Bottom-Right)
+This pane has multiple tabs with different uses:
+
+- **Files Tab**: Shows your file directory, allowing you to navigate your project files directly from RStudio.
+- **Plots Tab**: Displays the graphs and visualizations generated by your code (using libraries like `ggplot2`).
+- **Packages Tab**: Lists all the installed R packages on your system. From here, you can load or update packages.
+- **Help Tab**: Provides documentation for R functions and packages. You can search for help on specific functions directly from this pane.
+
+- **Purpose**: Managing files, viewing plots, loading packages, and accessing help.
+- **How to use**: When you generate plots, they will appear in the Plots Tab. You can navigate through your files in the Files Tab, check the status of installed packages, and search for help on any function you need more information on.
+
+#### Navigating the Interface
+
+Now that you know what each pane is for, here’s how you’ll typically interact with them:
+
+- **Write code in the Source Pane**: For larger tasks, write your code in the Source Pane, and then send it to the Console by highlighting and pressing `Ctrl + Enter` (or `Cmd + Enter` on macOS).
+- **Run quick commands in the Console Pane**: If you just want to test a small piece of code, type it directly into the Console Pane and see the results immediately.
+- **Monitor your data in the Environment Pane**: Keep an eye on the objects you create and modify as you work with your data.
+- **Check your visualizations in the Plots Pane**: When you generate plots, they’ll be displayed in the Plots Tab for easy review.
+
+Understanding these panes will help you make the most out of RStudio, making it easier to manage your code, data, and visualizations as you work through the course.
+
+<br>
+
+## Installing Libraries
+
+With R and RStudio installed, you’ll need to install the libraries that we’ll be using throughout this course. The primary library we’ll use is the tidyverse, a collection of R packages that makes data manipulation and visualization easier.
+
+### Installing Tidyverse
+
+To install the tidyverse, you’ll need to open RStudio and enter the following command in the Console:
+
+`install.packages("tidyverse")`
+
+This will download and install the `tidyverse` package, along with all of its dependencies. You’ll see the output of the installation process in the Console.
+
+
+### Loading Tidyverse
+Once the tidyverse is installed, you can load it into your R session by using the following command:
+
+`library(tidyverse)`
+
+Loading the tidyverse gives you access to all the tools you’ll need for data wrangling, visualization, and analysis.
+
+### Installing Other Useful Libraries
+Depending on the specific tasks you’ll be performing, you may need additional libraries. Here are a few commonly used packages you may find helpful:
+
+- `skimr`: For data summary and inspection: `install.packages("skimr")`
+- `janitor`: For cleaning and formatting data: `install.packages("janitor")`
+- `readxl`: For reading Excel files: `install.packages("readxl")`
+
+Once installed, load these libraries into your session just like the tidyverse, using `library()`.
+
+### Summary:  Setting up Your Environment
+
+To ensure everything is set up correctly, follow these steps:
+
+1. Open RStudio.
+
+1. In the Console, type the following commands:
+
+```{r}
+#| label: install-libraries
+#| eval: false
+#| copy: true
+
+## Install tidyverse if not already installed
+install.packages("tidyverse")
+
+## Load tidyverse
+library(tidyverse)
+
+## Install and load additional packages
+install.packages("skimr")
+library(skimr)
+
+install.packages("janitor")
+library(janitor)
+
+install.packages("readxl")
+library(readxl)
+```
+
+<br>
+
+## Verifying Installation
+
+To verify that R and the tidyverse are installed correctly, you can check the version of R and make sure that the tidyverse packages load successfully.
+
+```{r}
+#| label: verify-installation
+#| eval: false
+#| copy: true
+
+
+## Check R version
+R.version.string
+
+## Check that tidyverse packages are loaded
+library(tidyverse)
+
+## Display available tidyverse packages
+tidyverse_packages()
+```
+
+
+If everything works as expected, congratulations—you’re ready to begin working with R and the tidyverse!
+
+In this chapter, we walked through the process of installing R, RStudio, and the tidyverse. With these tools installed and configured, you’re ready to dive into data wrangling and analysis. As we progress through the course, these tools will become central to your workflow, helping you turn raw data into actionable insights. In the next chapters, we’ll explore how to import data, clean and wrangle it, and start making discoveries with your data.

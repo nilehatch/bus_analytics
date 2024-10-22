@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>8&nbsp; Customer Data Sources for Business Analytics in Entrepreneurship – An Introduction to Business Analytics for Entrepreneurs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./R.html" rel="next">
+<link href="./private_data.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html">Data</a></li><li class="breadcrumb-item"><a href="./customer_data.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Customer Data Sources for Business Analytics in Entrepreneurship</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">An Introduction to Business Analytics for Entrepreneurs</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uncertainty.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Uncertainty and Entrepreneurship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epistemology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Epistemology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ds_ent.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Business Analytics in Evidence-based Entrepreneurship</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./public_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Public Data Sources for Business Analytics in Entrepreneurship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./private_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Private Data Sources for Business Analytics in Entrepreneurship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./customer_data.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Customer Data Sources for Business Analytics in Entrepreneurship</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data in R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Analytics in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Installing R, RStudio, and Libraries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./use_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Using R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Importing Data into R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inspect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inspecting and Understanding Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">EDA</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis (EDA)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Transforming Data</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Modeling Data</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#customer-data-as-an-experiment" id="toc-customer-data-as-an-experiment" class="nav-link active" data-scroll-target="#customer-data-as-an-experiment"><span class="header-section-number">8.1</span> Customer Data as an Experiment</a>
+  <ul class="collapse">
+  <li><a href="#exploratory-experiment" id="toc-exploratory-experiment" class="nav-link" data-scroll-target="#exploratory-experiment"><span class="header-section-number">8.1.1</span> Exploratory Experiment</a></li>
+  <li><a href="#confirmatory-experiment" id="toc-confirmatory-experiment" class="nav-link" data-scroll-target="#confirmatory-experiment"><span class="header-section-number">8.1.2</span> Confirmatory Experiment</a></li>
+  </ul></li>
+  <li><a href="#designing-a-good-experiment" id="toc-designing-a-good-experiment" class="nav-link" data-scroll-target="#designing-a-good-experiment"><span class="header-section-number">8.2</span> Designing a Good Experiment</a>
+  <ul class="collapse">
+  <li><a href="#iterative-experiment-design" id="toc-iterative-experiment-design" class="nav-link" data-scroll-target="#iterative-experiment-design"><span class="header-section-number">8.2.1</span> Iterative Experiment Design</a></li>
+  <li><a href="#interpreting-results-and-addressing-bias" id="toc-interpreting-results-and-addressing-bias" class="nav-link" data-scroll-target="#interpreting-results-and-addressing-bias"><span class="header-section-number">8.2.2</span> Interpreting Results and Addressing Bias</a></li>
+  </ul></li>
+  <li><a href="#what-type-of-information-is-needed" id="toc-what-type-of-information-is-needed" class="nav-link" data-scroll-target="#what-type-of-information-is-needed"><span class="header-section-number">8.3</span> What Type of Information is Needed?</a>
+  <ul class="collapse">
+  <li><a href="#balancing-qualitative-and-quantitative-data" id="toc-balancing-qualitative-and-quantitative-data" class="nav-link" data-scroll-target="#balancing-qualitative-and-quantitative-data"><span class="header-section-number">8.3.1</span> Balancing Qualitative and Quantitative Data</a></li>
+  <li><a href="#other-data-considerations" id="toc-other-data-considerations" class="nav-link" data-scroll-target="#other-data-considerations"><span class="header-section-number">8.3.2</span> Other Data Considerations</a></li>
+  </ul></li>
+  <li><a href="#which-people-do-we-need-information-from-targeting" id="toc-which-people-do-we-need-information-from-targeting" class="nav-link" data-scroll-target="#which-people-do-we-need-information-from-targeting"><span class="header-section-number">8.4</span> Which people do we need information from? (Targeting)</a>
+  <ul class="collapse">
+  <li><a href="#early-stages-starting-with-demographics" id="toc-early-stages-starting-with-demographics" class="nav-link" data-scroll-target="#early-stages-starting-with-demographics"><span class="header-section-number">8.4.1</span> Early Stages: Starting with Demographics</a></li>
+  <li><a href="#iterative-refinement-evolving-toward-needs-based-targeting" id="toc-iterative-refinement-evolving-toward-needs-based-targeting" class="nav-link" data-scroll-target="#iterative-refinement-evolving-toward-needs-based-targeting"><span class="header-section-number">8.4.2</span> Iterative Refinement: Evolving Toward Needs-Based Targeting</a></li>
+  <li><a href="#the-importance-of-iteration-in-targeting" id="toc-the-importance-of-iteration-in-targeting" class="nav-link" data-scroll-target="#the-importance-of-iteration-in-targeting"><span class="header-section-number">8.4.3</span> The Importance of Iteration in Targeting</a></li>
+  <li><a href="#circular-challenge-discovering-needs-to-define-the-population" id="toc-circular-challenge-discovering-needs-to-define-the-population" class="nav-link" data-scroll-target="#circular-challenge-discovering-needs-to-define-the-population"><span class="header-section-number">8.4.4</span> Circular Challenge: Discovering Needs to Define the Population</a></li>
+  </ul></li>
+  <li><a href="#which-people-do-we-reach-sampling" id="toc-which-people-do-we-reach-sampling" class="nav-link" data-scroll-target="#which-people-do-we-reach-sampling"><span class="header-section-number">8.5</span> Which people do we reach? (Sampling)</a>
+  <ul class="collapse">
+  <li><a href="#who-to-ask" id="toc-who-to-ask" class="nav-link" data-scroll-target="#who-to-ask"><span class="header-section-number">8.5.1</span> Who to Ask</a></li>
+  <li><a href="#how-to-reach-them" id="toc-how-to-reach-them" class="nav-link" data-scroll-target="#how-to-reach-them"><span class="header-section-number">8.5.2</span> How to Reach Them</a></li>
+  <li><a href="#how-many-to-sample" id="toc-how-many-to-sample" class="nav-link" data-scroll-target="#how-many-to-sample"><span class="header-section-number">8.5.3</span> How Many to Sample</a></li>
+  </ul></li>
+  <li><a href="#what-should-we-ask-them-question-design" id="toc-what-should-we-ask-them-question-design" class="nav-link" data-scroll-target="#what-should-we-ask-them-question-design"><span class="header-section-number">8.6</span> What should we ask them? (Question Design)</a>
+  <ul class="collapse">
+  <li><a href="#framing-effective-questions" id="toc-framing-effective-questions" class="nav-link" data-scroll-target="#framing-effective-questions"><span class="header-section-number">8.6.1</span> Framing Effective Questions</a></li>
+  <li><a href="#structuring-your-interactions" id="toc-structuring-your-interactions" class="nav-link" data-scroll-target="#structuring-your-interactions"><span class="header-section-number">8.6.2</span> Structuring Your Interactions</a></li>
+  <li><a href="#the-iterative-process-of-refining-questions" id="toc-the-iterative-process-of-refining-questions" class="nav-link" data-scroll-target="#the-iterative-process-of-refining-questions"><span class="header-section-number">8.6.3</span> The Iterative Process of Refining Questions</a></li>
+  <li><a href="#balancing-data-quality-and-participant-experience" id="toc-balancing-data-quality-and-participant-experience" class="nav-link" data-scroll-target="#balancing-data-quality-and-participant-experience"><span class="header-section-number">8.6.4</span> Balancing Data Quality and Participant Experience</a></li>
+  </ul></li>
+  <li><a href="#how-do-we-interpret-the-results-analysis" id="toc-how-do-we-interpret-the-results-analysis" class="nav-link" data-scroll-target="#how-do-we-interpret-the-results-analysis"><span class="header-section-number">8.7</span> How do we interpret the results? (Analysis)</a>
+  <ul class="collapse">
+  <li><a href="#principles-of-data-interpretation" id="toc-principles-of-data-interpretation" class="nav-link" data-scroll-target="#principles-of-data-interpretation"><span class="header-section-number">8.7.1</span> Principles of Data Interpretation</a></li>
+  <li><a href="#looking-ahead-analytical-techniques" id="toc-looking-ahead-analytical-techniques" class="nav-link" data-scroll-target="#looking-ahead-analytical-techniques"><span class="header-section-number">8.7.2</span> Looking Ahead: Analytical Techniques</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./data.html">Data</a></li><li class="breadcrumb-item"><a href="./customer_data.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Customer Data Sources for Business Analytics in Entrepreneurship</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Customer Data Sources for Business Analytics in Entrepreneurship</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+.wrapfig {
+    float: right; 
+    margin: 0 20px 10px 0; /* adjust space around the image */
+    width: 40%; /* adjust image width */
+}
+</style>
+<p>One of the biggest challenges with public and private data sources is that they contain only the data that others collected for their own purposes. While these datasets can provide valuable insights, they rarely answer an entrepreneur’s specific questions directly. To bridge this gap, entrepreneurs can gather customer data that is tailored to their precise needs. Because it is focused on the question at hand, customer data may be the most reliable source for understanding the needs of potential customers and shaping products or services to fit those needs—but only if it is unbiased.</p>
+<p>In entrepreneurship, collecting customer data can be divided into two types of experiments: <strong>exploratory experiments</strong> (ethnographic data collection to hypothesize needs and solutions) and <strong>confirmatory experiments</strong> (returning to test those hypotheses). Each type of experiment must be carefully designed and executed to yield reliable, actionable insights.</p>
+<section id="customer-data-as-an-experiment" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="customer-data-as-an-experiment"><span class="header-section-number">8.1</span> Customer Data as an Experiment</h2>
+<p>Customer data collection is more than gathering feedback. It is conducting experiments that generate results to guide decision-making. The quality of the experiment directly affects the quality of the data, the reliability of the results, and the accuracy of the decisions. Well-designed experiments with minimal bias produce results that can be trusted. Poorly designed experiments with baked-in biases produce unreliable data, and entrepreneurs should appropriately discount or question those results.</p>
+<section id="exploratory-experiment" class="level3" data-number="8.1.1">
+<h3 data-number="8.1.1" class="anchored" data-anchor-id="exploratory-experiment"><span class="header-section-number">8.1.1</span> Exploratory Experiment</h3>
+<p>An <strong>exploratory experiment</strong> is used to gather qualitative data to hypothesize a customer need or solution. This form of experiment is open-ended and flexible, allowing the entrepreneur to learn from the customer and refine their understanding of the problem. In essence, exploratory experiments are about <strong>discovery</strong>—identifying the problems that need solving.</p>
+</section>
+<section id="confirmatory-experiment" class="level3" data-number="8.1.2">
+<h3 data-number="8.1.2" class="anchored" data-anchor-id="confirmatory-experiment"><span class="header-section-number">8.1.2</span> Confirmatory Experiment</h3>
+<p>A <strong>confirmatory experiment</strong> is conducted after forming a hypothesis, where the entrepreneur returns to the target customer to test that hypothesis. The goal is to validate whether the proposed solution meets the identified customer need. This type of experiment is more structured, with clearly defined variables to measure. Confirmatory experiments are about <strong>validation</strong>, testing whether the proposed solutions are truly effective for the target customer.</p>
+<p>Poorly designed experiments may introduce various forms of bias, such as <strong>confirmation bias</strong>, where the entrepreneur only seeks data that supports their assumptions, or <strong>selection bias</strong>, where the sample doesn’t represent the target population accurately. Minimizing these biases increases the trustworthiness of the results.</p>
+<hr>
+</section>
+</section>
+<section id="designing-a-good-experiment" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="designing-a-good-experiment"><span class="header-section-number">8.2</span> Designing a Good Experiment</h2>
+<p>The design of a reliable customer data experiment must be intentional and guided by a clear purpose. Entrepreneurs should ask themselves, “What is the most urgent unknown?” and design the experiment to address that question. The purpose of the experiment is to gather reliable data that minimizes bias and noise. A well-executed experiment should not only deliver answers but also reveal how much those answers can be trusted.</p>
+<p><strong>Key considerations for well-designed experiments:</strong></p>
+<ol type="1">
+<li><p><strong>What type of information is needed?</strong><br>
+Clearly define the data you’re seeking: qualitative or quantitative, behavioral or attitudinal, exploratory or confirmatory.</p></li>
+<li><p><strong>Which people do we need information from?</strong> <em>(Targeting)</em><br>
+Identify your target population. Who are the specific people that are relevant to your question? Defining this group helps ensure that the data collected is from those whose feedback will matter most.</p></li>
+<li><p><strong>How will we reach them?</strong> <em>(Sampling)</em><br>
+Determine the best way to access and engage with the target population. What sampling method will you use to gather responses from them? Ensure that your sampling strategy minimizes bias and reaches a representative subset of your target group.</p></li>
+<li><p><strong>What do we ask them?</strong> <em>(Questioning)</em><br>
+Design your questions carefully to avoid leading, biased, or unclear phrasing. Your questions should be structured in a way that elicits the information you need without introducing noise.</p></li>
+<li><p><strong>How do we interpret their responses?</strong> <em>(Analyzing)</em><br>
+Analyze the data with the understanding of any limitations or biases in the experiment design. Evaluate how reliable the responses are and adjust your conclusions or next steps based on how well the experiment was conducted.</p></li>
+</ol>
+<section id="iterative-experiment-design" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="iterative-experiment-design"><span class="header-section-number">8.2.1</span> Iterative Experiment Design</h3>
+<p>Designing a good experiment is rarely a one-time event. Often, the first experiment reveals new questions or gaps in understanding, leading to an iterative process of refining the experiment design and collecting further data. Each round of experimentation builds on the last, helping entrepreneurs get closer to understanding the target customer’s true needs.</p>
+</section>
+<section id="interpreting-results-and-addressing-bias" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="interpreting-results-and-addressing-bias"><span class="header-section-number">8.2.2</span> Interpreting Results and Addressing Bias</h3>
+<p>Interpreting results requires entrepreneurs to weigh the findings against the design of the experiment itself. Were there any potential biases in the sample? Were the questions phrased in a way that might have influenced responses? These are critical factors in determining how much weight to place on the results. Even biased customer data can offer value when interpreted carefully. The key is recognizing where biases may have crept into the experiment design and adjusting the conclusions or next steps accordingly.</p>
+<p>A good experiment design includes minimizing bias and noise at each step of the process. After gathering the data, entrepreneurs must interpret the results carefully and evaluate how much confidence they can place in their findings.</p>
+<hr>
+</section>
+</section>
+<section id="what-type-of-information-is-needed" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="what-type-of-information-is-needed"><span class="header-section-number">8.3</span> What Type of Information is Needed?</h2>
+<p>The type of data an entrepreneur needs is dictated by what they seek to learn from their prospective customers. Different business questions require different forms of data, and choosing the right type is essential for gathering meaningful insights. Broadly, data falls into two categories: <strong>qualitative</strong> and <strong>quantitative</strong>.</p>
+<ol type="1">
+<li><p><strong>Qualitative Data</strong><br>
+Qualitative data helps entrepreneurs understand the underlying motivations, emotions, and behaviors of their customers. It provides depth and nuance, which is critical when exploring new markets, unmet needs, or refining a product idea.</p>
+<p><strong>When to use qualitative data:</strong></p>
+<ul>
+<li><strong>Exploratory questions</strong>: When entrepreneurs are trying to understand customer needs or behaviors.</li>
+<li><strong>Example question</strong>: “What frustrations do customers experience when using current products in the market?”</li>
+<li><strong>Type of information needed</strong>: Open-ended, subjective feedback that reveals customer pain points, emotions, and unmet needs.</li>
+</ul></li>
+<li><p><strong>Quantitative Data</strong><br>
+Quantitative data provides measurable insights, allowing entrepreneurs to identify patterns, trends, or preferences on a larger scale. This is particularly useful when an entrepreneur needs to validate a hypothesis or understand how widespread a certain behavior or preference is.</p>
+<p><strong>When to use quantitative data:</strong></p>
+<ul>
+<li><strong>Confirmatory questions</strong>: When entrepreneurs are testing a specific hypothesis about customer needs or product features.</li>
+<li><strong>Example question</strong>: “How many customers would prefer a subscription model over a one-time purchase?”</li>
+<li><strong>Type of information needed</strong>: Numeric data that can be statistically analyzed to validate or reject the hypothesis.</li>
+</ul></li>
+</ol>
+<section id="balancing-qualitative-and-quantitative-data" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="balancing-qualitative-and-quantitative-data"><span class="header-section-number">8.3.1</span> Balancing Qualitative and Quantitative Data</h3>
+<p>In practice, entrepreneurs often need a mix of qualitative and quantitative data. Qualitative data can help uncover customer insights that are unknown or poorly understood, while quantitative data can validate those insights at scale.</p>
+<section id="example-scenario" class="level4" data-number="8.3.1.1">
+<h4 data-number="8.3.1.1" class="anchored" data-anchor-id="example-scenario"><span class="header-section-number">8.3.1.1</span> Example scenario:</h4>
+<ul>
+<li><strong>Exploratory (qualitative)</strong>: An entrepreneur developing a fitness app might first interview potential users to understand their motivations and struggles with current fitness tools. The goal is to discover the deeper reasons why people fail to meet their fitness goals.</li>
+<li><strong>Confirmatory (quantitative)</strong>: After gathering this qualitative data, the entrepreneur might then survey a larger group to measure how widespread these challenges are, using a quantitative survey to see how many potential users share the same frustrations.</li>
+</ul>
+</section>
+</section>
+<section id="other-data-considerations" class="level3" data-number="8.3.2">
+<h3 data-number="8.3.2" class="anchored" data-anchor-id="other-data-considerations"><span class="header-section-number">8.3.2</span> Other Data Considerations</h3>
+<p>Beyond the qualitative/quantitative distinction, entrepreneurs must also consider the following aspects of data collection:</p>
+<ul>
+<li><p><strong>Behavioral vs.&nbsp;Attitudinal Data</strong><br>
+Behavioral data reflects <strong>what people do</strong> (e.g., purchase history, app usage), while attitudinal data captures <strong>what people think</strong> (e.g., customer opinions, preferences).</p>
+<ul>
+<li><strong>Example question (behavioral)</strong>: “How often do customers engage with the free trial before converting to paid?”</li>
+<li><strong>Example question (attitudinal)</strong>: “How satisfied are customers with the trial experience?”</li>
+</ul></li>
+<li><p><strong>Exploratory vs.&nbsp;Confirmatory Data</strong><br>
+Entrepreneurs must also distinguish between data that helps them explore new possibilities (e.g., finding unmet needs) and data that confirms existing hypotheses (e.g., testing whether a feature improves user engagement).</p>
+<ul>
+<li><strong>Exploratory data</strong> focuses on discovery and understanding unknowns.</li>
+<li><strong>Confirmatory data</strong> tests assumptions and measures impact.</li>
+</ul></li>
+</ul>
+<p>By clearly identifying the type of data needed, entrepreneurs ensure that their experiments are designed to gather the right insights for their specific business questions. Whether qualitative or quantitative, behavioral or attitudinal, the goal is to collect data that leads to actionable results.</p>
+<hr>
+</section>
+</section>
+<section id="which-people-do-we-need-information-from-targeting" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="which-people-do-we-need-information-from-targeting"><span class="header-section-number">8.4</span> Which people do we need information from? (Targeting)</h2>
+<p>Identifying the target population—those people from whom we need information—is one of the most critical steps in designing a good experiment. The feedback you gather will only be as useful as the relevance of the people you reach. However, defining this group is often a challenging, iterative process, especially in the early stages of entrepreneurship when the entrepreneur has only a high-level understanding of who their target customers might be.</p>
+<section id="early-stages-starting-with-demographics" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="early-stages-starting-with-demographics"><span class="header-section-number">8.4.1</span> Early Stages: Starting with Demographics</h3>
+<p>In the beginning, entrepreneurs often have only a vague definition of their target population causing them to lean toward <strong>demographic characteristics</strong> like age, gender, income, or geographic location. This is a natural starting point because these characteristics are easy to identify and measure. However, demographics alone rarely capture the true needs of potential customers. They provide a broad, surface-level view that can guide early-stage exploratory experiments, but they are just the starting point.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>An entrepreneur developing a new fitness product may initially target <strong>adults aged 18-35</strong> who are interested in fitness, but this demographic group could contain people with vastly different needs. Some may be new to fitness, while others could be experienced athletes. At this stage, the focus is on <strong>discovery</strong>—finding out what unmet needs exist within this broad population.</li>
+</ul>
+</section>
+<section id="iterative-refinement-evolving-toward-needs-based-targeting" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="iterative-refinement-evolving-toward-needs-based-targeting"><span class="header-section-number">8.4.2</span> Iterative Refinement: Evolving Toward Needs-Based Targeting</h3>
+<p>The challenge in targeting is that you are often <strong>trying to discover an unmet need within a population</strong>, but ideally, you would define your target population based on the unmet need itself. This creates a circular problem: you need to know the population to discover the need, but the population should be defined by the need. This challenge can only be resolved through <strong>multiple iterations</strong> of experimentation and data collection.</p>
+<p>Each experiment provides new insights into the target population, allowing the entrepreneur to refine their definition of who they are trying to reach. Over time, the focus shifts from broad demographic characteristics to more precise <strong>need-based targeting</strong>. This is a gradual process that requires flexibility and a willingness to adapt.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>After conducting exploratory interviews, the entrepreneur may discover that their fitness product appeals most to <strong>working professionals who struggle to find time for exercise</strong> rather than to fitness enthusiasts. The entrepreneur can then narrow their target population based on this <strong>need</strong>, focusing on time-starved professionals who prioritize convenience in fitness solutions.</li>
+</ul>
+</section>
+<section id="the-importance-of-iteration-in-targeting" class="level3" data-number="8.4.3">
+<h3 data-number="8.4.3" class="anchored" data-anchor-id="the-importance-of-iteration-in-targeting"><span class="header-section-number">8.4.3</span> The Importance of Iteration in Targeting</h3>
+<p>The process of refining the target population should be seen as <strong>iterative</strong> rather than fixed. Each experiment is an opportunity to learn more about who your customers really are and what they need. Entrepreneurs should expect that every experiment will shed new light on their target population, requiring them to adapt and refine their focus.</p>
+<p><strong>Key Takeaways:</strong></p>
+<ol type="1">
+<li><strong>Start broad</strong>: Use demographic targeting in early-stage experiments to cast a wide net and gather initial insights.</li>
+<li><strong>Adapt as you learn</strong>: As you collect data, refine your understanding of the population based on needs, behaviors, and preferences, rather than demographics alone.</li>
+<li><strong>Iterate continuously</strong>: Targeting is not a one-time decision. Each round of data collection helps clarify who your most relevant customers are, and entrepreneurs should continually adapt their targeting as their understanding evolves.</li>
+</ol>
+</section>
+<section id="circular-challenge-discovering-needs-to-define-the-population" class="level3" data-number="8.4.4">
+<h3 data-number="8.4.4" class="anchored" data-anchor-id="circular-challenge-discovering-needs-to-define-the-population"><span class="header-section-number">8.4.4</span> Circular Challenge: Discovering Needs to Define the Population</h3>
+<p>The difficulty of needing to know the population in order to discover the unmet need, while also defining the population by that need, is central to this iterative process. Entrepreneurs should not expect to get it right on the first try. Instead, they should see each experiment as part of a cycle where understanding both the customer and the need deepens over time.</p>
+<p>Early efforts will lead to biased data and discounted results while the target population is still coming into focus. Through ongoing iterations, the target population becomes more clearly defined, shifting from a vague, demographic-based concept to a focused group that is defined by its specific unmet needs. This approach increases the likelihood that the data collected is relevant, reliable, and actionable.</p>
+<hr>
+</section>
+</section>
+<section id="which-people-do-we-reach-sampling" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="which-people-do-we-reach-sampling"><span class="header-section-number">8.5</span> Which people do we reach? (Sampling)</h2>
+<p>Once you have defined the type of information needed and identified the target population, the next challenge is to design a sampling approach. Sampling involves deciding <strong>who</strong> to ask, <strong>how</strong> to reach them, and <strong>how many</strong> people need to be included in the sample. Each of these steps plays a critical role in determining the reliability of your data and the usefulness of your results.</p>
+<p>Sampling is not just a mechanical process; it is influenced by the unique needs of your experiment and the constraints of time, resources, and access. A well-designed sampling strategy allows you to gather relevant data while minimizing bias and ensuring that the insights you collect are actionable.</p>
+<section id="who-to-ask" class="level3" data-number="8.5.1">
+<h3 data-number="8.5.1" class="anchored" data-anchor-id="who-to-ask"><span class="header-section-number">8.5.1</span> Who to Ask</h3>
+<p>The first step in sampling is identifying <strong>who</strong> should be included in the sample. This is closely tied to the targeting process. The goal is to ensure that the people you sample accurately represent the population you want to learn from, while avoiding those who are irrelevant or would introduce bias into the data. If the wrong group is sampled, even well-executed experiments will yield poor or irrelevant insights.</p>
+<p>If your sample includes people who are not part of your target population, their responses may introduce noise or bias into your data that is irrelevant or misleading. For example, including people outside the relevant demographic or behavioral groups may lead you to incorrect conclusions about product-market fit or customer needs.</p>
+<p>Similarly, your sample may include only include respondents who are in the target population but they may lead to bias if they represent only a narrow cross-section of the population. Seek a representative sample that includes the breadth of the population but does not include people outside the target population</p>
+<p>Perfect samples are rare in entrepreneurship, and bias often creeps in. Recognizing and managing bias is essential for interpreting results accurately. In practice, this often begins with a broad understanding of the target population, but over time, as more experiments are conducted and more insights are gathered, the definition of the sample becomes more refined.</p>
+<section id="key-considerations" class="level4" data-number="8.5.1.1">
+<h4 data-number="8.5.1.1" class="anchored" data-anchor-id="key-considerations"><span class="header-section-number">8.5.1.1</span> Key Considerations</h4>
+<ul>
+<li>The sample should represent the <strong>target population</strong> identified earlier. Sampling from outside this group risks collecting data</li>
+<li>Early-stage sampling may involve <strong>convenience samples</strong> or less refined targeting, but as your understanding grows, so should the precision of your sampling.</li>
+<li>Avoid <strong>selection bias</strong>, where certain types of people are more likely to be included than others. While this can sometimes be useful (if testing a specific subgroup), it can also lead to skewed results.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>If your target population is working professionals who prioritize fitness but have little time, avoid including fitness enthusiasts with flexible schedules, as their feedback may distort your understanding of time-constrained professionals’ needs. By focusing on the right people, the data will better reflect the realities of the target group.</li>
+</ul>
+</section>
+</section>
+<section id="how-to-reach-them" class="level3" data-number="8.5.2">
+<h3 data-number="8.5.2" class="anchored" data-anchor-id="how-to-reach-them"><span class="header-section-number">8.5.2</span> How to Reach Them</h3>
+<p>After defining <strong>who</strong> to ask, the next step is figuring out <strong>how</strong> to reach them. This involves selecting the best methods, platforms, or environments to engage your target population. Reaching the right customers is often more challenging than defining them, as access to some groups may be limited by geography, behavior, or availability.</p>
+<p>The method of reaching your sample affects the reliability and depth of your data. The more aligned your outreach is with how your target population naturally interacts with the world (whether online, at specific events, or through social platforms), the more representative and valuable your data will be.</p>
+<p>Choosing the wrong outreach strategy can lead to <strong>access bias</strong>. For instance, trying to reach time-poor professionals via lengthy interviews may result in low engagement and poor-quality data. This may lead to a <strong>self-selection bias</strong> where the respondents are not fully representative of the population, skewing the data toward the most engaged or motivated individuals.</p>
+<p>Similarly, using a method that doesn’t resonate with the habits or preferences of your target audience can also skew your sample. This may lead to a <strong>non-response bias</strong> when certain parts of the population are less likely to respond, leading to skewed data. For example, younger audiences may be less likely to respond to certain outreach methods.</p>
+<section id="common-sampling-methods" class="level4" data-number="8.5.2.1">
+<h4 data-number="8.5.2.1" class="anchored" data-anchor-id="common-sampling-methods"><span class="header-section-number">8.5.2.1</span> Common Sampling Methods:</h4>
+<ul>
+<li><p><strong>Convenience Sampling</strong>: A convenience sample comes from those people that are easy for you to reach because of relationships. Friends, family, colleagues and personal networks on social media are relatively easily accessible but your relationship is likely to bias your sample selection and their responses. Convenience sampling is useful and appropriate in early exploratory stages while you are trying to figure out who and what to ask but should be treated with caution due to inherent biases. As you understanding grows, convenience samples should be avoided.</p></li>
+<li><p><strong>Random Sampling</strong>: This involves selecting individuals randomly from your target population, ensuring that every individual has an equal chance of being selected. Random sampling is the gold standard for minimizing bias, but it can be challenging and expensive to implement.</p></li>
+<li><p><strong>Stratified Sampling</strong>: This method involves dividing your target population into key subgroups (e.g., by demographics, behaviors) and ensuring that you sample proportionally from each group. This can reduce bias and help ensure that your data represents diverse segments within the population.</p></li>
+</ul>
+</section>
+<section id="sampling-platforms-and-tools" class="level4" data-number="8.5.2.2">
+<h4 data-number="8.5.2.2" class="anchored" data-anchor-id="sampling-platforms-and-tools"><span class="header-section-number">8.5.2.2</span> Sampling Platforms and Tools:</h4>
+<ul>
+<li><p><strong>In-Person</strong>:Reaching customers at trade shows, industry conferences, or in places where they naturally gather can yield more direct engagement, though it may limit the size of your sample.</p></li>
+<li><p><strong>Online Communities</strong>: Reaching customers through relevant online groups, such as those on Reddit, LinkedIn, or Facebook, allows you to engage with active users in spaces where they’re already discussing topics related to your business.</p></li>
+<li><p><strong>Survey Platforms</strong>: Tools like <strong>Poll Fish</strong> or <strong>Qualtrics</strong> allow you to reach curated lists of respondents who fit specific criteria. These platforms provide more structured sampling but often come at a higher cost.</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>If you are targeting time-constrained professionals, LinkedIn groups or paid online ads may be more effective than time-consuming in-person events. By meeting people where they are, you are more likely to get relevant responses.</li>
+</ul>
+</section>
+</section>
+<section id="how-many-to-sample" class="level3" data-number="8.5.3">
+<h3 data-number="8.5.3" class="anchored" data-anchor-id="how-many-to-sample"><span class="header-section-number">8.5.3</span> How Many to Sample</h3>
+<p>The final consideration in sampling is <strong>how many people</strong> to include in your sample. Determining the right sample size is a balancing act between the <strong>cost of collecting data</strong>, the <strong>value of the insights</strong> gathered, and the <strong>risk of bias</strong>. While larger samples tend to offer more reliability, it’s essential to balance this against the practical limits of time, budget, and access to the target population.</p>
+<p>Sample size influences how representative and reliable your data is. In general, larger samples reduce noise and variability, making the data more generalizable. However, increasing the sample size also increases the cost and effort required, especially when accessing hard-to-reach populations.</p>
+<p>Too small a sample size may lead to unreliable conclusions, while too large a sample can result in diminishing returns if additional data doesn’t provide new insights. Additionally, if too many non-target respondents are included, even a large sample can be biased and misleading.</p>
+<section id="key-considerations-1" class="level4" data-number="8.5.3.1">
+<h4 data-number="8.5.3.1" class="anchored" data-anchor-id="key-considerations-1"><span class="header-section-number">8.5.3.1</span> Key Considerations</h4>
+<ul>
+<li><p><strong>Small, rich data</strong>: Qualitative methods like interviews or focus groups may require only a small number of participants (e.g., 10-15 interviews), but the depth of insight gathered can provide rich information.</p></li>
+<li><p><strong>Larger, focused data</strong>: Quantitative surveys or polls often need larger samples (e.g., 100+ responses) to ensure that the findings are statistically meaningful. The goal is to gather a large enough sample to detect patterns or trends in the population.</p></li>
+<li><p><strong>Avoid oversampling</strong>: Sampling too broadly, especially outside of the target population, can dilute the data and lead to irrelevant or misleading results. Including too many respondents who do not fit the target group increases noise and may skew results.</p></li>
+</ul>
+</section>
+<section id="value-vs.-cost-tradeoff" class="level4" data-number="8.5.3.2">
+<h4 data-number="8.5.3.2" class="anchored" data-anchor-id="value-vs.-cost-tradeoff"><span class="header-section-number">8.5.3.2</span> Value vs.&nbsp;Cost Tradeoff</h4>
+<ul>
+<li><p>Every sample has an associated cost, whether it’s time, money, or effort. Entrepreneurs should evaluate this tradeoff and determine the minimum viable sample that balances cost with data reliability.</p></li>
+<li><p>The <strong>engagement level</strong> of the population also plays a role. More active or accessible groups may allow you to collect larger samples with less effort, while harder-to-reach populations may require more resources for smaller samples.</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul>
+<li>If reaching professionals who prioritize fitness is costly due to low engagement, focus on collecting <strong>rich qualitative data</strong> through in-depth interviews from a smaller group of professionals. Conversely, if you are gathering data on broader consumer trends, a larger, quantitative survey may be more appropriate to ensure sufficient statistical power.</li>
+</ul>
+<p>By thinking carefully about <strong>who to sample</strong>, <strong>how to reach them</strong>, and <strong>how many</strong> responses you need, entrepreneurs can design a sampling approach that balances cost with the need for reliable, actionable data. Sampling is not a one-size-fits-all process, and like all other parts of experiment design, it should be revisited and refined as new insights emerge.</p>
+<p>Every experiment should be evaluated not only based on its results but also based on its design. Well-designed experiments with minimal bias yield reliable results, while flawed experiments must be viewed with caution. Entrepreneurs must learn to discount results from biased processes and refine their approach to ensure future experiments lead to more trustworthy insights.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="what-should-we-ask-them-question-design" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="what-should-we-ask-them-question-design"><span class="header-section-number">8.6</span> What should we ask them? (Question Design)</h2>
+<p>The success of any experiment depends not only on who you sample and how you reach them, but also on <strong>what</strong> you ask and how you <strong>interact</strong> with them. The way questions are framed, the structure of surveys or interviews, and the quality of interactions all play a crucial role in determining the reliability of the insights you gather. Like targeting and sampling, this process is iterative. Entrepreneurs should expect to <strong>refine</strong> their questions over time as they learn more about their customers.</p>
+<section id="framing-effective-questions" class="level3" data-number="8.6.1">
+<h3 data-number="8.6.1" class="anchored" data-anchor-id="framing-effective-questions"><span class="header-section-number">8.6.1</span> Framing Effective Questions</h3>
+<p>The way you frame questions can significantly influence the responses you receive. Poorly worded questions can introduce bias, confuse respondents, or result in superficial answers that don’t address the core problem. On the other hand, well-crafted questions can reveal deep insights into customer needs, preferences, and behaviors.</p>
+<section id="key-principles-for-question-design" class="level4" data-number="8.6.1.1">
+<h4 data-number="8.6.1.1" class="anchored" data-anchor-id="key-principles-for-question-design"><span class="header-section-number">8.6.1.1</span> Key Principles for Question Design</h4>
+<ul>
+<li><p><strong>Clarity</strong>: Ensure that questions are simple, direct, and unambiguous. Avoid technical jargon or complex wording that could confuse respondents.</p>
+<ul>
+<li><strong>Example</strong>: Instead of asking, “How do you feel about the efficacy of our solution?” you might ask, “How well do you think our product solves your problem?”</li>
+</ul></li>
+<li><p><strong>Avoid leading questions</strong>: Avoid questions that suggest a preferred answer, as this can introduce bias into the data. Instead, ask neutral, open-ended questions that allow respondents to provide honest feedback.</p>
+<ul>
+<li><strong>Example</strong>: A leading question like, “Don’t you think this feature is helpful?” should be replaced with “What do you think about this feature?”</li>
+</ul></li>
+<li><p><strong>Open vs.&nbsp;closed questions</strong>: Use <strong>open-ended questions</strong> for exploratory data collection (e.g., interviews, early-stage experiments) and <strong>closed questions</strong> for confirmatory or quantitative data (e.g., surveys, late-stage validation).</p>
+<ul>
+<li><strong>Open-ended question</strong>: “What are the biggest challenges you face when exercising?”</li>
+<li><strong>Closed question</strong>: “On a scale of 1 to 5, how likely are you to use this app weekly?”</li>
+</ul></li>
+<li><p><strong>Avoid double-barreled questions</strong>: Don’t ask two things in one question, as this can confuse respondents and lead to unclear data.</p>
+<ul>
+<li><strong>Example</strong>: Replace “Do you think our product is affordable and easy to use?” with separate questions about affordability and ease of use.</li>
+</ul></li>
+</ul>
+</section>
+</section>
+<section id="structuring-your-interactions" class="level3" data-number="8.6.2">
+<h3 data-number="8.6.2" class="anchored" data-anchor-id="structuring-your-interactions"><span class="header-section-number">8.6.2</span> Structuring Your Interactions</h3>
+<p>The interaction with your sample matters just as much as the questions you ask. Whether you’re conducting interviews, focus groups, or online surveys, structuring your interactions thoughtfully can lead to more reliable and richer data.</p>
+<section id="types-of-interactions" class="level4" data-number="8.6.2.1">
+<h4 data-number="8.6.2.1" class="anchored" data-anchor-id="types-of-interactions"><span class="header-section-number">8.6.2.1</span> Types of Interactions</h4>
+<ul>
+<li><p><strong>Interviews</strong>: Interviews provide qualitative insights and allow for deep, open-ended conversations. The flexibility of interviews makes them ideal for exploratory research, where follow-up questions can probe deeper into customer pain points or preferences. However, they require strong interviewer skills and careful planning.</p></li>
+<li><p><strong>Surveys</strong>: Surveys are useful for collecting quantitative data at scale. The structure of a survey should be logical, starting with general questions and gradually focusing on specific areas. Keep surveys concise to avoid fatigue, and consider using a mix of question types (e.g., multiple choice, rating scales).</p></li>
+<li><p><strong>Focus groups</strong>: Group settings allow for interactive discussions that can reveal dynamics between customers that individual interviews might miss. Focus groups are helpful for generating ideas, testing messaging, or understanding shared attitudes.</p></li>
+</ul>
+</section>
+<section id="tips-for-structuring-interactions" class="level4" data-number="8.6.2.2">
+<h4 data-number="8.6.2.2" class="anchored" data-anchor-id="tips-for-structuring-interactions"><span class="header-section-number">8.6.2.2</span> Tips for Structuring Interactions</h4>
+<ul>
+<li><p><strong>Warm-up and build rapport</strong>: Especially in interviews or focus groups, start with general, easy-to-answer questions to help participants feel comfortable. This encourages more honest and open feedback as the session progresses.</p></li>
+<li><p><strong>Follow-up and probe</strong>: Don’t hesitate to ask follow-up questions during interviews or focus groups to clarify or expand on points that are unclear. Probing deeper into answers can often uncover important insights that initial responses miss.</p></li>
+<li><p><strong>Sequence matters</strong>: Structure questions in a logical flow. For example, start with general questions about the customer’s overall experience before diving into specific product feedback. In surveys, group similar questions together to maintain a coherent flow.</p></li>
+</ul>
+</section>
+</section>
+<section id="the-iterative-process-of-refining-questions" class="level3" data-number="8.6.3">
+<h3 data-number="8.6.3" class="anchored" data-anchor-id="the-iterative-process-of-refining-questions"><span class="header-section-number">8.6.3</span> The Iterative Process of Refining Questions</h3>
+<p>Much like targeting and sampling, designing good questions is an iterative process. The first set of questions may not always yield the most useful data. Entrepreneurs should approach each experiment as an opportunity to refine both the content and structure of their questions based on the results they receive.</p>
+<section id="iteration-in-question-design" class="level4" data-number="8.6.3.1">
+<h4 data-number="8.6.3.1" class="anchored" data-anchor-id="iteration-in-question-design"><span class="header-section-number">8.6.3.1</span> Iteration in Question Design</h4>
+<ul>
+<li><p><strong>Pilot testing</strong>: Run small-scale tests of your survey or interview questions before rolling them out more broadly. This will help you identify any issues with clarity, bias, or question flow.</p>
+<ul>
+<li><strong>Example</strong>: If your pilot respondents consistently misunderstand a question, reframe it or simplify the language before deploying it at scale.</li>
+</ul></li>
+<li><p><strong>Learning from responses</strong>: After each round of data collection, assess how well your questions performed. Did they elicit the insights you were seeking? Were there patterns of confusion or bias in the responses? Use this feedback to improve your next set of questions.</p></li>
+<li><p><strong>Adapt to evolving understanding</strong>: As your knowledge of the target population and their needs evolves, your questions should evolve, too. Early-stage questions may focus on discovering unmet needs, while later-stage questions might test specific hypotheses about features or pricing.</p></li>
+</ul>
+<p><strong>Example of Iterative Refinement</strong>:</p>
+<ul>
+<li><strong>Round 1</strong>: You might ask, “What frustrates you most about current fitness apps?” and receive vague or unfocused answers.</li>
+<li><strong>Round 2</strong>: Based on these responses, you refine the question to, “What specific challenges do you face when using fitness apps to track progress?” and receive more actionable data about tracking issues.</li>
+</ul>
+</section>
+</section>
+<section id="balancing-data-quality-and-participant-experience" class="level3" data-number="8.6.4">
+<h3 data-number="8.6.4" class="anchored" data-anchor-id="balancing-data-quality-and-participant-experience"><span class="header-section-number">8.6.4</span> Balancing Data Quality and Participant Experience</h3>
+<p>In addition to refining questions for better insights, entrepreneurs must also consider the <strong>participant experience</strong>. Fatigued or frustrated participants can lead to lower-quality data. Keep surveys or interviews concise, respect participants’ time, and provide an engaging experience that motivates them to respond thoughtfully.</p>
+<section id="practical-tips" class="level4" data-number="8.6.4.1">
+<h4 data-number="8.6.4.1" class="anchored" data-anchor-id="practical-tips"><span class="header-section-number">8.6.4.1</span> Practical Tips</h4>
+<ul>
+<li><p><strong>Keep it short</strong>: Long surveys can cause participant fatigue, leading to incomplete or inaccurate answers. Aim for surveys that can be completed in under 10 minutes and interviews that respect the respondent’s time.</p></li>
+<li><p><strong>Offer incentives</strong>: To encourage higher participation rates, especially for harder-to-reach populations, consider offering incentives like discounts, gift cards, or early access to a product.</p></li>
+<li><p><strong>Express appreciation</strong>: Showing gratitude can help build rapport and encourage participants to engage more deeply. A simple thank-you note or message at the end of a survey or interview can go a long way.</p></li>
+</ul>
+<p>By designing clear, unbiased questions and structuring interactions thoughtfully, entrepreneurs can gather richer, more actionable insights. The iterative process of refining questions and adapting based on participant feedback ensures that each experiment yields better data than the last, helping to build a clearer understanding of customer needs and preferences.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="how-do-we-interpret-the-results-analysis" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="how-do-we-interpret-the-results-analysis"><span class="header-section-number">8.7</span> How do we interpret the results? (Analysis)</h2>
+<p>Once data has been gathered through well-designed experiments, the next critical step is interpreting the results. This process involves making sense of the data, identifying patterns, and translating the findings into actionable insights. In entrepreneurship, interpreting results is essential for making informed decisions about product development, customer needs, and market strategy.</p>
+<section id="principles-of-data-interpretation" class="level3" data-number="8.7.1">
+<h3 data-number="8.7.1" class="anchored" data-anchor-id="principles-of-data-interpretation"><span class="header-section-number">8.7.1</span> Principles of Data Interpretation</h3>
+<p>When analyzing customer data, it’s important to recognize that the quality of your analysis is determined by both the strength of your experiment design and the methods you use to interpret the data. Here are a few key principles to keep in mind as you move from raw data to insights:</p>
+<section id="be-aware-of-bias-and-limitations" class="level4" data-number="8.7.1.1">
+<h4 data-number="8.7.1.1" class="anchored" data-anchor-id="be-aware-of-bias-and-limitations"><span class="header-section-number">8.7.1.1</span> Be aware of bias and limitations</h4>
+<p>No experiment is perfect. As you analyze your data, keep in mind the potential biases or limitations introduced during the experiment. Acknowledge any sampling biases, question framing biases, or errors in data collection, and adjust your interpretation accordingly.</p>
+<ul>
+<li><strong>Example</strong>: If your sample was skewed toward a specific demographic (e.g., more males than females), this bias should be factored into your conclusions to avoid generalizing insights to the entire population.</li>
+</ul>
+</section>
+<section id="look-for-patterns-not-outliers" class="level4" data-number="8.7.1.2">
+<h4 data-number="8.7.1.2" class="anchored" data-anchor-id="look-for-patterns-not-outliers"><span class="header-section-number">8.7.1.2</span> Look for patterns, not outliers</h4>
+<p>While outliers can sometimes offer useful insights, they are more often distractions that do not represent the broader population. Focus on identifying patterns and trends in the data that are consistent across respondents. These patterns are more likely to provide reliable guidance for decision-making.</p>
+<ul>
+<li><strong>Example</strong>: If a small percentage of respondents express extreme opinions about a product feature, but the majority have similar moderate responses, focus on the common patterns before delving into the outliers.</li>
+</ul>
+</section>
+<section id="context-is-key" class="level4" data-number="8.7.1.3">
+<h4 data-number="8.7.1.3" class="anchored" data-anchor-id="context-is-key"><span class="header-section-number">8.7.1.3</span> Context is key</h4>
+<p>When interpreting data, always consider the context in which it was gathered. The same data may lead to different conclusions depending on the surrounding factors, such as timing, external market conditions, or the specific questions asked in the survey or interview.</p>
+<ul>
+<li><strong>Example</strong>: A high satisfaction rate for a product launch may be contextually influenced by a competitor’s failure, so understanding the market context is crucial to fully interpreting the data.</li>
+</ul>
+</section>
+<section id="validate-insights-with-multiple-data-points" class="level4" data-number="8.7.1.4">
+<h4 data-number="8.7.1.4" class="anchored" data-anchor-id="validate-insights-with-multiple-data-points"><span class="header-section-number">8.7.1.4</span> Validate insights with multiple data points</h4>
+<p>Whenever possible, look for multiple sources of data to validate your insights. Combining qualitative data (e.g., interview feedback) with quantitative data (e.g., survey results) can strengthen your conclusions and reduce the risk of relying on a single data point.</p>
+<ul>
+<li><strong>Example</strong>: If interviews suggest a high interest in a new feature, validate this interest with a quantitative survey to see if it holds true across a larger population.</li>
+</ul>
+</section>
+<section id="interpret-iteratively" class="level4" data-number="8.7.1.5">
+<h4 data-number="8.7.1.5" class="anchored" data-anchor-id="interpret-iteratively"><span class="header-section-number">8.7.1.5</span> Interpret iteratively</h4>
+<p>Data interpretation, like experiment design, is an iterative process. Your initial analysis may generate new questions or hypotheses that can be tested in subsequent experiments. Use each round of analysis as an opportunity to refine your understanding and adjust your approach as needed.</p>
+</section>
+</section>
+<section id="looking-ahead-analytical-techniques" class="level3" data-number="8.7.2">
+<h3 data-number="8.7.2" class="anchored" data-anchor-id="looking-ahead-analytical-techniques"><span class="header-section-number">8.7.2</span> Looking Ahead: Analytical Techniques</h3>
+<p>The principles outlined here provide a foundation for interpreting customer data, but in-depth analysis requires more advanced techniques. In the following chapters, we will explore a range of analytical methods, including:</p>
+<ul>
+<li><strong>Descriptive statistics</strong>: Summarizing and visualizing data to identify patterns and trends.</li>
+<li><strong>Exploratory data analysis (EDA)</strong>: Using graphs and statistical tools to uncover insights from the data.</li>
+<li><strong>Hypothesis testing</strong>: Testing assumptions and validating the reliability of your findings.</li>
+<li><strong>Regression analysis</strong>: Understanding relationships between variables and predicting outcomes.</li>
+</ul>
+<p>Each of these methods will allow you to dive deeper into the data and extract actionable insights that drive better decision-making in your entrepreneurial ventures.</p>
+<p>By following the principles of data interpretation and applying the analytical techniques covered in the upcoming chapters, you will be able to transform raw customer data into valuable insights that guide your business decisions. The next step is to dive into these methods and begin analyzing your data more systematically.</p>
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+WyJkYXRhL2hhbG9fYWxlcnQueGxzeCIsImRhdGEvfiRjaW5uYW1vbl9yb2xscy54bHN4IiwiZGF0YS9tdXNjbGVfY29sYS5jc3YiLCJkYXRhL2hhbG9fYWxlcnQuY3N2IiwiZGF0YS9jaW5uYW1vbl9yb2xscy5jc3YiLCJkYXRhL2xpYmVydHlfc2hpcC54bHN4IiwiZGF0YS9tdXNjbGVfY29sYS5yZHMiLCJkYXRhL2N1cGNha2VzLnhsc3giLCJkYXRhL2Npbm5hbW9uX3JvbGxzLnhsc3giLCJkYXRhL2N1cGNha2VzLmNzdiIsImRhdGEvbGliZXJ0eV9zaGlwLmNzdiIsImRhdGEvbXVzY2xlX2NvbGEueGxzeCJd
+</script>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./private_data.html" class="pagination-link" aria-label="Private Data Sources for Business Analytics in Entrepreneurship">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Private Data Sources for Business Analytics in Entrepreneurship</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./R.html" class="pagination-link" aria-label="Data Analytics in R">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Analytics in R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

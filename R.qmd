@@ -1,0 +1,237 @@
+---
+title: "Data Analytics in R"
+---
+
+```{r}
+#| output: false
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+library(scales)
+library(gt)
+knitr::opts_chunk$set(echo = TRUE) 
+
+sales_data <- tibble(
+  category = c("A", "B", "A", "C", "B", "A"),
+  price = c(100, 200, 150, 300, 120, 90)
+)
+
+wide_data <- tibble(
+  category = c("A", "B", "C"),
+  Q1_sales = c(100, 150, 200),
+  Q2_sales = c(110, 160, 210)
+)
+```
+
+```{=html}
+<style>
+.wrapfig {
+    float: right; 
+    margin: 0 20px 10px 0; /* adjust space around the image */
+    width: 40%; /* adjust image width */
+}
+</style>
+```
+
+## Data Wrangling 
+
+Data wrangling is one of the most important steps in the data analysis process. It involves transforming, cleaning, and reshaping raw data into a format that is suitable for analysis and visualization. Raw data, as it comes from various sources, is rarely ready for analysis right away. It often contains inconsistencies, errors, or irrelevant information that need to be addressed before it can be used to generate insights. 
+
+Without effective data wrangling, you risk working with messy, inaccurate, or incomplete data, which can lead to incorrect conclusions or flawed analysis. When done correctly, data wrangling ensures that your data is well-organized, clean, and in the right structure to extract meaningful insights efficiently.
+
+### Why Data Wrangling is Necessary
+
+In real-world scenarios, raw data can present a number of challenges:
+
+- **Missing values**: Data may have gaps that need to be addressed to avoid bias or errors in the analysis.
+- **Inconsistent formats**: Dates, numbers, or text may be inconsistently formatted, making it difficult to perform calculations or comparisons.
+- **Duplicated entries**: Duplicate records can skew analysis results if not handled appropriately.
+- **Unstructured data**: Data might be in an unstructured format (e.g., text data, complex multi-column formats) that needs to be reshaped into a tabular format.
+- **Noise and irrelevant information**: Datasets may contain irrelevant information or outliers that need to be filtered out.
+
+### Why a Data Wrangling Platform is Necessary
+
+To effectively manage and transform raw data, we need a powerful and flexible platform for data wrangling. The ideal platform should allow us to:
+
+- **Import data** from a wide variety of sources, such as CSV files, Excel spreadsheets, databases, or web APIs.
+- **Clean data** by addressing missing values, handling duplicates, and ensuring consistency in formats.
+- **Transform data** by reorganizing it, filtering rows, selecting specific columns, creating new variables, and reshaping it as needed.
+- **Integrate tools** for data visualization and analysis to quickly check and validate transformations.
+
+### Choosing a Data Wrangling Platform
+
+There are several tools available for data wrangling, each with its own strengths. These include:
+
+- **R with the tidyverse**: A powerful collection of packages designed for data manipulation, visualization, and analysis. Tidyverse provides a consistent, intuitive approach to handling data in R.
+- **Python with pandas**: Another popular platform for data analysis, offering robust data manipulation capabilities.
+- **SQL**: A language designed for querying and manipulating data within relational databases.
+- **Spreadsheets**: Tools like Excel and Google Sheets offer basic data wrangling capabilities but may struggle with larger datasets or complex transformations.
+
+
+The data wrangling process spans several steps of the data analysis process, including:
+
+- **Importing Data**: Bringing data into R from various sources like CSV files, Excel sheets, databases, and web scraping.
+- **Data Cleaning**: Addressing missing or erroneous data, handling duplicates, and converting data types to ensure consistency.
+- **Data Transformation**: Reorganizing and restructuring data by filtering rows, selecting columns, creating new variables, and reshaping data when necessary.
+
+Throughout this chapter, we will dive into each of these steps and demonstrate how the tidyverse’s tools can simplify and streamline the data wrangling process, ultimately helping you derive valuable insights from your data.
+
+### Why We Choose R and Tidyverse
+
+In this course, we will focus on data wrangling in **R using the tidyverse**. Tidyverse provides a powerful and consistent set of tools for data manipulation and visualization, making it a favorite among data analysts and scientists. The tidyverse is an ideal choice for data wrangling because it provides a powerful, consistent syntax for manipulating data. Each package in the tidyverse is designed to work together seamlessly, making it easier to perform complex transformations with minimal code. Whether you're filtering, reshaping, or visualizing your data, the tidyverse offers tools that simplify the entire process.
+
+For entrepreneurs and data analysts alike, learning R and the tidyverse offers an accessible, flexible way to work with data that scales from small datasets to more complex analyses. This consistency and integration make the tidyverse the preferred tool for this course.
+
+<br>
+
+## A Brief History of R
+
+**R** is a programming language and software environment designed for statistical computing and data analysis.  It is open-source and freely available, which has fostered a large community of contributors and a rich ecosystem of packages. It is versatile, used in fields ranging from finance (and entrepreneurship) to biology to social sciences. It has a large user community that develops free tutorials, forums, and learning resources. It integrates well with big data technologies, databases, and other programming languages like Python and SQL.
+
+
+### The Birth of R
+
+
+R’s origins trace back to the development of the S programming language in the early 1970s at Bell Laboratories. John Chambers and his colleagues created S to address the growing need for a structured programming language specifically for statistical analysis. While revolutionary, S was a proprietary software, limiting its accessibility to those who could afford it.
+
+In response, Ross Ihaka and Robert Gentleman developed R in the early 1990s as an open-source alternative to S, maintaining many of its strengths while making statistical computing accessible to everyone. Their goal was to provide a free and versatile tool that could perform the same tasks as expensive software packages.
+
+### Open-Source Foundations
+From its inception, R was developed under the GNU General Public License (GPL), ensuring that it would remain open and accessible to all. This decision attracted a vibrant community of statisticians, data scientists, and developers who quickly contributed to R’s growth. By allowing anyone to contribute improvements, bug fixes, and new functionalities, R rapidly evolved into a robust and flexible tool for data analysis.
+
+### R and the Legacy of S
+Though R was built as a free alternative to S, it retained much of S’s syntax, functions, and statistical modeling concepts. This ensured a smooth transition for statisticians familiar with S and allowed R to build on a strong foundation. As R grew in popularity, it became clear that open-source development was the future of statistical computing. Today, while S has largely faded into the background, R continues to thrive.
+
+### The Rise of R’s Ecosystem
+One of R’s most significant strengths is its extensibility. Over time, R’s community developed a rich ecosystem of user-contributed packages—extensions that add specific functions or capabilities. The Comprehensive R Archive Network (CRAN) became the central repository for these packages, making it easy for users to find and install tools tailored to their data needs.
+
+### R’s Role in the Emergence of Data Science
+In the early 2000s, as data science emerged as a distinct field, R quickly gained prominence. Its powerful statistical capabilities and intuitive data visualization tools made it a go-to tool for data analysts and scientists. Whether it’s for data exploration, statistical modeling, or advanced visualizations, R has been at the heart of the data science revolution.
+
+### Widespread Adoption in Academia and Industry
+R’s flexibility and open-source nature have led to widespread adoption in both academia and industry. It’s now a standard tool for research in economics, biology, social sciences, and finance, to name a few. Its ability to integrate cutting-edge statistical techniques with rich data visualization makes it invaluable across diverse fields.
+
+### R in the Era of Big Data and Machine Learning
+As data grew in scale and complexity, R adapted. Today, it integrates seamlessly with big data technologies like Hadoop and Spark, allowing users to analyze large datasets efficiently. Additionally, R boasts powerful machine learning libraries, such as `caret` and `xgboost`, that support a wide range of predictive modeling techniques. This versatility makes R a cornerstone of modern data science workflows.
+
+### R Today
+Today, R remains one of the most powerful and popular tools for data analysis and statistics. With a large, active user community and thousands of available packages, R is continuously evolving. It is widely taught in data science programs and continues to be a preferred tool in both research and industry.
+
+### Why Learn R?
+Learning R provides a solid foundation in statistical analysis and data manipulation, valuable skills for future careers in data science, analytics, and beyond. For entrepreneurs, R offers a hands-on approach to exploring data, making it easier to identify opportunities, optimize strategies, and make data-driven decisions.
+
+In summary, R’s journey from a grassroots movement to democratize statistical analysis to its current status as a versatile and powerful data analysis tool illustrates its ongoing relevance. As you start your journey into data analysis and statistics, embracing R opens doors to a world of possibilities, empowering you with the tools to tackle complex data challenges.
+
+
+
+<br>
+
+## What is the Tidyverse?
+
+The **tidyverse** is a collection of R packages designed specifically for data science. It’s built around a consistent philosophy: make data manipulation, exploration, and visualization easier and more intuitive. The tidyverse provides a powerful set of tools that allow you to work with data in a way that is organized, consistent, and—most importantly—efficient.
+
+At the heart of the tidyverse are packages like:
+
+- **`dplyr`**: For data manipulation (e.g., filtering, selecting, mutating, summarizing data).
+- **`tidyr`**: For reshaping and tidying data (e.g., pivoting data from wide to long format).
+- **`ggplot2`**: For creating elegant, layered visualizations.
+- **`readr`**: For reading data into R from files like CSVs, Excel, or other formats.
+- **`purrr`**: For working with lists and functional programming techniques.
+- **`stringr`**: For working with and manipulating strings.
+- **`forcats`**: For handling categorical data.
+
+### Hands-On Preview of the Tidyverse
+
+To give you a quick glimpse of how the tidyverse works, let’s look at some examples that preview how these tools can be applied. Don't worry about understanding the fully yet.  We will work through them carefully in the chapters that follow.
+
+#### Example 1: Basic Data Manipulation with `dplyr`
+
+Let’s start with a simple example of filtering and summarizing data using `dplyr`. Suppose you have a dataset of sales transactions and you want to calculate the total revenue for each product category.
+
+```{r}
+#| label: example_dplyr
+#| warning: false
+
+## Load tidyverse
+library(tidyverse)
+
+## Example data: sales data with product categories and prices
+sales_data <- tibble(
+  category = c("A", "B", "A", "C", "B", "A"),
+  price = c(100, 200, 150, 300, 120, 90)
+)
+
+## Summarize total revenue per category
+sales_data %>%
+  group_by(category) %>%
+  summarize(total_revenue = sum(price))
+```
+
+This code shows how you can quickly group data by category and calculate total revenue for each one—making it easy to uncover key insights with minimal code.
+
+#### Example 2: Reshaping Data with `tidyr`
+
+Next, let’s look at reshaping data with `tidyr.` Suppose you have a dataset in wide format (one row per category with multiple columns for different metrics) and you want to pivot it to long format for easier analysis.
+
+```{r}
+#| label: example_tidyr
+#| warning: false
+
+
+## Example wide data
+wide_data <- tibble(
+  category = c("A", "B", "C"),
+  Q1_sales = c(100, 150, 200),
+  Q2_sales = c(110, 160, 210)
+)
+
+## Pivot to long format
+long_data <- wide_data %>%
+  pivot_longer(cols = starts_with("Q"), names_to = "quarter", values_to = "sales")
+
+long_data
+```
+
+This example demonstrates how easily tidyr can reshape data, making it ready for analysis or visualization.
+
+#### Example 3: Visualization with `ggplot2`
+
+Finally, let’s take a peek at how `ggplot2` can help you create beautiful visualizations. Suppose you want to visualize the sales data from earlier.
+
+```{r}
+#| label: example_ggplot2
+#| warning: false
+
+## Example long data
+long_data <- tibble(
+  category = c("A", "A", "B", "B", "C", "C"),
+  quarter = c("Q1", "Q2", "Q1", "Q2", "Q1", "Q2"),
+  sales = c(100, 140, 150, 170, 200, 210)
+)
+
+## Visualizing sales data using ggplot2
+ggplot(long_data, aes(x = quarter, y = sales, group = category, color = category)) +
+  geom_line() +
+  geom_point() +
+  labs(title = "Sales by Quarter and Category", x = "Quarter", y = "Sales") +
+  theme_minimal()
+```
+
+With just a few lines of code, you can generate a clean, professional-looking plot that helps you communicate your findings.
+
+
+
+<br>
+
+## What to Expect in the Coming Chapters
+
+In the upcoming chapters, we will explore each of these tools in depth. You’ll learn how to:
+
+- Import data from various sources.
+- Inspect data for missing values and outliers.
+- Transform data to be tidy and ready for analysis.
+- Manipulate rows, columns, and summarize data using `tidyverse` functions.
+- Visualize data effectively to communicate your insights.
+
+The tidyverse provides an intuitive, powerful framework that makes all of this possible. By the end of these chapters, you’ll be comfortable using the tidyverse to wrangle your data and extract valuable insights from it.

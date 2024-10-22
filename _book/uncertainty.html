@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.56">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>2&nbsp; Uncertainty and Entrepreneurship – An Introduction to Business Analytics for Entrepreneurs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./epistemology.html" rel="next">
+<link href="./intro.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./uncertainty.html">Uncertainty</a></li><li class="breadcrumb-item"><a href="./uncertainty.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Uncertainty and Entrepreneurship</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">An Introduction to Business Analytics for Entrepreneurs</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./uncertainty.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Uncertainty and Entrepreneurship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./epistemology.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Epistemology</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ds_ent.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Business Analytics in Evidence-based Entrepreneurship</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./public_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Public Data Sources for Business Analytics in Entrepreneurship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./private_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Private Data Sources for Business Analytics in Entrepreneurship</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./customer_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Customer Data Sources for Business Analytics in Entrepreneurship</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Data in R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Data Analytics in R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./install.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Installing R, RStudio, and Libraries</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./use_R.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Introduction to Using R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./import.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Importing Data into R</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./inspect.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inspecting and Understanding Data</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">EDA</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./eda.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Exploratory Data Analysis (EDA)</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Transforming Data</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Modeling Data</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#uncertainty" id="toc-uncertainty" class="nav-link active" data-scroll-target="#uncertainty"><span class="header-section-number">2.1</span> Uncertainty</a>
+  <ul class="collapse">
+  <li><a href="#reducible-vs.-irreducible-uncertainty" id="toc-reducible-vs.-irreducible-uncertainty" class="nav-link" data-scroll-target="#reducible-vs.-irreducible-uncertainty"><span class="header-section-number">2.1.1</span> Reducible vs.&nbsp;Irreducible Uncertainty</a></li>
+  <li><a href="#epistemic-uncertainty" id="toc-epistemic-uncertainty" class="nav-link" data-scroll-target="#epistemic-uncertainty"><span class="header-section-number">2.1.2</span> Epistemic Uncertainty</a></li>
+  </ul></li>
+  <li><a href="#uncertainty-as-opportunity-in-entrepreneurship" id="toc-uncertainty-as-opportunity-in-entrepreneurship" class="nav-link" data-scroll-target="#uncertainty-as-opportunity-in-entrepreneurship"><span class="header-section-number">2.2</span> Uncertainty as Opportunity in Entrepreneurship</a>
+  <ul class="collapse">
+  <li><a href="#embracing-uncertainty-as-a-source-of-opportunity" id="toc-embracing-uncertainty-as-a-source-of-opportunity" class="nav-link" data-scroll-target="#embracing-uncertainty-as-a-source-of-opportunity"><span class="header-section-number">2.2.1</span> Embracing Uncertainty as a Source of Opportunity</a></li>
+  <li><a href="#navigating-uncertainty-with-analytics" id="toc-navigating-uncertainty-with-analytics" class="nav-link" data-scroll-target="#navigating-uncertainty-with-analytics"><span class="header-section-number">2.2.2</span> Navigating Uncertainty with Analytics</a></li>
+  <li><a href="#seizing-the-moment" id="toc-seizing-the-moment" class="nav-link" data-scroll-target="#seizing-the-moment"><span class="header-section-number">2.2.3</span> Seizing the Moment</a></li>
+  </ul></li>
+  <li><a href="#reducing-uncertainty-through-analytics" id="toc-reducing-uncertainty-through-analytics" class="nav-link" data-scroll-target="#reducing-uncertainty-through-analytics"><span class="header-section-number">2.3</span> Reducing Uncertainty Through Analytics</a>
+  <ul class="collapse">
+  <li><a href="#the-role-of-data-in-reducing-uncertainty" id="toc-the-role-of-data-in-reducing-uncertainty" class="nav-link" data-scroll-target="#the-role-of-data-in-reducing-uncertainty"><span class="header-section-number">2.3.1</span> The Role of Data in Reducing Uncertainty</a></li>
+  <li><a href="#different-forms-of-analytics" id="toc-different-forms-of-analytics" class="nav-link" data-scroll-target="#different-forms-of-analytics"><span class="header-section-number">2.3.2</span> Different Forms of Analytics</a></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis"><span class="header-section-number">2.3.3</span> Exploratory Data Analysis</a></li>
+  <li><a href="#analytics-as-a-strategic-tool" id="toc-analytics-as-a-strategic-tool" class="nav-link" data-scroll-target="#analytics-as-a-strategic-tool"><span class="header-section-number">2.3.4</span> Analytics as a Strategic Tool</a></li>
+  </ul></li>
+  <li><a href="#embrace-uncertainty" id="toc-embrace-uncertainty" class="nav-link" data-scroll-target="#embrace-uncertainty"><span class="header-section-number">2.4</span> Embrace Uncertainty</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./uncertainty.html">Uncertainty</a></li><li class="breadcrumb-item"><a href="./uncertainty.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Uncertainty and Entrepreneurship</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Uncertainty and Entrepreneurship</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+.wrapfig {
+    float: right; 
+    margin: 0 20px 10px 0; /* adjust space around the image */
+    width: 40%; /* adjust image width */
+}
+</style>
+<p><br></p>
+<p>Entrepreneurship is inherently about facing the unknown. When we talk about uncertainty, we often think of it as an open set of possibilities—whether that means options we can choose from or outcomes that can unfold. For entrepreneurs, this uncertainty is both a challenge and an opportunity. At its core, uncertainty arises from a lack of knowledge, an absence of clarity about the future. Yet, rather than something to fear, uncertainty in entrepreneurship should be seen as the fertile ground from which innovation and growth emerge.</p>
+<section id="uncertainty" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="uncertainty"><span class="header-section-number">2.1</span> Uncertainty</h2>
+<p>Imagine uncertainty as a white space on a map of a complex environment—uncharted territory. Entrepreneurs are the ones venturing into that space, driven by the promise of new opportunities and untapped markets. Rather than navigating by well-marked roads, they must rely on their instincts, creativity, and data to chart a path forward. This sense of exploration and discovery is part of what makes entrepreneurship so exhilarating.</p>
+<p>While uncertainty means we don’t know all the answers, it also means that the future is not set in stone. The unknown is full of potential—new ideas, unmet needs, and emerging trends that entrepreneurs can seize upon. With the right mindset, entrepreneurs can approach uncertainty with optimism, knowing that by shining a light on the darkness, they can reduce uncertainty and gain valuable insights.</p>
+<p>This chapter introduces you to uncertainty in a way that empowers you as an entrepreneur. Whether you’re starting a business, launching a new product, or entering a new market, uncertainty will be a constant companion. But by recognizing that it’s not just a barrier, but also an invitation to innovate, you can embrace it as part of the entrepreneurial journey. And by using the right tools—especially data analytics—you can start to reduce uncertainty, making it more manageable and opening the door to new opportunities.</p>
+<p>Uncertainty in entrepreneurship comes in different forms, and it is crucial to understand them to navigate effectively. Broadly, we can categorize uncertainty into two main types: <strong>reducible</strong> and <strong>irreducible</strong>.</p>
+<section id="reducible-vs.-irreducible-uncertainty" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="reducible-vs.-irreducible-uncertainty"><span class="header-section-number">2.1.1</span> Reducible vs.&nbsp;Irreducible Uncertainty</h3>
+<p><strong>Reducible uncertainty</strong> refers to the unknowns that can be clarified with additional knowledge or data. Think of this as questions that have answers—you just don’t know them yet. With the right information, research, or analysis, you can resolve these uncertainties and make more informed decisions. In the entrepreneurial context, much of the uncertainty entrepreneurs face is reducible. Whether you’re conducting market research, analyzing customer preferences, or testing a prototype, each step you take helps reduce uncertainty by illuminating previously unknown factors.</p>
+<p>On the other hand, <strong>irreducible uncertainty</strong> refers to unknowns that cannot be resolved, no matter how much information is gathered. These uncertainties are part of the fabric of the world—random events, unforeseen disruptions, or novel trends that defy prediction. For example, economic recessions, technological disruptions, or changes in societal behavior can create uncertainty that cannot be fully anticipated or mitigated. As entrepreneurs, we must learn to live with irreducible uncertainty, adapting to it rather than eliminating it.</p>
+</section>
+<section id="epistemic-uncertainty" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="epistemic-uncertainty"><span class="header-section-number">2.1.2</span> Epistemic Uncertainty</h3>
+<p>One important subset of reducible uncertainty is <strong>epistemic uncertainty</strong>—the uncertainty that arises from a lack of knowledge. This type of uncertainty exists because we don’t fully understand the environment or the problem at hand. For example, an entrepreneur might face epistemic uncertainty if they don’t know what their potential customers truly want or how a new technology might function in practice.</p>
+<p>Epistemic uncertainty can be tackled in two key ways:</p>
+<ul>
+<li><strong>Knowing what is already known</strong>: This refers to gaining access to existing information—such as industry reports, customer feedback, or competitor data—that may already have the answers you need.</li>
+<li><strong>Learning what can be learned from data analytics</strong>: By using the right tools and methods, entrepreneurs can generate new insights from data, helping to reduce uncertainty. Data-driven exploration and analysis can shine light on the white spaces in your knowledge, guiding you to more confident decisions.</li>
+</ul>
+<p>As entrepreneurs, our role is often to identify where uncertainty exists, distinguish between what can be reduced and what cannot, and then use the right strategies to address it. By embracing both reducible and irreducible uncertainty, you prepare yourself to navigate the entrepreneurial journey with clarity and confidence.</p>
+</section>
+</section>
+<section id="uncertainty-as-opportunity-in-entrepreneurship" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="uncertainty-as-opportunity-in-entrepreneurship"><span class="header-section-number">2.2</span> Uncertainty as Opportunity in Entrepreneurship</h2>
+<p>For entrepreneurs, uncertainty is more than just a hurdle—it’s also the seedbed of opportunity. The very nature of entrepreneurship is intertwined with uncertainty because entrepreneurs operate in environments where not everything is known or predictable. While this lack of clarity might seem daunting, it is precisely what allows entrepreneurs to innovate and carve out new paths.</p>
+<section id="embracing-uncertainty-as-a-source-of-opportunity" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="embracing-uncertainty-as-a-source-of-opportunity"><span class="header-section-number">2.2.1</span> Embracing Uncertainty as a Source of Opportunity</h3>
+<p>Uncertainty often gives rise to the greatest entrepreneurial opportunities. When markets are stable and everything is known, competition is fierce, and there’s little room for breakthrough ideas. However, in uncertain environments, entrepreneurs who are willing to embrace the unknown can identify unmet needs, develop novel solutions, and capture new markets. By stepping into areas where others are hesitant to go, entrepreneurs can uncover insights that lead to competitive advantages.</p>
+<p>Consider how startups frequently disrupt established industries. They do this by embracing uncertainty—experimenting with new business models, exploring untested technologies, and targeting underserved customers. Instead of seeing uncertainty as a barrier, these entrepreneurs see it as an open space where new opportunities can be found.</p>
+</section>
+<section id="navigating-uncertainty-with-analytics" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="navigating-uncertainty-with-analytics"><span class="header-section-number">2.2.2</span> Navigating Uncertainty with Analytics</h3>
+<p>Navigating uncertainty doesn’t mean taking blind risks. Successful entrepreneurs use data and insights to inform their decisions. While uncertainty cannot be eliminated entirely, it can be managed and reduced. Tools like exploratory data analysis, market testing, and customer feedback loops help entrepreneurs shine a light on what is unknown, reducing uncertainty and turning it into actionable knowledge.</p>
+<p>Entrepreneurs who excel in uncertain environments are those who are comfortable with ambiguity but who also know how to take deliberate steps to reduce the unknown. By using data to test assumptions, generate insights, and refine strategies, they reduce risk and increase their chances of success. This ability to both embrace and navigate uncertainty is a critical skill for every entrepreneur.</p>
+</section>
+<section id="seizing-the-moment" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="seizing-the-moment"><span class="header-section-number">2.2.3</span> Seizing the Moment</h3>
+<p>Remember, uncertainty is not something to shy away from—it’s something to lean into. Every moment of uncertainty is an opportunity for you to pioneer new ideas, experiment with different approaches, and solve problems that others haven’t even noticed. This is the essence of entrepreneurship: transforming the unknown into the known and turning uncertainty into opportunity.</p>
+<p>By reframing your relationship with uncertainty, you can start to see it as a friend rather than a foe. This mindset shift allows you to act boldly in situations where others might hesitate, giving you a competitive edge in fast-changing markets. And by using the right tools—particularly analytics and data-driven decision-making—you can thrive in environments filled with uncertainty.</p>
+</section>
+</section>
+<section id="reducing-uncertainty-through-analytics" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="reducing-uncertainty-through-analytics"><span class="header-section-number">2.3</span> Reducing Uncertainty Through Analytics</h2>
+<p>While uncertainty is an unavoidable part of entrepreneurship, it doesn’t have to be paralyzing. One effective tool available to entrepreneurs is data analytics. By leveraging analytics, you can reduce uncertainty, refine your decision-making, and make more informed choices that drive your business forward.</p>
+<section id="the-role-of-data-in-reducing-uncertainty" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="the-role-of-data-in-reducing-uncertainty"><span class="header-section-number">2.3.1</span> The Role of Data in Reducing Uncertainty</h3>
+<p>Analytics provides a way to shine light into the unknown, helping you to uncover patterns, test assumptions, and gain insights into your market, customers, and operations. At its core, data analytics allows you to move from intuition and guesswork to evidence-based decision-making. With the right data, you can reduce epistemic uncertainty—the lack of knowledge that can cloud your decision-making—by gaining new insights and validating or disproving your hypotheses.</p>
+<p>For example, let’s say you’re launching a new product and you’re uncertain about customer demand. Instead of guessing, you can gather data from potential customers through surveys, A/B tests, or pilot launches. The insights you gain from this data can help you better predict demand, adjust your product, or even decide whether to proceed with the launch at all. This process of testing and learning is at the heart of how entrepreneurs use data to reduce uncertainty.</p>
+</section>
+<section id="different-forms-of-analytics" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="different-forms-of-analytics"><span class="header-section-number">2.3.2</span> Different Forms of Analytics</h3>
+<p>There are different types of analytics that you can use, depending on the kind of uncertainty you are trying to reduce:</p>
+<ul>
+<li><strong>Descriptive Analytics</strong>: Helps you understand what has happened in the past. By analyzing historical data, you can identify trends and patterns that inform future decisions.</li>
+<li><strong>Predictive Analytics</strong>: Uses data and statistical models to forecast future outcomes. It helps you anticipate what might happen next, allowing you to prepare for various possibilities.</li>
+<li><strong>Prescriptive Analytics</strong>: Recommends actions based on data insights. By using prescriptive analytics, you can determine the best course of action in response to predicted outcomes.</li>
+</ul>
+<p>Each of these forms of analytics can help reduce different types of uncertainty. Whether you’re trying to understand past performance, predict future trends, or decide on the best path forward, analytics provides a structured way to reduce the unknowns in your business.</p>
+</section>
+<section id="exploratory-data-analysis" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="exploratory-data-analysis"><span class="header-section-number">2.3.3</span> Exploratory Data Analysis</h3>
+<p>One of the most valuable tools for reducing uncertainty early in the entrepreneurial journey is <strong>exploratory data analysis (EDA)</strong>. EDA allows you to explore and visualize your data, uncovering trends, correlations, and anomalies that might not be immediately obvious. It helps you make sense of messy or incomplete data, which is often the case in the early stages of entrepreneurship.</p>
+<p>Through EDA, you can identify new opportunities or challenges that were previously hidden, allowing you to refine your strategies and reduce uncertainty before making big decisions. EDA encourages curiosity and creativity in working with data, making it an essential practice for any entrepreneur looking to turn uncertainty into clarity.</p>
+</section>
+<section id="analytics-as-a-strategic-tool" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="analytics-as-a-strategic-tool"><span class="header-section-number">2.3.4</span> Analytics as a Strategic Tool</h3>
+<p>Reducing uncertainty through analytics isn’t just about crunching numbers—it’s about using data as a strategic tool. By integrating data into your decision-making processes, you can make more informed, confident choices that reduce risk and increase the likelihood of success.</p>
+<p>As an entrepreneur, learning to leverage data analytics will give you a significant edge in navigating uncertainty. It allows you to approach the unknown with a clearer perspective, making the journey less about guessing and more about informed exploration. With the right data, you can make smarter, faster decisions that propel your business toward success.</p>
+</section>
+</section>
+<section id="embrace-uncertainty" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="embrace-uncertainty"><span class="header-section-number">2.4</span> Embrace Uncertainty</h2>
+<p>Uncertainty is a constant in entrepreneurship. While it can be daunting, it is also the source of innovation, growth, and opportunity. Entrepreneurs who succeed are those who learn to embrace uncertainty, navigating it with confidence, creativity, and a data-driven approach. By recognizing the difference between reducible and irreducible uncertainty, you can focus your efforts on gathering the knowledge that will drive your business forward, while also staying flexible in the face of the unknown.</p>
+<p>The tools of data analytics allow you to reduce uncertainty, turning the unknown into the known. Through exploratory data analysis, predictive modeling, and other forms of analytics, you can make more informed decisions that minimize risk and maximize opportunity. But beyond that, the real power of entrepreneurship lies in your ability to see uncertainty as an invitation to innovate.</p>
+<p>Remember that every unknown is a potential opportunity waiting to be discovered. The blank spaces on the map of your business are where the greatest breakthroughs can happen. With the right mindset and the right tools, you can reduce uncertainty, seize opportunities, and create lasting impact in your industry. So embrace the uncertainty, and let it fuel your entrepreneurial journey.</p>
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+WyJkYXRhL2hhbG9fYWxlcnQueGxzeCIsImRhdGEvfiRjaW5uYW1vbl9yb2xscy54bHN4IiwiZGF0YS9tdXNjbGVfY29sYS5jc3YiLCJkYXRhL2hhbG9fYWxlcnQuY3N2IiwiZGF0YS9jaW5uYW1vbl9yb2xscy5jc3YiLCJkYXRhL2xpYmVydHlfc2hpcC54bHN4IiwiZGF0YS9tdXNjbGVfY29sYS5yZHMiLCJkYXRhL2N1cGNha2VzLnhsc3giLCJkYXRhL2Npbm5hbW9uX3JvbGxzLnhsc3giLCJkYXRhL2N1cGNha2VzLmNzdiIsImRhdGEvbGliZXJ0eV9zaGlwLmNzdiIsImRhdGEvbXVzY2xlX2NvbGEueGxzeCJd
+</script>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./intro.html" class="pagination-link" aria-label="Introduction">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./epistemology.html" class="pagination-link" aria-label="Epistemology">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Epistemology</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

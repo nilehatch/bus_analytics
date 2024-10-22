@@ -1,0 +1,95 @@
+---
+title: "Exploratory Data Analysis (EDA)"
+---
+
+```{r}
+#| output: false
+library(tidyverse)
+library(ggthemes)
+library(scales)
+library(gt)
+knitr::opts_chunk$set(echo = TRUE) 
+```
+
+```{=html}
+<style>
+.wrapfig {
+    float: right; 
+    margin: 0 20px 10px 0; /* adjust space around the image */
+    width: 40%; /* adjust image width */
+}
+</style>
+```
+
+> “The greatest value of a picture is when it forces us to notice what we never expected to see.” — John Tukey
+
+Exploratory Data Analysis (EDA) is a critical first step in any data analysis process. Before jumping into modeling or hypothesis testing, EDA helps us **explore** our data, discover underlying patterns, and uncover insights that might not be immediately obvious.
+
+In entrepreneurship, decisions are often based on incomplete information, and that’s where EDA shines—it allows you to **make sense of the data you have** without needing a specific hypothesis or a pre-determined question. By exploring your data visually and statistically, you can start to understand its structure, identify outliers, detect patterns, and form new questions.
+
+## What Is EDA?
+
+EDA is the process of **getting to know your data**. It involves:
+
+- Summarizing the main characteristics of your data.
+- Identifying patterns, trends, and relationships within the data.
+- Spotting anomalies, outliers, and missing values.
+- Generating questions and insights that can guide deeper analysis.
+
+EDA encourages a **curious and open-ended approach** to working with data. Instead of jumping straight into complex models or testing hypotheses, EDA helps you develop a deeper understanding of the data you’re working with.
+
+## Why Start with EDA?
+
+1. **Data is Often Messy**: Real-world data is rarely clean. There might be missing values, outliers, or inconsistencies that could distort your analysis. EDA helps you spot these issues early on so you can address them before they impact your results.
+
+2. **Understanding Data Patterns**: EDA helps you uncover patterns and relationships in the data that might not be immediately obvious. These patterns can guide your next steps—whether that's refining your data or developing a hypothesis for testing.
+
+3. **Forming Hypotheses**: Instead of diving straight into hypothesis testing, EDA helps you ask better questions by giving you a clearer picture of what the data is actually telling you.
+
+4. **Generating Insights for Decision-Making**: As an entrepreneur, EDA allows you to make **informed decisions** by highlighting key trends or areas of opportunity. By understanding your data’s story, you can turn raw information into actionable insights.
+
+## Key Elements of EDA
+
+EDA typically focuses on **two main areas**: **visualization** and **summary statistics**. You will explore these in greater depth in the next chapters, but here’s an overview of the key elements:
+
+1. **Visual Exploration**:
+    - Visualizing your data helps you spot patterns, trends, and anomalies quickly.
+    - Common visual tools include histograms, bar charts, scatter plots, and box plots.
+    - These visuals help you gain an intuitive understanding of your data.
+
+2. **Descriptive Statistics**:
+    - Descriptive statistics summarize your data's central tendencies (mean, median), variability (variance, standard deviation), and distribution.
+    - These numbers help you quantify and describe your data without making any assumptions or testing any specific hypotheses.
+
+## Principles of EDA
+
+EDA is not just about crunching numbers and making graphs—it is a **mindset** that encourages curiosity and skepticism. Some core principles include:
+
+- **Iteration**: EDA is an iterative process. You’ll often go back and forth between different summaries, graphs, and statistical techniques as you refine your understanding.
+- **Flexibility**: EDA doesn’t follow a rigid set of rules. It’s more about being flexible and letting the data guide you.
+- **Visualization First**: While statistics provide the numbers, visualization often reveals the stories behind the numbers.
+- **Openness**: EDA allows you to be open to unexpected findings. It’s a time to be creative and let the data show you patterns that you didn’t anticipate.
+
+## Example of EDA in Action
+
+Let’s say you’re working with sales data from an online store. Before diving into predictions or optimization models, EDA would help you do the following:
+
+- **Visualize the data**: What does the sales distribution look like? Are there any seasonal patterns?
+- **Summarize the data**: What is the average order size? What are the most and least popular products?
+- **Spot outliers**: Are there unusual spikes in sales that might be errors or anomalies?
+- **Detect trends**: Are sales increasing over time? Are there certain customer segments driving these trends?
+
+By doing this exploratory work, you can better understand your sales data and ask more informed questions when moving on to more sophisticated analysis.
+
+## Moving Forward
+
+As we proceed, we’ll delve deeper into the specific tools and techniques you can use for EDA. The upcoming chapters will cover:
+
+1. **Visualization in R**: How to use `ggplot2` and other tools to explore your data visually.
+2. **Univariate Analysis**: Examining single variables to understand their distribution and characteristics.
+3. **Bivariate Analysis**: Exploring relationships between two variables and identifying trends or correlations.
+
+By the end of this module, you will have the skills to explore any dataset, uncover insights, and prepare for deeper analysis and decision-making.
+
+Let’s begin by learning about how to visualize your data in R!
+

@@ -1,0 +1,400 @@
+---
+title: "Public Data Sources for Business Analytics in Entrepreneurship"
+subtitle: "Source the databases of the Internet"
+---
+
+```{r}
+#| output: false
+library(tidyverse)
+library(ggthemes)
+library(scales)
+library(gt)
+knitr::opts_chunk$set(echo = TRUE) 
+```
+
+```{=html}
+<style>
+.wrapfig {
+    float: right; 
+    margin: 0 20px 10px 0; /* adjust space around the image */
+    width: 40%; /* adjust image width */
+}
+</style>
+```
+
+
+Entrepreneurs need reliable data to reduce uncertainty, spot opportunities, and make informed decisions. Public data sources can provide insights into demographics, economic conditions, market trends, and customer behavior—all critical elements for business planning. This chapter introduces key free public data sources, divided into three categories:
+
+1. demographic, economic, and market trends, 
+2. customer trends, market behavior, and public opinion and
+3. strategic planning. 
+
+Each source includes a quick reference, instructions for use, and practical examples.
+
+<br>
+
+## Demographic, Economic, and Market Trend Data
+
+### US Census Data
+
+__Quick Reference__:
+
+- Website: [census.gov](https://www.census.gov)
+- Key Data: Demographic data, population trends, income levels, business ownership.
+
+__Step-by-Step Guide__:
+
+1. Go to [census.gov](https://www.census.gov).
+2. Navigate to **Data** in the top menu.
+3. Select **Data Tools & Apps** to explore datasets such as the American Community Survey (ACS) and Economic Census.
+4. Use **QuickFacts** for demographic snapshots or **Census Business Builder** for regional business data.
+
+__Use Case for Entrepreneurs__:
+An entrepreneur looking to open a retail store can use the American Community Survey to determine the age, income, and population density of different neighborhoods, helping to identify potential customer bases.
+
+
+### Bureau of Labor Statistics (BLS)
+
+__Quick Reference__:
+
+- Website: [bls.gov](https://www.bls.gov)
+- Key Data: Employment rates, wages, productivity, and consumer spending trends.
+
+__Step-by-Step Guide__:
+
+1. Visit [bls.gov](https://www.bls.gov).
+2. Click on **Data Tools** in the top menu.
+3. Select the **Economy at a Glance** tool for a quick overview of industry trends.
+4. Use **Databases, Tables & Calculators by Subject** for more detailed queries, such as wage and employment statistics by region.
+
+__Use Case for Entrepreneurs__:
+An entrepreneur can use BLS data to evaluate the average wage levels in a region when planning to hire employees, ensuring competitive salary offers and attracting top talent.
+
+
+### Google Trends
+
+__Quick Reference__:
+
+- Website: [trends.google.com](https://trends.google.com)
+- Key Data: Real-time search data, indicating consumer interest and trending topics.
+
+__Step-by-Step Guide__:
+
+1. Go to [trends.google.com](https://trends.google.com).
+2. Type in a search term or topic in the search bar.
+3. Select the desired geographic location and time period.
+4. Explore **Related Queries** and **Interest Over Time** graphs for deeper insights.
+
+__Use Case for Entrepreneurs__:
+An entrepreneur launching a new product can use Google Trends to identify seasonal peaks in search interest and tailor their marketing efforts accordingly.
+
+### World Bank Open Data
+
+__Quick Reference__:
+
+- Website: [data.worldbank.org](https://data.worldbank.org)
+- Key Data: Global economic indicators, trade data, business environment data.
+
+__Step-by-Step Guide__:
+
+1. Visit [data.worldbank.org](https://data.worldbank.org).
+2. Browse **Data Catalog** or search for specific indicators by region or country.
+3. Use **Country Profiles** for high-level economic data, including GDP, inflation, and trade.
+
+__Use Case for Entrepreneurs__:
+A startup exploring global expansion can analyze GDP and ease of doing business rankings across different countries to identify attractive markets for entry.
+
+### Gapminder
+
+__Quick Reference__:
+
+- Website: [gapminder.org](https://www.gapminder.org)
+- Key Data: Global health, economics, and population data, with visual tools to simplify complex trends.
+
+__Step-by-Step Guide__:
+
+1. Go to [gapminder.org](https://www.gapminder.org).
+2. Click on **Tools** and use **Gapminder World** to explore interactive visualizations.
+3. Select variables such as income, life expectancy, and population to see global development trends over time.
+
+__Use Case for Entrepreneurs__:
+A company seeking international markets for health-related products can use Gapminder to analyze correlations between income levels and health outcomes to target high-growth regions.
+
+### Explore other public data focused on market trend data
+
+- [Population Reference Bureau](https://www.prb.org/): Demographic characteristics of the U.S. population.
+- [Statistical Abstract of the US (by ProQuest)](https://statabs-proquest-com.byu.idm.oclc.org/sa/index.html): Authoritative summary of statistics on social, political, and economic conditions.
+
+-----
+
+
+
+<br>
+
+## Customer Trends, Market Behavior, and Public Opinion
+
+### Business Trends and Outlook Survey (BTOS)
+
+__Quick Reference__:
+
+- Website: [census.gov](https://www.census.gov)
+- Key Data: Near real-time data on business conditions, supply chains, and market confidence.
+
+__Step-by-Step Guide__:
+
+1. Go to [census.gov](https://www.census.gov).
+2. Navigate to **Surveys and Programs** and select **BTOS**.
+3. Explore business trends data to assess current market sentiment and industry-specific challenges.
+
+__Use Case for Entrepreneurs__:
+A small business can use BTOS data to adjust its strategy based on industry-wide supply chain disruptions or shifts in market confidence.
+
+
+
+### American Time Use Survey
+
+**Quick Reference**:  
+
+- Website: [American Time Use Survey](https://www.bls.gov/tus/)  
+- Key Data: Time-use patterns across various activities, including paid work, household chores, childcare, leisure, and volunteering.
+
+**Step-by-Step Guide**:
+
+1. Visit [American Time Use Survey](https://www.bls.gov/tus/).
+2. Explore the **ATUS Data Tables** to view how Americans spend their time across different categories.
+3. Filter results by age group, occupation, or other demographic factors to refine your search.
+4. Use **ATUS Charts** to visualize time-use trends and analyze shifts in how people spend their time.
+
+**Use Case for Entrepreneurs**: The American Time Use Survey is valuable for entrepreneurs creating products or services designed to optimize daily activities or address lifestyle needs. For example, a startup developing productivity apps could use the data to identify gaps in time management during the workday and design a solution that helps users optimize their time.
+
+
+<!--
+### Consumer Expenditure Surveys
+
+**Quick Reference**:  
+
+- Website: [Consumer Expenditure Surveys](https://www.bls.gov/cex/)  
+- Key Data: Consumer spending patterns, demographics, and income, with detailed breakdowns by product category, region, and socioeconomic factors.
+
+**Step-by-Step Guide**:
+
+1. Visit [Consumer Expenditure Surveys](https://www.bls.gov/cex/).
+2. Click on **Tables and Publications** to access annual reports, charts, and summary tables.
+3. Use the **Expenditure Tables** to find spending data categorized by income group, age, or geographic region.
+4. Explore the **Consumer Expenditure Surveys Interactive Tool** for a more customizable exploration of the data.
+5. Download relevant datasets or tables to analyze consumer spending trends.
+
+**Use Case for Entrepreneurs**:  The Consumer Expenditure Surveys are invaluable for entrepreneurs looking to understand how various demographic groups allocate their spending. For example, a startup developing a new consumer product can use CES data to analyze spending trends in their target market and refine their pricing and marketing strategies. Detailed expenditure data across categories like housing, food, and transportation can provide insights into where consumers are willing to spend more or cut back.
+-->
+
+### Pew Research Center
+
+__Quick Reference__:
+
+- Website: [pewresearch.org](https://www.pewresearch.org)
+- Key Data: Social trends, public opinion, and demographic research.
+
+__Step-by-Step Guide__:
+
+1. Visit [pewresearch.org](https://www.pewresearch.org).
+2. Select **Topics** or use the search bar to find research reports.
+3. Filter results by **Demographics** or **Industries** for specific insights.
+
+__Use Case for Entrepreneurs__:
+An entrepreneur in the technology sector can analyze Pew Research data to understand how different demographics adopt new technologies, informing product design and marketing strategies.
+
+
+### Stats America
+
+**Quick Reference**:  
+
+- Website: [Stats America](https://www.statsamerica.org/Default.aspx)  
+- Key Data: Economic indicators, industry data, workforce statistics, and demographic insights from various state, federal, and private sources.
+
+
+
+**Step-by-Step Guide**:
+
+1. Go to [Stats America](https://www.statsamerica.org/Default.aspx).
+2. Navigate to **Innovation Index 2.0** or **Industry Clusters** to explore regional economic trends.
+3. Use the **Big Radius Tool** to analyze demographic, employment, and workforce statistics for a specified area.
+4. Download relevant data tables or reports for deeper analysis.
+
+**Use Case for Entrepreneurs**:  Stats America provides entrepreneurs with an extensive range of data relevant to regional economic development, business planning, and workforce insights. For example, a business looking to expand into a new region could use Stats America's industry cluster data to understand the economic activity and labor force trends in that region, enabling more strategic decision-making.
+
+
+
+### Surveys of Consumers
+
+**Quick Reference**:  
+
+- Website: [Surveys of Consumers](http://www.sca.isr.umich.edu/)  
+- Key Data: Consumer sentiment, expectations about the economy, attitudes on personal finance, and future spending behavior.
+
+**Step-by-Step Guide**:
+
+1. Go to [Surveys of Consumers](http://www.sca.isr.umich.edu/).
+2. Review the **Consumer Sentiment Index** for an overview of current consumer confidence.
+3. Explore historical data on consumer sentiment and expectations.
+4. Use data from **Personal Finances** and **Business Conditions** reports to predict future consumer behavior.
+
+**Use Case for Entrepreneurs**:  Entrepreneurs can leverage data from the Surveys of Consumers to assess consumer confidence and predict how consumer spending might shift in the coming months. For example, a retail business could use consumer sentiment data to forecast demand for discretionary goods during economic uncertainty, helping them adjust inventory and marketing strategies.
+
+
+
+<!--
+### Louis-Harris Poll
+
+__Quick Reference__:
+
+- Website: [harrisinteractive.com](https://www.harrisinteractive.com)
+- Key Data: Public opinion polling on a wide range of topics, including consumer preferences and brand perception.
+
+__Step-by-Step Guide__:
+
+1. Visit [harrisinteractive.com](https://www.harrisinteractive.com).
+2. Explore **Public Opinion Polls** for specific insights on consumer behavior.
+3. Use **Search** to find polls by industry or topic of interest.
+
+__Use Case for Entrepreneurs__:
+An entrepreneur considering a new branding strategy can use Louis-Harris Poll data to understand how customers perceive different brands and tailor their message accordingly.
+
+### Harris Interactive
+
+__Quick Reference:__
+
+- Website: [harrisinteractive.com](https://www.harrisinteractive.com)
+- Key Data: Consumer trends, public opinion, and market behavior insights.
+
+__Step-by-Step Guide__:
+
+1. Visit [harrisinteractive.com](https://www.harrisinteractive.com).
+2. Use the **Polls and Surveys** section to find relevant consumer data.
+3. Browse by **Industry** to find market-specific insights.
+
+__Use Case for Entrepreneurs__:
+An entrepreneur launching a new product can use Harris Interactive polls to gauge initial public reaction and refine marketing efforts based on consumer sentiment.
+
+### eMarketer
+
+__Quick Reference__:
+
+- Website: [emarketer.com](https://www.emarketer.com)
+- Key Data: Digital marketing trends, social media usage, e-commerce statistics.
+
+__Step-by-Step Guide__:
+
+1. Go to [emarketer.com](https://www.emarketer.com).
+2. Browse **Reports** for insights on the latest digital marketing and e-commerce trends.
+3. Explore **Charts** for quick snapshots of online consumer behavior and platform usage.
+
+__Use Case for Entrepreneurs__:
+A company focused on e-commerce can use eMarketer data to identify growing online platforms, shifts in digital marketing strategies, and customer buying habits.
+-->
+
+### Explore other public data focused on consumer insights
+
+- [Consumer Expenditure Surveys](https://www.bls.gov/cex/): from the Bureau of Labor Statistics, this resource provides data on consumer demographics and expenditure patterns. A wide variety of reports and tables are available for download.
+- [Wages by Area and Occupation](https://www.bls.gov/bls/blswage.htm): by U.S. Department of Labor, Bureau of Labor Statistics.
+
+- [Consumer Affairs](https://www.consumeraffairs.com/): an independent Web-based consumer news and resource center
+- [ConsumerWorld.org](https://consumerworld.org/): founded by Edgar Dworsky in 1995. A companion site spotlighting the loopholes in the fine print of advertising, [MousePrint.org](https://www.mouseprint.org/), was launched in 2006."
+
+<!--
+- [Energy Star Energy Efficiency Ratings](https://www.energystar.gov/): EPA’s energy star rating for appliances etc.
+- [Federal Trade Commission](https://www.ftc.gov/): The FTC provides information and resources on consumer protection issues.
+- [NHTSA 5 Star Safety Ratings](https://www.nhtsa.gov/ratings) help consumers make smart decisions about safety when purchasing a vehicle. You can also search ratings by manufacturer.
+-->
+
+
+-----
+
+
+
+
+<br>
+
+## Strategic Planning
+
+### Country Commercial Guides
+
+**Quick Reference**:  
+
+- Website: [Trade.gov Research Center](https://www.trade.gov/research-center)  
+- Key Data: Market conditions, regulations, and business environments in specific countries.
+
+**Use Case**: 
+Entrepreneurs considering global expansion can use these guides to understand the market landscape, potential barriers, and local opportunities in various countries.
+
+
+### SBA Marketing and Sales
+
+**Quick Reference**:  
+
+- Website: [SBA Marketing and Sales](https://www.sba.gov/business-guide/manage-your-business/marketing-sales)  
+- Key Data: Marketing strategies, sales techniques, and guidance for small businesses.
+
+**Use Case**:
+New business owners can explore strategies for reaching customers, from branding and advertising to sales channels, to refine their marketing efforts.
+
+
+### Statistical Abstract of the US
+
+**Quick Reference**:  
+
+- Website: [Statistical Abstract of the US](https://www.census.gov/library/publications.html)  
+- Key Data: A comprehensive collection of statistics on the U.S. population, economy, and society.
+
+**Use Case**:
+Entrepreneurs needing a high-level overview of U.S. demographic and economic data for business planning can find key stats like income levels, employment, and industry trends here.
+
+
+### FTC Advertising and Marketing Basics
+
+**Quick Reference**:  
+
+- Website: [FTC Advertising and Marketing Basics](https://www.ftc.gov/tips-advice/business-center/advertising-marketing) 
+- Key Data: Guidelines and regulations for advertising and marketing, including digital ads and endorsements.
+
+**Use Case**: 
+Entrepreneurs developing marketing campaigns can use these guidelines to ensure their advertisements comply with legal requirements and avoid deceptive practices.
+
+
+### SBA Market Research and Competitive Analysis
+
+**Quick Reference**:  
+
+- Website: [SBA Market Research](https://www.sba.gov/business-guide/plan-your-business/market-research-competitive-analysis)  
+- Key Data: Tools and techniques for conducting market research and analyzing competitors.
+
+**Use Case**:
+Startups can learn how to effectively gather data about their industry, competitors, and target audience to create a competitive business strategy.
+
+
+
+## Resources for Entrepreneurs
+
+- [Rollins Center for Entrepreneurship](https://marriott.byu.edu/cet/) is the best resource available to you. Make it your second home.
+- [Small Business Development Center](https://www.uvu.edu/sbdc/): One-stop assistance for local entrepreneurs. Coaching for business plans and loan applications. Networking, incubator office space, and classes. The closest center is hosted at UVU.
+- [SCORE.org](https://www.score.org/): A volunteer organization providing one-on-one mentoring for new entrepreneurs by successful small business owners. They also provide workshops, and the website includes how-to guides.
+
+- [Small Business Administration](https://www.sba.gov/): Free online courses, guides and templates for business plans, forms required for SBA supported bank loan applications, ownership structures, management, accounting and legal guides, and tips on planning your exit.
+
+  - [SBA Resource Guide for Small Business](https://www.sba.gov/document/support-national-resource-guide-english)
+  - [Utah District Office of the SBA](https://www.sba.gov/district/utah)
+
+- [businessUtah.org](https://business.utah.gov/) from the Utah Governor's Office of Economic Development: Guides and assistance at the state level. This is where you register your business.
+- [Census Business Builder](https://cbb.census.gov/cbb/#view=map&industries=00&clusterName=Custom+Industries&geoType=state&dataVariable=179&dashboardVars=15-17-33-64&centerX=-10802692&centerY=4568679&level=4&theme=default&dynHeader=Custom+Region): an app that uses Census and other government data to help you plan your business.
+- [A to Z World Business](https://www-atozworldbusiness-com.byu.idm.oclc.org/?c=DUVHJTs2Za): Information on business formation, importing, exporting, tariffs, shipping, and payments for 100 countries.
+
+- [Entrepreneur.com](https://www.entrepreneur.com/)
+- [entrepreneurship.org](https://www.entrepreneurship.org/)
+- [FedBizOps](https://sam.gov/content/opportunities): Government contracting opportunities for bid.
+- [Global Entrepreneurship Monitor](https://www.gemconsortium.org/): Data and reports on entrepreneurial activity and attitudes across 100 countries and 16 years
+- [Kauffman Foundation](https://www.kauffman.org/): A think tank producing research on entrepreneurship and education.
+- [Small Business at the Wall Street Journal](https://www.wsj.com/business/entrepreneurship)
+- [Startup Nation](https://startupnation.com/start-your-business/): Comprehensive site includes articles, podcasts, seminaries and other information related to business management.
+- [Upcounsel](https://www.upcounsel.com/free-legal-documents): Free legal forms for businesses
+
+## Conclusion
+By leveraging these public data sources, entrepreneurs can gather the essential insights needed to make informed business decisions, reduce risk, and stay competitive. While exploring these tools in real time during class will provide hands-on learning, this chapter offers a valuable reference to revisit and deepen understanding over time.

@@ -1,0 +1,88 @@
+---
+title: "Business Analytics in Evidence-based Entrepreneurship"
+subtitle: "Why and how entrepreneurs should stop guessing"
+---
+
+```{r}
+#| output: false
+library(tidyverse)
+library(ggthemes)
+library(scales)
+library(gt)
+knitr::opts_chunk$set(echo = TRUE) 
+```
+
+<style>
+.wrapfig {
+    float: right; 
+    margin: 0 20px 10px 0; /* adjust space around the image */
+    width: 40%; /* adjust image width */
+}
+</style>
+
+## Why Entrepreneurs Should Stop Guessing
+
+For too long, the conventional wisdom in entrepreneurship encouraged entrepreneurs to "launch and hope for the best" as a simplified strategy for starting a business. The received wisdom today is embodied in lean entrepreneurship[^1] and improves the entrepreneurial process by gathering evidence in support of a startup idea before launching. If customers are not interested, do not launch. However, not all experiments are created and executed equally. Research shows us that lean entrepreneurs may not rigorously validate their assumptions through carefully designed experiments. The danger lies in the temptation to take shortcuts by merely "talking to some people" and assuming validation. This approach can lead to a false sense of confidence in untested ideas and may result in critical oversights.
+
+[^1]: Lean entrepreneurship is often associated with the Lean Startup methodology developed by Eric Ries.
+
+Entrepreneurship is often seen as an inherently uncertain pursuit—one filled with unpredictable market changes, customer behaviors, and competitive dynamics. Many entrepreneurs rely on intuition or past experiences to guide their decisions, but as we’ve explored in previous chapters, **guesswork introduces unnecessary risks**. Guessing in entrepreneurship often leads to catastrophic failure. Making decisions after "talking to people" without careful experimental design, implies the decisions are based on intuition and hunches more than solid evidence. <!-- The litmus test for a startup is to measure the *expected profitability* of the fledgling business.  When a startup's unit economics are sound—meaning that the cost of acquiring and serving customers is less than the revenue generated from those customers—the foundation for sustainable growth is laid. Startups that get their unit economics right are poised to thrive because they have a clear path to profitability. Ensuring positive unit economics isn't just a critical milestone; it's the guiding star that helps Lean Entrepreneurs navigate the tumultuous waters of startup development, make informed decisions, and build a business model with the potential for long-term success.  
+
+Measuring the expected profitability of startups is complicated by the absence of historical data, including accounting records, which typically are normally the foundation for predicting future profitability in established businesses. In a startup's early stages, there is no historical financial track record to rely on, making it challenging to project how costs and revenues will evolve over time. Startups are venturing into uncharted territory, where market conditions are uncertain, and business models are often unproven. 
+Business analytics can play a pivotal role in rigorously measuring the expected profitability of a new venture, even before a product is ready for market. Since entrepreneurship often operates in uncertain environments, existing data are often not relevant for a startup.  The solution is for the entrepreneur to gather the needed data, primarily from customers.  Carefully collected data can be leveraged with data science to obtain a rigorous understanding of the profit potential of a startup.  In short, data science conducted on primary data collected from customers allows entrepreneurs to make the decision of whether to launch with rigor and confidence.  -->
+
+## Embrace Business Analytics to Reduce Uncertainty
+
+**Business analytics** is not just about understanding what happened in the past, it’s about reducing uncertainty so that better decisions can be made for the future. By embracing statistical empiricism, entrepreneurs can **replace guesswork with evidence-based decisions** that improve the chances of success.
+
+The uncertainty entrepreneurs face can be categorized as **epistemic uncertainty**, or uncertainty that arises from what we don’t know. But epistemic uncertainty is often reducible with the right information and tools.
+
+Business analytics provides those tools by allowing us to:
+
+-   **Find data** that offers insight into markets, customer behavior, and operations.
+-   **Analyze data** to spot trends, anomalies, and areas of opportunity.
+-   **Test hypotheses** in a way that gives entrepreneurs a clear sense of whether their assumptions hold water.
+
+## Why Entrepreneurs Need Statistical Empiricism
+
+Statistical empiricism is one of the most rigorous epistemological approaches available to entrepreneurs. Instead of relying solely on intuition or anecdotal evidence, entrepreneurs can **use data to check the validity of their assumptions**. This doesn’t mean gut feelings aren’t valuable—sometimes they point us in the right direction—but testing these feelings with data provides confirmation or the need for adjustment.
+
+**Statistical empiricism** allows us to:
+
+1.  **Validate our assumptions**: Are we confident that this market is growing, or are we assuming based on a few customer interactions? Analytics can help determine the true trajectory.
+2.  **Make more informed decisions**: Instead of guessing which product will sell best, entrepreneurs can use historical data, customer feedback, and trend analysis to predict what will resonate with their target audience.
+3.  **Understand risks**: Business analytics provides insights into where risks lie and helps quantify those risks. This enables entrepreneurs to prepare better for challenges.
+
+## Stop Guessing: Use Data to Drive Success
+
+Guessing is part of entrepreneurship when no data is available. However, in most cases, data **is** available—it just needs to be found, organized, and analyzed. Entrepreneurs should shift their mindset from "I think" to **"What does the data tell me?"**. This approach dramatically increases the probability of success, reduces costly mistakes, and helps identify opportunities that were previously hidden.
+
+Here’s why entrepreneurs need to focus on reducing uncertainty:
+
+-   **Data helps you see what’s hidden**: Trends or patterns in consumer behavior are often buried in data. With the right tools, entrepreneurs can uncover these trends early and act on them.
+-   **Reduce uncertainty, reduce risk**: By understanding more about your customers, market, or product, you reduce the number of unknowns that could lead to failure.
+-   **Make your decisions defensible**: Decisions grounded in data are easier to defend, both to investors and to your team. When you can back up a decision with numbers, you build credibility.
+
+## The Power of Business Analytics in Action
+
+Consider an entrepreneur entering a new market. They may have **intuition** that the market will accept their product, but with analytics, they can:
+
+-   Examine **existing sales data** to see which products are already selling well.
+-   Analyze **customer sentiment** to understand what gaps exist in the market.
+-   Use **predictive models** to forecast future demand based on current trends.
+
+Each of these data-driven approaches reduces uncertainty and provides a clearer path forward, far more than relying on guesswork alone.
+
+## The Role of This Course
+
+This course is designed to provide entrepreneurs with the **data-driven tools** needed to stop guessing and start knowing. Through the application of business analytics, entrepreneurs will be better equipped to:
+
+-   **Find and evaluate data** that is critical to decision-making.
+-   **Use statistical tools** to assess opportunities and challenges.
+-   **Make decisions grounded in evidence**, reducing risks and improving the chances of success.
+
+By embracing business analytics and statistical empiricism, you can stop relying on guesswork and improve the likelihood that your entrepreneurial ventures will succeed. This course is an essential step in equipping you with the **knowledge and tools** to navigate uncertainty and make data-driven decisions.
+
+## Start Using Data to Your Advantage
+
+Entrepreneurs who rely on data can turn uncertainty into opportunity. By reducing epistemic uncertainty, you can make **smarter, more informed decisions** that lead to better outcomes. Business analytics is a powerful tool that gives you the insight and clarity to **stop guessing and start succeeding**. As we continue through this course, you’ll learn the skills necessary to harness data for better decision-making and to increase your chances of entrepreneurial success.

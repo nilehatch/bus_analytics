@@ -1,0 +1,344 @@
+---
+title: "Epistemology"
+subtitle: "The Point Is to Know What You Know"
+---
+
+```{r}
+#| output: false
+library(tidyverse)
+library(ggthemes)
+library(scales)
+library(gt)
+knitr::opts_chunk$set(echo = TRUE) 
+```
+
+```{=html}
+<style>
+.wrapfig {
+    float: right; 
+    margin: 0 20px 10px 0; /* adjust space around the image */
+    width: 40%; /* adjust image width */
+}
+</style>
+```
+
+
+
+<br>
+
+> *It is good to know. But it is better to know that you know (Chauncey C. Riddle).*^[Created from class notes from Chauncey Riddle combined with his blog post on [epistemology](https://chaunceyriddle.org/the-point-is-to-know-what-you-know/).] 
+
+## How do you know?
+
+Entrepreneurship lives in a world of uncertainty defined by what we do not know.  We can guess (and fail) or we can reduce the uncertainty by acquiring (some of) the knowledge that is missing.  How do we know that we know? Sometimes we believe we know something when we really don’t. It’s important to distinguish between what we think we know and what we truly know.
+
+The study of how we know things is called "epistemology." This term comes from the Greek words _episteme_ (knowledge) and _logy_ (study or theory). Understanding someone's way of knowing—how they determine what's true—can reveal a lot about them.
+
+Epistemology explores the methods and foundations of knowledge, including the limits of what we can know. It examines how we acquire knowledge through natural and divine means, and the strengths and limitations of each approach. This makes epistemology one of the most fundamental areas of philosophy.
+
+
+
+### Authoritarianism  
+
+__Definition:__ Relying on the knowledge and testimony of others.
+
+In this approach, we form and accept ideas based on what others tell us. It's the easiest way of knowing—if you want to know something, you simply ask someone you trust as an authority on the subject. For example, we often ask our parents about events we don't remember, like where we were born or who our grandparents are. 
+
+__Authoritarianism in Entrepreneurship__: An advisor or investor with experience and success in entrepreneurship who instructs an entrepreneur to lower their price.
+
+While relying on authorities is convenient, there are challenges:
+
+- __Identifying Authorities:__ If you already know who the true expert is, you might not need their help. But if you don’t, you rely on others to guide you, which can be risky.
+
+- __Effective Communication:__ Even if you find a genuine authority, you must communicate clearly. Did they understand your question? Did you understand their answer?
+
+Assuming you find a reliable expert and communicate well, this approach can provide valuable insights efficiently. That’s why we consult doctors, lawyers, mechanics, and other professionals when we need expert advice.
+
+How do you identify an authority?  Common devices others use to get us to trust them as authorities include:
+
+1. Official position (titles)
+1. Familiarity
+1. Age
+1. Jargon
+1. Prowess
+1. Testimonials
+1. Degrees
+1. Printed words
+1. Blood (lineage)
+1. Official stationery
+1. Past triumphs
+1. Clothing (vestments)
+1. Force, strength
+1. Lavish surroundings (banks)
+
+ __To Ponder:__
+
+ - _Dependence on Authority:_ About 90 percent of what most people believe is supported by authority rather than personal experience or evidence.
+- _Value of Human Testimony:_ The value of testimony varies. The biggest challenge is knowing whom to trust as an authority. You need some expertise to identify trustworthy authorities.
+- _Imperfect Indicators of Authority:_ Be cautious of devices that make someone appear authoritative without real substance, such as official titles, jargon, age, or past successes.
+
+__Critical Thinking:__ Beyond appearances, seek additional evidence to verify what an authority claims. This approach ensures you base decisions on reliable information.
+
+In entrepreneurship, you must critically evaluate the advice and information received from experts. While expertise is valuable, it's crucial to balance it with your own judgment and insights, ensuring that the guidance aligns with your broader vision and values.
+
+
+
+
+
+### Rationalism
+
+**Definition:** Using reason and logic to verify an idea. Rationalism involves certifying an idea because it aligns with or can be deduced from premises you already accept. It requires three things:
+
+1. A reliable system of reasoning (like logic or mathematics).
+1. Premises or ideas that you want to analyze.
+1. General premises that allow you to draw conclusions.
+
+
+__General Examples of Rationalism:__
+
+1. Theorems in geometry.
+1. Logical reasoning (e.g., "If all men are mortal, and I am a man, then I am mortal").
+1. Predicting the paths of planets based on their history.
+
+
+__Rationalism in Entrepreneurship:__  
+
+Imagine you're running an online store. At the beginning of the month, you know your store's cash balance. Throughout the month, you track your sales, expenses, and refunds using a spreadsheet. Here's how rationalism applies:
+
+1. _System:_ Basic arithmetic and logic.
+2. _Premises:_ You know your cash balance at the start of the month, and you track every transaction (sales, expenses, and refunds).
+3. _General Premise:_ Only transactions you record can affect your cash balance.
+
+By using these premises and the system of arithmetic, you can confidently calculate how much money remains in your account at any given time, ensuring your cash flow is under control.
+
+Rationalism is a reliable way of knowing when all the key factors are in place. However, reason alone can't guarantee that those factors are accurate. Rationalism often needs support from other ways of knowing to be fully effective.
+
+__To Ponder:__
+
+ 1. The weakness of rationalism is that it must begin with premises, and no more can be gained from the conclusions than was originally found in the premises. If one starts with wrong premises, then nothing is sure.
+1.	The strength of rationalism is that it can show inconsistency, which is usually a sign that something is drastically wrong. Thus, it functions in practice as a negative, rather than as a positive test of truth.
+1.	The basic processes of reasoning are:
+    1. *Deduction:* Deriving a necessary conclusion from given premises by given rules of inference. Example: Given the premises: All A is B, and All B is C, one may conclude by the rules of syllogistic reasoning that All A is C.
+    2.	*Induction:* Deriving a conclusion about a whole class of things (anything) on the basis of evidence about characteristics of part of that same class or population. Example: If by inspection I see that one of a pair of shoes is worn out, I may conclude that the other one of the pair is also worn out (the pair is worn out). (This, as induction always is, is a guess.)
+    3.	*Abduction:* Creating premises from which a given conclusion may be deduced in accordance with given rules of inference. (There are in most systems of thinking an infinite number of sets of premises from which a given premise may be deduced.) As an individual uses this process to find or to create the reasons why he does something, we call the process rationalization. In science, the process is called **hypothesizing**, and usually is the process of theory construction. 
+
+
+
+
+### Empiricism
+
+__Definition:__ Knowing through direct observation and experience. Empiricism involves learning by using your senses—seeing, hearing, touching, etc.
+
+
+
+Empiricism is highly effective when you can directly observe what you want to know. For example, it’s useful for:
+
+1. Checking if you’re driving on the correct side of the road.
+1. Knowing the time by looking at a clock.
+1. Finding something you’ve misplaced
+1. Spotting someone in a crowd.
+
+__Empiricism in Entrepreneurship:__ Observing that customers are lining up for a product in one location while there is no line at another.
+
+However, empiricism has limitations. It doesn’t work well for understanding abstract concepts or things you can't perceive directly with your senses such as what a potential customer is thinking or feeling.
+
+**To Ponder:**
+
+1.	The strength of empiricism is that for things capable of being sensed it provides an excellent test of assertions. Unfortunately, many important things cannot be sensed (such as the future, the past, causation, etc.).
+1.	Empiricism is helpful when one is already well experienced in a matter and has well-developed concepts. An experienced sports fan can tell much about a team just by looking at it. But empiricism is not very useful when there are no concepts in place, such as when most persons look at a potential market to enter
+1.	Empiricism may mislead, either because we cannot sense with clarity or we do not have a clear concept to start with. (e.g. How does a straight stick look when placed in a clear glass of water?)
+1.	The great flaw in empiricism as an epistemology is that it must have a non-empirical concept base in which to operate.  
+1.	Gathering empirical information by observation is the process of pattern recognition (seeing familiar things, the concepts we already have) and at the same time seeing or forming new patterns of things we have not before observed, or seeing old concepts in new arrangements. 
+
+
+
+
+
+### Statistical Empiricism
+
+__Definition:__ Statistical empiricism involves using data and statistical methods to draw conclusions that go beyond simple observation.
+
+This approach works well when you need to analyze large amounts of data. For example, if you want to know which brand of tires lasts the longest, you can't just test one tire—you need to test many tires across different brands and use statistical analysis to find the answer.
+
+__Statistical Empiricism in Entrepreneurship__:
+
+1. Measuring market size
+1. Measuring market trends
+1. Measuring expected profitability
+
+Statistical empiricism is powerful but requires careful sampling and data interpretation.
+
+__To Ponder:__
+
+1. __Correlation vs. Causation:__ Statistical empiricism can show us patterns and correlations but doesn’t always explain why things happen (causation).
+1. __Confirmation Bias:__ Be cautious of gathering data just to confirm what you already believe. This can lead to misleading conclusions.
+1.	Empiricism tells us what things happen, but only statistical empiricism can tell us under what regular conditions things happen. This is not a knowledge of causation, but of correlation.
+1.	In every statistical inquiry one must make many assumptions or hypotheses. Sometimes these are so powerful that they overwhelm any data gathered. Doing a valid statistical study is a difficult task.
+1.	All statistical data must be manipulated by some rational process to produce any result. The rational process should be chosen with great care before the data is gathered.
+
+
+
+
+
+### Pragmatism
+
+__Definition:__ Pragmatism is about doing what works. If a certain action consistently gives good results, it makes sense to continue doing it, even if you're unsure why it works.
+
+__Pragmatism in Entrepreneurship:__
+
+1. You notice that offering free shipping on your online store increases sales. Even though you're not entirely sure why it's working, the results are positive, so you decide to keep offering free shipping because it seems to help your business grow.
+1. You raise the price of your product and observe that you generate more revenue.  You might maintain that price because it seems to help.
+
+Pragmatism helps us navigate uncertainty by focusing on what gets results, even when the reasons aren’t fully understood.  It rescues us from our frustration with not knowing when we need to make decisions under uncertainty. It is the attitude of being careful, of rejecting anything where the evidence is slight or inconclusive, to be sure of knowing only that which is fully manifest and apparent.
+
+**To ponder:**
+
+1. Pragmatism is most useful when you don’t have clear answers or when conventional wisdom isn’t working. It allows you to start finding what works, even if you don’t fully understand why.  
+1.	Pragmatism is not a substitute for a firm grasp on the truth. But it may be an important beginning of finding the truth. When all else fails, each of us tends to become pragmatic, especially in entrepreneurship.
+1.	The danger in pragmatism is that we may settle for it, not recognizing that we must seek further. 
+1.	Pragmatism also may lead one to comfort oneself with the idea that the end justifies the means. If I get my way every time I become angry, I am tempted to use anger to get my way, then to comfort myself by justifying the anger because it produces such desirable results.
+
+### Fabrication
+
+
+**Definition**:  Fabrication is the making of ideas, using imagination, to satisfy our desire to know the answer to some question. Inventing ideas to fill in the holes in our knowledge.
+
+Fabrication involves the creation or construction of ideas, systems, or theories without direct empirical support. It’s about constructing models, hypotheses, or frameworks to fill gaps in knowledge when concrete data or established premises are unavailable. Fabrication validates creativity as an epistemology, where innovation and invention play a key role in forming knowledge.
+
+Fabrication is different from rationalism, which relies on logical deductions from known premises. Instead, fabrication is a creative process, building new ideas that might not yet have empirical grounding. It is the act of making something up—often speculatively—in response to uncertainty. This process is essential in fields like entrepreneurship, where the future is often unknown and data may be incomplete or non-existent.
+
+- __Rationalism__ works within the bounds of existing knowledge to deduce conclusions logically. 
+- __Fabrication__, by contrast, is speculative, creatively inventing new models or ideas to bridge the gap where knowledge is lacking.
+
+**Fabrication in Entrepreneurship**:  
+
+Imagine an entrepreneur entering a brand-new market. With little available data, they might fabricate a new business model or marketing strategy based on assumptions, creativity, and hypothetical scenarios. This process is not purely rational; it’s about envisioning possibilities and constructing a model to test and refine over time, even without immediate evidence that it will succeed.
+
+Another example is product innovation—designing a new product concept based on a perceived need or trend. The entrepreneur might not have all the data, but they fabricate the concept and test it in the market, adjusting it as they gather feedback and information.
+
+**Points to Ponder**:
+
+1. **When is fabrication most useful?** Consider how fabrication allows you to bridge gaps in knowledge and create new models when data is incomplete.
+2. **How does fabrication differ from rationalism in decision-making?** Reflect on the role of creativity versus logic in forming ideas and strategies when faced with uncertainty.
+3. **What are the risks and rewards of fabrication?** Explore how embracing creativity and fabrication can lead to breakthrough innovations, while also considering the risks of acting on untested ideas.
+
+
+### Science
+
+**Definition**:  Science is a complex epistemology that synthesizes multiple ways of knowing—such as empiricism, rationalism, skepticism, pragmatism, and fabrication—to construct reliable assertions about the universe. It is a systematic process for generating knowledge that is continually tested and refined. Science builds factual assertions, laws, theories, and principles through a combination of observation, experimentation, and logical reasoning.
+
+Science is not a single method of knowing but rather a process that incorporates various epistemologies to develop a coherent understanding of the world. For example:
+
+- **Empiricism**: Science relies on observation and data collection to form evidence-based conclusions.
+- **Rationalism**: Logical reasoning and deduction help to build theories and interpret data.
+- **Skepticism**: Doubt and critical questioning are integral to testing hypotheses and challenging assumptions.
+- **Fabrication**: Hypotheses and models are created to explain phenomena that are not yet fully understood, providing a framework for further inquiry.
+
+Science continually evolves by questioning and testing its own claims, making it both a method of knowledge creation and a strategy for improving existing knowledge. It stands as an essential epistemology for educated individuals because it provides a structured way to approach complex problems and uncertainties.
+
+**Example in Entrepreneurship**:  
+Imagine an entrepreneur developing a new technology product. The scientific method would involve:
+
+1. **Observation**: Noticing a gap in the market for a specific technology.
+2. **Hypothesis Formation**: Creating a theory about why this product could solve the gap.
+3. **Experimentation**: Building prototypes and conducting experiments with potential users.
+4. **Data Collection**: Gathering empirical evidence about user interaction, feedback, and performance.
+5. **Rational Interpretation**: Analyzing the data to refine the product, iterating on its design and features based on what works and what doesn’t.
+
+Science enables the entrepreneur to move from speculation to reliable conclusions by systematically testing assumptions and refining the product.
+
+**To Ponder**:
+
+1. **What role does science play in validating business ideas?** Explore how entrepreneurs can use scientific methods to reduce uncertainty and validate assumptions in their ventures.
+2. **How does science differ from other epistemologies in entrepreneurship?** Reflect on how science relies on empirical testing and rational analysis to form reliable conclusions, as opposed to relying solely on experience or intuition.
+3. **What are the limitations of science in entrepreneurship?** Consider situations where data might be scarce or experimentation impractical. How does an entrepreneur balance the scientific method with the need for quick decision-making?
+
+
+
+
+### Scholarship
+
+**Definition**:  Scholarship involves the systematic gathering, interpretation, and synthesis of knowledge to inform decision-making. In the entrepreneurial context, scholarship is about drawing on existing research, data, and insights to shape strategy, identify opportunities, and reduce uncertainty.
+
+Modern scholarship in entrepreneurship involves research and synthesis rather than just historical study. Entrepreneurs use scholarship to:
+
+- **Research existing literature and market studies**: This helps entrepreneurs understand trends, market conditions, and patterns that may influence their business decisions.
+- **Synthesize information from various sources**: Entrepreneurs gather knowledge from academic papers, industry reports, market analyses, and case studies to form a comprehensive view of their field.
+- **Fabricate informed assertions**: Based on research, entrepreneurs develop insights and strategies, fabricating assertions about market dynamics, consumer behavior, or industry shifts.
+
+Just as scholars use historical documents to create narratives about the past, entrepreneurs use data and research to shape narratives about the future of their markets and industries.
+
+**Scholarship in Entrepreneurship**:  
+An entrepreneur exploring the renewable energy market might:
+
+1. **Research Past Developments**: Study the evolution of renewable energy technologies and how regulations or market conditions have changed.
+2. **Synthesize Data**: Combine findings from industry reports, academic research, and case studies to build an understanding of opportunities and challenges.
+3. **Fabricate Insights**: Use the synthesis of knowledge to hypothesize where the market is heading and how their product fits within the broader industry trends.
+
+**To Ponder**:
+
+1. **How can scholarship be applied in modern entrepreneurship?** Reflect on how studying past trends and synthesizing research can help inform entrepreneurial decision-making.
+2. **What are the limitations of relying on past knowledge?** Consider the risks of over-relying on past information in fast-changing industries.
+3. **How does scholarship intersect with innovation?** Explore how synthesizing past knowledge can guide innovation without constraining new ideas and opportunities.
+
+
+
+
+## Skepticism: The Anti-Epistemology
+
+**Definition**:  Rejection of all assertions for which there is contrary or insufficient support.
+
+Skepticism is the critical approach to questioning the certainty and justification of knowledge claims. Rather than providing a method for acquiring knowledge, it challenges the assumptions, methods, and conclusions of epistemologies, ensuring that beliefs are well-founded and not accepted prematurely.  It seeks to be sure sure of knowing only that which IS fully manifest and apparent. 
+
+Skepticism acts as an anti-epistemology—standing in opposition to the typical quest for knowledge. It serves as a guardrail, pushing back against the tendency to accept knowledge too easily or too soon. Instead of being a way to gain knowledge, skepticism helps us determine when we don't yet have enough information to confidently make a claim.
+
+Skepticism maintains the boundaries of useful knowledge by challenging the validity and limits of epistemological approaches. Whether through doubt, inquiry, or demanding higher standards of proof, skepticism ensures that claims of knowledge are rigorously scrutinized.
+
+In entrepreneurship, skepticism prevents us from blindly accepting trends, assumptions, or data without thorough investigation. It is a defense mechanism against making decisions based on incomplete or misleading information.
+
+**Skepticism in Entrepreneurship**:  
+
+Consider an entrepreneur who is advised to invest in a trendy new market that promises high returns. Without skepticism, they might jump in without questioning the validity of the data, the assumptions behind the trend, or the credibility of the sources. A skeptical entrepreneur would ask:
+
+- Are the data sources credible?
+- Is the market trend sustainable, or is it just a short-lived bubble?
+- Have others tested this market successfully, or are we relying on speculation?
+
+By critically evaluating these factors, skepticism helps the entrepreneur avoid potential pitfalls and make better-informed decisions.
+
+**To Ponder**:
+
+1. **When should skepticism be applied?** In what scenarios is it useful to question the validity of data or advice, and when might skepticism become a barrier to progress?
+2. **How does skepticism balance with action?** Entrepreneurs must strike a balance between critical thinking and decisiveness. How much skepticism is necessary to ensure sound decisions without causing over-analysis or paralysis?
+3. **What are the dangers of too much skepticism?** Excessive skepticism can prevent taking necessary risks. How can entrepreneurs avoid over-thinking and missing valuable opportunities?
+
+
+
+
+
+## Using Epistemology in Entrepreneurship
+
+When evaluating any assertion, ask yourself:
+
+1. **How do you know?**
+2. **How do you know that you know?**
+
+**Key Points**:
+
+- Every assertion, whether in life or in business, is supported by some form of evidence, reasoning, or intuition. In entrepreneurship, this could range from market data to gut instincts, each of which can be scrutinized through different epistemological lenses.
+  
+- To evaluate the support for an assertion, entrepreneurs must understand and utilize various epistemological approaches:
+  - **Empiricism**: Test and validate ideas through observation and experimentation.
+  - **Rationalism**: Use logical reasoning to connect data points and inform decisions.
+  - **Pragmatism**: Focus on what works, refining strategies based on practical results.
+  - **Skepticism**: Guard against accepting assumptions too quickly, always questioning the strength of the evidence.
+  - **Fabrication**: Create and innovate in the face of uncertainty, using creativity to bridge knowledge gaps.
+
+- A wise entrepreneur combines these epistemologies to navigate uncertainty and make informed decisions. This includes using research, empirical data, logical reasoning, and, when necessary, intuition or creative insights to move forward with confidence.
+
+- Entrepreneurs should be able to explain how they arrived at their conclusions and decisions, much like sharing a testimony of knowledge. This reflective practice not only strengthens the validity of their choices but also helps communicate their reasoning to others—whether it’s to investors, customers, or collaborators.
+
+- Ultimately, the ability to act on knowledge and adjust course when new information arises is a key mark of an effective entrepreneur. As entrepreneurs gain experience, they develop the skill of integrating multiple ways of knowing, helping them become more adaptable and resilient.
+
+
+> It is good to know. But it is better to know that we know.

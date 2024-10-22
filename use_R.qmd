@@ -1,0 +1,441 @@
+---
+title: "Introduction to Using R"
+---
+
+```{r}
+#| output: false
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+library(scales)
+library(gt)
+knitr::opts_chunk$set(echo = TRUE) 
+
+sales_data <- tibble(
+  category = c("A", "B", "A", "C", "B", "A"),
+  price = c(100, 200, 150, 300, 120, 90)
+)
+
+wide_data <- tibble(
+  category = c("A", "B", "C"),
+  Q1_sales = c(100, 150, 200),
+  Q2_sales = c(110, 160, 210)
+)
+```
+
+<style>
+.wrapfig {
+    float: right; 
+    margin: 0 20px 10px 0; /* adjust space around the image */
+    width: 40%; /* adjust image width */
+}
+</style>
+
+## What is R?
+
+R is a **programming language** designed for **statistical computing** and **graphics**. It’s widely used in data science, economics, and academic research to analyze and visualize data. Think of R as a **toolbox** that automates manual, repetitive tasks—especially useful for working with large datasets.
+
+-   You’ll use R to perform calculations, analyze data, and create visualizations.
+-   R is also open source, meaning it’s free to use and has a large community creating useful packages to make your work easier.
+
+------------------------------------------------------------------------
+
+<br>
+
+## Using R as a Calculator
+
+Before diving into programming concepts, let's start by using R as a simple calculator:
+
+```{r}
+## Simple arithmetic
+1 + 1
+3 * 4
+1 / 200 * 30
+(59 + 73 + 2) / 3
+sin(pi / 2)
+```
+
+You can use R just like a calculator for basic math.
+
+### Practice
+
+Try calculating the following in R:
+
+```{r}
+#| echo: false
+#| eval: false
+
+(5 + 3) * 2
+```
+
+------------------------------------------------------------------------
+
+<br>
+
+## Objects in R
+
+Now, let's introduce objects.[^1] Everything in R is an object—numbers, text, datasets, even functions. Objects are like **boxes** that hold information. You can create objects, give them names, and use them later.
+
+[^1]: R is an object-oriented programming (OOP) language. This means that everything in R is treated as an object, whether it's a simple number or a complex dataset. Understanding how objects work is important for using R effectively.
+
+### Creating Objects
+
+Let’s create an object in R. We’ll store a number in a box called `x`:
+
+```{r}
+x <- 5
+x
+```
+
+The characters `<-` can be thought of as the assignment operator -- it is used to assign a name to an object.
+
+Notice how R stores the newly created object in the RStudio environment and allows you to use it. Now, you can use `x` whenever you need the value 5. This idea of naming and storing values is essential in R.
+
+```{r}
+x + 1
+```
+
+### Practice
+
+Try creating an object called `my_number` that stores the value 10:
+
+```{r}
+#| echo: false
+#| eval: false
+my_number <- 10
+my_number
+```
+
+------------------------------------------------------------------------
+
+<br>
+
+## Functions in R
+
+Functions are tasks that take input (called arguments) and give output. For example, `mean()` calculates the average of a group of numbers:
+
+```{r}
+mean(c(1, 2, 3, 4, 5))
+```
+
+The `mean()` function takes a vector of numbers as an argument (`c(1, 2, 3, 4, 5)`) and returns their average.
+
+### Practice
+
+Try using the `sum()` function to add the numbers 5, 10, and 15:
+
+```{r}
+#| echo: false
+sum(5, 10, 15)
+```
+
+Functions in R are like tools in your toolbox. There are many built-in functions, but you can also create your own later in the course!
+
+------------------------------------------------------------------------
+
+<br>
+
+## Libraries in R
+
+R has many libraries (collections of functions). To use one, you first install the library and then load it into your session:
+
+```{r}
+#| eval: false
+## Installing and loading a library
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+You can also use functions from libraries without loading them:
+
+```{r}
+stringr::str_replace("This is the old text", "old", "new")
+```
+
+Here we call the library `stringr` and its function `str_replace` in a single command and without loading the library by separating the library from the function with `::`, i.e., `library::function()`.
+
+### Practice
+
+Create a tibble with inconsistent column names and clean them
+
+1.  Install the `janitor` library.
+2.  Load it using `library(janitor)`.
+3.  Create a small tibble with inconsistent column names (e.g., spaces, uppercase letters).
+4.  Use the `clean_names()` function to clean the column names.
+
+```{r}
+#| eval: false
+#| echo: false
+practice_data <- tibble(
+  "Product Name" = c("Laptop", "Tablet"),
+  "Selling Price $" = c(999, 499),
+  "Number SOLD" = c(25, 100)
+)
+
+## Clean the column names using janitor
+practice_data |> clean_names()
+```
+
+### The Tidyverse
+
+The tidyverse is a collection of libraries designed to make data science easier. We’ll use it throughout the course for data manipulation and visualization.
+
+------------------------------------------------------------------------
+
+<br>
+
+## Data in R
+
+Since R is a data science platform, data is central to everything you do. You’ll often work with different types of data, including numbers, text, and more complex datasets.
+
+R comes with some built-in datasets for you to practice with. Let’s look at a built-in dataset called `mtcars`:
+
+```{r}
+head(mtcars)
+```
+
+### Practice
+
+Try displaying the first few rows of the built-in dataset `iris`:
+
+```{r}
+#| echo: false
+#| eval: false
+head(iris)
+```
+
+------------------------------------------------------------------------
+
+<br>
+
+## Data Frames and Tibbles
+
+In R, tabular data is stored in data frames or tibbles (a tidyverse-friendly data frame). These structures organize your data into rows and columns.
+
+Here’s an example of a small data frame:
+
+```{r}
+sales_data <- tibble(
+  category = c("A", "B", "A", "C", "B", "A"),
+  price = c(100, 200, 150, 300, 120, 90)
+)
+sales_data
+```
+
+You can access specific columns using the `$` operator:
+
+```{r}
+sales_data$category
+```
+
+### Practice
+
+Create a tibble with categories and prices of your choosing.
+
+------------------------------------------------------------------------
+
+<br>
+
+## Basic Data Manipulation
+
+You can filter, select, and manipulate data frames using functions from the `dplyr` package (part of the tidyverse). For example, to filter for a specific category:
+
+```{r}
+filter(sales_data, category == "A")
+```
+
+#### Practice
+
+Try filtering the `sales_data` tibble to show only rows where the price is greater than 120:
+
+```{r}
+#| eval: false
+#| echo: false
+filter(sales_data, price > 120)
+```
+
+------------------------------------------------------------------------
+
+<br>
+
+## Pipe Operator (`%>%` or `|>`)
+
+R lets you chain together multiple commands using pipes. Pipes allow you to take the output of one function and use it as the input for the next. Think of it as saying *"and then..."*.
+
+Here’s an example using the `mtcars` dataset to calculate the average miles per gallon (mpg) for cars with more than 100 horsepower:
+
+```{r}
+mtcars |> 
+  filter(hp > 100) |> 
+  summarize(avg_mpg = mean(mpg))
+```
+
+In this example:
+
+1.  We start with the `mtcars` dataset, **and then**
+2.  We filter it to only include cars with more than 100 horsepower, **and then**
+3.  We summarize the average mpg for these cars.
+
+### Practice
+
+Use pipes to filter the mtcars dataset for cars with more than 20 mpg and then calculate the average horsepower (hp):
+
+```{r}
+#| echo: false
+#| eval: false
+mtcars %>% 
+  filter(mpg > 20) %>% 
+  summarize(avg_hp = mean(hp))
+```
+
+------------------------------------------------------------------------
+
+<br>
+
+## R Scripts
+
+While you can run commands directly in the console, it’s better to save your work in R scripts (files with `.R` extension). This way, you can write and save your code and run it again later.
+
+To create a script, go to the “File” menu in RStudio, choose “New File” and then “R Script.” You can write and save all your commands there.
+
+------------------------------------------------------------------------
+
+<br>
+
+## Error Handling
+
+understand what went wrong. For example, if you try to use a variable that doesn’t exist, R will return an error:
+
+```{r}
+#| error: true
+my_variable
+```
+
+If you’re stuck for more than 15 minutes, ask for help from an AI, a TA or the instructor. They’re available to guide you through debugging.
+
+### Practice
+
+A common error occurs when you try to use a function from a package without loading the library first. For example, let's try using the `to_snake_case()` function without loading the \`snakecase\`\` package. This package and function allow us to convert a string of characters into "snake case" which we will be able to see after fixing the error.
+
+```{r}
+#| error: true
+## Attempting to use to_snake_case() without loading snakecase
+to_snake_case("This is a test string")
+```
+
+You’ll see an error that says something like: `Error in to_snake_case("This is a test string"): could not find function "snakecase"`
+
+The solution to this error is to install and load the library before calling the function.
+
+1.  Install the `snakecase` library (use the `install.packages()` function)
+
+    -   If you got an error that says something like `Error in install.packages : object 'snakecase' not found`, it usually means that you spelled the package name wrong or you did not put the library name in quotes.
+    -   Check your spelling and put the package name in quotes to fix this error (use the `install.packages("library")`) function with the library argument in quotes.
+
+2.  Load the `snakecase` library
+
+3.  Call the snakecase function again to see what snake case is
+
+```{r}
+#| echo: false
+#| eval: false
+#install.packages("snakecase")
+library(snakecase)
+to_snake_case("This is a test string")
+```
+
+------------------------------------------------------------------------
+
+If this error is fixed, you should have the output "this_is_a_test_string". As you can see, snake case means that all upper-case letters are made lower-case and all spaces are replaced by \_.
+
+------------------------------------------------------------------------
+
+<br>
+
+## Getting Help
+
+When you’re stuck or unsure how to use a function, R provides built-in help:
+
+`?function_name`: Shows help documentation for a function. Example: `?mean`
+
+`help("function_name")`: Similar to `?function_name`. Example: `help("mean")`
+
+You can also search online for help. Be sure to add "in R" to your search queries
+
+-   **Google**: Try searching “calculate the mean in R.”
+-   **Stack Overflow**: For programming-specific questions.
+-   **Cross Validated**: For statistics-focused questions.
+-   and many others
+
+## Using AI for Code Assistance
+
+------------------------------------------------------------------------
+
+<br>
+
+AI tools like ChatGPT or R-specific tools like the **R Wizard GPT** are excellent for writing code. You can use them to get help with specific tasks. However, remember that you need to understand the context to ask the right questions and to verify if the solution fits your problem.
+
+------------------------------------------------------------------------
+
+<br>
+
+## Directories in R
+
+A directory is like a folder where R looks for files and saves things. You can find out what directory R is using with:
+
+```{r}
+getwd()
+```
+
+You can change the directory to where your files are located with:
+
+```{r}
+#| eval: false
+setwd("path/to/your/folder")
+```
+
+The Files pane in RStudio also lets you navigate and set directories.
+
+------------------------------------------------------------------------
+
+<br>
+
+## Practice Section
+
+Let’s practice a few of the concepts you’ve learned:
+
+### R as a Calculator
+
+```{r}
+## Simple arithmetic
+1 / 200 * 30
+(59 + 73 + 2) / 3
+sin(pi / 2)
+```
+
+### Creating Objects
+
+```{r}
+## Create new objects
+a <- 3 * 4
+x <- 4 + 3 / 10 ^ 2
+```
+
+### Modifying Objects
+
+```{r}
+## Modify an object
+x <- x + 1
+x
+```
+
+------------------------------------------------------------------------
+
+<br>
+
+## Conclusion
+
+This chapter introduced the fundamentals of R, from its object-oriented structure to how to create objects, work with functions, and import data. As you work through the course, you’ll become more familiar with these concepts, and your confidence in R will grow!
+
+Feel free to experiment with the code examples and ask questions whenever you need help.

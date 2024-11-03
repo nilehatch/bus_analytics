@@ -5,6 +5,12 @@ book:
   title: "An Introduction to Business Analytics for Entrepreneurs"
   author: "Nile Hatch"
   date: "10/21/2024"
+
+  navbar:
+    background: primary
+    search: true
+  reader-mode: true
+
   chapters:
     - index.qmd
     - intro.qmd
@@ -30,6 +36,8 @@ book:
     - part: "EDA"
       chapters:
         - eda.qmd
+        - visualize.qmd        
+        - univariate.qmd                
     - part: "Transforming Data"
 
     - part: "Modeling Data"

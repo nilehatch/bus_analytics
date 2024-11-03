@@ -1,0 +1,1212 @@
+---
+title: "Visualizing Data"
+format:
+  live-html:
+    resources:
+      - data
+    webr:
+      packages:
+#        - tidyverse
+        - ggplot2
+        - dplyr
+        - tibble
+        - readr
+        - readxl        
+        - scales
+        - ggthemes
+      render-df: default
+engine: knitr
+editor: source
+execute:
+  echo: true
+
+#bibliography: biblatex-refs.bib
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| output: false
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+library(scales)
+library(gt)
+knitr::opts_chunk$set(echo = TRUE) 
+
+entrepreneur_data <- tibble(
+  name = c("Alice", "Bob", "Charlie", "Diana", "Eve", "Frank", "Alice", "Gina", "Hank", NA),
+  age = c(34, 42, 29, NA, 25, 37, 34, 31, 48, 29),
+  gender = c("Female", "Male", "Male", "Female", "Female", "Male", "Female", "Female", "Male", "Male"),
+  sector = c("Tech", "Finance", "Tech", "Health", "Tech", "Health", "Tech", "Finance", "Health", "Tech"),
+  revenue_million = c(1.2, 2.3, 0.9, 1.8, NA, 1.1, 1.2, 2.4, 3.0, NA),
+  funding_million = c(3.5, 1.0, 0.5, 2.0, 1.8, NA, 3.5, 1.1, 2.8, 0.5),
+  years_experience = c(10, 15, 5, 12, 2, 8, 10, 7, 20, 5)
+)
+
+entrepreneur_data  <- entrepreneur_data %>% 
+  mutate(years_experience = as.integer(years_experience),
+           gender = as.factor(gender)
+           )
+```
+
+# Introduction to Data Visualization
+
+Data visualization is an essential part of any data analysis. It allows us to see patterns, relationships, and trends that are difficult to grasp from raw data alone. A good visualization clarifies, communicates, and uncovers insights, while a bad visualization can mislead or obscure important information.
+
+In this chapter, we’ll cover the basic principles of effective data visualization and introduce you to the powerful `ggplot2` package in R, which follows the grammar of graphics framework to build layered and flexible visualizations.
+
+# Basic Principles of Good Data Visualization
+
+Before diving into coding, let's discuss some basic principles to keep in mind when creating visualizations:
+
+## 1. Clarity
+
+Your visualization should make the data easier to understand, not harder. Always strive for simplicity and clarity by avoiding unnecessary elements (e.g., 3D effects, excessive gridlines). Every component should contribute to conveying the data's message.
+
+## 2. Honesty
+
+Ensure that your visual representation of data is honest and accurate. This includes using appropriate scales, avoiding distortion (e.g., truncated y-axes that exaggerate differences), and choosing the right chart type for your data.
+
+## 3. Audience Awareness
+
+Always consider the audience when designing a visualization. What message are you trying to communicate, and who will be interpreting it? Tailor your visualization to the needs and experience level of your audience.
+
+## 4. Minimize Cognitive Load
+
+The visualization should be intuitive and easy to read. Minimize the amount of mental effort your audience needs to interpret the graphic. Use familiar chart types and avoid clutter.
+
+## 5. Consistency
+
+Maintain consistent use of colors, scales, and labels. Consistency across visualizations helps the audience compare different aspects of the data and improves the overall readability of your report or presentation.
+
+## 6. Data-Ink Ratio
+
+This principle, popularized by Edward Tufte, suggests that the proportion of "data ink" (the ink used to represent the actual data) to non-data ink (decorations, gridlines, etc.) should be maximized. In other words, reduce chartjunk and highlight the data.
+
+<hr style="border:4px solid #3370F4">
+
+<br><br>
+
+# Visualizing Data with The Grammar of Graphics
+
+Now that we’ve covered the key principles, let’s move on to visualizing data in R using the `ggplot2` package. `ggplot2` follows the **Grammar of Graphics** framework, which breaks down a plot into layers, allowing for flexible and modular plotting.
+
+At the core of `ggplot2` is the idea that any plot can be described by the following elements:
+
+1.  **Data**: The dataset being visualized.
+2.  **Aesthetic mappings (aes)**: The visual properties of the data (e.g., position, color, size) that correspond to the variables in the dataset.
+3.  **Geometric objects (geoms)**: The shapes that represent the data, such as points, lines, and bars.
+4.  **Labels and Titles**: Plot titles and axes labels to make the plot more informative.
+5.  **Scales**: How data values are mapped to visual properties like axes, colors, or sizes.
+6.  **Facets**: Dividing data into subplots.
+7.  **Themes**: Control the visual appearance of the plot.
+
+
+## Example: Basic Plot with `ggplot2`
+
+Let’s walk through a simple example of how `ggplot2` works by exploring data from the production of Liberty ships during World War II. These ships played a crucial role in supporting the Allied war effort by maintaining supply lines across the Atlantic. By the end of the war, ship production time was reduced from 244 days to just 42 days.
+
+For this demonstration, we will focus on just two variables:
+
+-   `Total_Production_Days`: the total number of days required to build and deliver a ship.
+-   `Direct_Hours`: the total direct labor hours spent on constructing each ship.
+
+We'll use these two variables to create a scatter plot and explore their relationship.
+
+## Import the data
+
+Before we create the plot, we first need to import the dataset. The Liberty ship data is stored in a CSV file named `liberty_ship.csv`, located in the `data` subdirectory.
+
+```{r}
+#| warning: false
+#| echo: true
+# Import the cupcakes.csv dataset
+liberty_ship_data <- read_csv("data/liberty_ship.csv")
+liberty_ship_data
+```
+
+## Inspect the data
+
+By inspecting the data, we can confirm that it loaded correctly and get a quick overview before visualizing it. The `glimpse()` and `summary()` functions give us a snapshot of the Liberty ship dataset:
+
+```{r}
+#| echo: true
+glimpse(liberty_ship_data)
+summary(liberty_ship_data)
+```
+
+These functions allow us to quickly verify that the dataset includes all expected variables and to get a general sense of the data's distribution and structure.
+
+Now that we've inspected the data, let’s visualize the relationship between `Total_Production_Days` ( the total number of days required to build and deliver a ship.) and `Direct_Hours` (the total direct labor hours required to build each ship).
+
+Remember, we will follow the grammar of graphics principles:
+
+1.  Data
+2.  Aesthetic mappings (aes)
+3.  Geometric objects (geoms)
+4.  Titles and Labels
+5.  Scales
+6.  Facets
+7.  Themes
+
+## 0. Install and load the `ggplot2` package then call the `ggplot()` function
+
+```{r}
+#| echo: true
+# install.packages("ggplot2") # Install ggplot2 (if needed)
+# Load ggplot2
+library(ggplot2)
+# Call the ggplot function with no arguments
+ggplot()
+```
+
+Since we haven’t provided any data or aesthetic mappings, R returns an empty rectangle. This serves as a placeholder for the plot, showing that we’ll build it layer by layer.
+
+<hr style="border:4px solid #3370F4">
+
+<br>
+
+## 1. Specify the Data
+
+The next step is to specify the dataset that will be plotted.
+
+```{r}
+#| echo: true
+
+ggplot(liberty_ship_data)
+
+```
+
+At this point, we've specified that we want to explore the Liberty ship dataset, but we haven't yet told `ggplot()` which variables we want to plot, so nothing is shown. The plot remains an empty canvas until we declare which variables to use in the plot. In the next step, we will map our variables to create the plot.
+
+<hr style="border:4px solid #3370F4">
+
+<br>
+
+## 2. Map the Aesthetics
+
+Aesthetic mappings in `ggplot()` define how variables in your dataset are visually represented in the plot. The simplest form of aesthetic mapping is to declare which variable will be placed on the x-axis and which will be placed on the y-axis. This is done using the `aes()` function (short for "aesthetics").
+
+In this example, we will map `Direct_Hours` to the x-axis and `Total_Production_Days` to the y-axis:
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days))
+```
+Now, the plot is starting to take shape. `Direct_Hours` is mapped to the x-axis, with a range automatically set from 0 to around 1,250,000, reflecting the range of direct labor hours in the dataset. Similarly, `Total_Production_Days` is mapped to the y-axis, with a range from 0 to around 350, based on the values in that variable. 
+
+At this point, the axes are scaled, but we still don’t see any data points because we haven't added any geometric objects to represent the data visually. To see the data, we need to add a `geom`—in this case, `geom_point()` to create a scatter plot:
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point()
+```
+Now that we’ve added a geometric object, the aesthetic mappings become visible. The points are positioned based on `Direct_Hours` and `Total_Production_Days.`
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+The customer data about the protein-infused Muscle Cola is already imported here as `muscle_cola_data`.  Generate a scatter plot of the willingness to pay of the respondents `WTP` in the x-axis and the number of servings they would consume per month `Quantity` in the y-axis.
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: plot1
+muscle_cola_data <- read_csv("data/muscle_cola.csv")
+```
+
+```{webr}
+#| exercise: plot1
+glimpse(muscle_cola_data)
+ggplot()
+```
+
+## Hints
+
+::: {.hint exercise="plot1"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+Build your plot from layers beginning with specifying the dataset, then specifying aesthetic mapping of the x- and y-variables, then declaring the geometry to plot the data points.
+:::
+
+::: {.hint exercise="plot1"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+Inside the `ggplot` function, add the argument that the dataset is `muscle_cola_data` and the aesthetic mapping `aes()` the specifies that willingness to pay `WTP` is the x variable and `Quantity` is the y variable.  Then call the `geom_point()` function to plot the data as points (scatter plot). 
+
+``` r
+  aes(x = WTP, y = Quantity)
+```
+
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="plot1"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+As arguments to the `ggplot()` function, declare the data as `muscle_cola_data` and the aesthetic mapping as `aes(x = WTP, y = Quantity)`.  Then call the `geom_point()` function to plot the data as points.
+
+``` r
+ggplot(muscle_cola_data,                  #<1>
+       aes(x = WTP, y = Quantity)) +      #<2>
+  geom_point()                            #<3>
+```
+
+1.  Call the `ggplot()` function and specify `muscle_cola_data` as the data
+2.  Specify that aesthetic mapping with `WTP` plotted on the x-axis and `Quantity` on the y-axis
+3.  Call the `geom_point()` function to get a scatter plot of points
+:::
+::::::
+
+<hr style="border:2px solid #3370F4">
+
+### Adding Additional Aesthetic Mappings
+In addition to mapping the x and y variables, we can map other aesthetic properties such as `color`, `shape`, `size`, and `linewidth` to variables in our dataset, and they will apply to all geoms unless overridden within a specific `geom`.
+
+- __Color__: We can use color to differentiate between categories in the data.
+- __Shape__: Shape can be used to differentiate categories in scatter plots.
+- __Size__: Size can represent a numeric variable, making points larger or smaller based on values.
+- __Linewidth__: If you are drawing lines, you can use linewidth to control the thickness of the lines.
+
+Here’s how to map the variable `Yard` to color to show how different shipyards affect the relationship between production time and labor hours:
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days, color = Yard)) +
+  geom_point()
+```
+In this `case`, color differentiates the shipyards, and each point will be colored according to which shipyard built that ship. This helps to visually distinguish groups within the data.
+
+We can also add other aesthetic mappings, such as `size`, to show the relationship between additional variables:
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days, color = Yard, size = Total_ManHours)) +
+  geom_point()
+```
+Here, the size of each point corresponds to the total number of man-hours required for each ship, providing additional insight into how labor hours relate to production time.
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+Now map the variable `Gym_member` to color to show how gym membership affects the relationship between willingness to pay `WTP` and consumption `Quantity.`
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: plot2
+muscle_cola_data <- read_csv("data/muscle_cola.csv")
+```
+
+```{webr}
+#| exercise: plot2
+glimpse(muscle_cola_data)
+ggplot()
+```
+
+## Hints
+
+::: {.hint exercise="plot2"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+Re-build your plot from layers beginning with specifying the dataset, then specifying aesthetic mapping of the x- and y-variables as well as the aesthetic mapping of gym membership to color. Then declare the geometry to plot the data points.
+:::
+
+::: {.hint exercise="plot2"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+Inside the `ggplot` function, add the argument that the dataset is `muscle_cola_data` and the aesthetic mapping `aes()` the specifies that willingness to pay `WTP` is the x variable and `Quantity` is the y variable. Add an argument inside the aesthetic mapping that maps color to `Gym_member`. Then call the `geom_point()` function to plot the data as points (scatter plot). 
+
+``` r
+  aes(x = WTP, y = Quantity, color = Gym_member)
+```
+
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="plot2"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+As arguments to the `ggplot()` function, declare the data as `muscle_cola_data` and the aesthetic mapping as `aes(x = WTP, y = Quantity, color = Gym_member)`.  Then call the `geom_point()` function to plot the data as points.
+
+``` r
+ggplot(muscle_cola_data,                                      #<1>
+       aes(x = WTP, y = Quantity, color = Gym_member)) +      #<2>
+  geom_point()                                                #<3>
+```
+
+1.  Call the `ggplot()` function and specify `muscle_cola_data` as the data
+2.  Specify that aesthetic mapping with `WTP` plotted on the x-axis and `Quantity` on the y-axis, adding the mapping of color to `Gym_member`
+3.  Call the `geom_point()` function to get a scatter plot of points
+:::
+::::::
+
+<hr style="border:2px solid #3370F4">
+
+
+### Aesthetics in Layers
+In some cases, you may want to apply aesthetic mappings only to specific `geoms`. Aesthetic mappings can be defined within individual layers (`geoms`), allowing you to control the appearance of different geoms independently. For example, we can apply color to the points while adding a line connecting the points, showing the sequence of production time and labor hours:
+
+<!--
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +         # Color by shipyard in the point layer
+  geom_text(aes(label = Yard), vjust = -1) # Add text labels for each point
+```
+-->
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +         # Color by shipyard in the point layer
+  geom_line()                             # Add a line connecting the points
+
+```
+
+### Summary of Aesthetic Mappings
+To summarize, aesthetic mappings allow you to represent variables in your data through different visual properties, such as:
+
+- __x and y positions__: Mapped using `aes(x = , y = )`.
+- __color__: Used to visually separate categories.
+- __shape__: Differentiates categories in scatter plots.
+- __size__: Represents numeric variables by adjusting the size of points.
+- __linewidth__: Controls line thickness for line-based `geoms` like `geom_line()` or `geom_smooth()`.
+
+<hr style="border:4px solid #3370F4">
+
+<br>
+
+## 3. Geometric Objects (geoms)
+
+Even though we’ve mapped the variables to the axes, the data isn't yet visible because we haven't specified how to represent it. This is where we declare the geometric object or `geom`. The `geom` defines the shape that will be used to display the data.
+
+In this case, we will use `geom_point()` to add a layer of points to the plot, where each point represents a single observation.
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(data = liberty_ship_data,
+       mapping = aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point()
+```
+
+Here, `geom_point()` adds a scatter plot layer, with each point corresponding to a pair of values from `Total_Production_Days` and `Direct_Hours.` Now we can see the data, where each point represents one Liberty ship's production time and labor hours.
+
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+1. Plot the relationship between willingness to pay `WTP` and monthly consumption `Quantity.`
+2. Map the variable `Gym_member` to color to show how gym membership affects the relationship between willingness to pay `WTP` and consumption `Quantity.`
+3. Map the length of the respondent's workout `Workout_length` to shape to show how workout length affects the relationship.
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: plot3
+muscle_cola_data <- read_csv("data/muscle_cola.csv")
+```
+
+```{webr}
+#| exercise: plot3
+glimpse(muscle_cola_data)
+ggplot()
+```
+
+## Hints
+
+::: {.hint exercise="plot3"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+Re-build your plot from layers beginning with specifying the dataset, then specifying aesthetic mapping of the x- and y-variables as well as the aesthetic mapping of gym membership to color. Inside a new aesthetic mapping in the point geometry, map the shape of the point to the length of the workout. Then declare the geometry to plot the data points.
+:::
+
+::: {.hint exercise="plot3"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+Inside the `ggplot` function, add the argument that the dataset is `muscle_cola_data` and the aesthetic mapping `aes()` the specifies that willingness to pay `WTP` is the x variable and `Quantity` is the y variable. Add an argument inside the aesthetic mapping that maps color to `Gym_member`. Then call the `geom_point()` function to plot the data as points (scatter plot). Add an aesthetic mapping of `shape` to `Workout_length` inside the `geom_point()`.
+
+``` r
+  geom_point(aes(shape = Gym_member))
+```
+
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="plot3"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+As arguments to the `ggplot()` function, declare the data as `muscle_cola_data` and the aesthetic mapping as `aes(x = WTP, y = Quantity, color = Gym_member)`.  Then call the `geom_point()` function to plot the data as points.
+
+``` r
+ggplot(muscle_cola_data,                                      #<1>
+       aes(x = WTP, y = Quantity, color = Gym_member)) +      #<2>
+  geom_point(aes(shape = Workout_length))                     #<3>
+```
+
+1.  Call the `ggplot()` function and specify `muscle_cola_data` as the data
+2.  Specify that aesthetic mapping with `WTP` plotted on the x-axis and `Quantity` on the y-axis, adding the mapping of color to `Gym_member`
+3.  Call the `geom_point()` function to get a scatter plot of points and add the aesthetic that maps `shape` to the `Workout_length`
+:::
+::::::
+
+
+<hr style="border:4px solid #3370F4">
+
+<br>
+
+## 4. Labels and Titles
+To make the plot more informative, we can add titles and labels for the axes. This helps clarify what the variables represent and provides context for the viewer.
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +  # Color by shipyard
+  labs(title = "Liberty Ship Production Time vs. Labor Hours",
+       x = "Direct Labor Hours",
+       y = "Total Production Days")
+```
+
+In this plot:
+
+- __title__: Describes what the plot is about.
+- __x and y labels__: Make the axes clear so viewers know what each variable represents.
+
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+1. Plot the relationship between willingness to pay `WTP` and monthly consumption `Quantity.`
+2. Map the variable `Gym_member` to color to show how gym membership affects the relationship between willingness to pay `WTP` and consumption `Quantity.`
+3. Map the length of the respondent's workout `Workout_length` to shape to show how workout length affects the relationship.
+4. Add title and axes labels 
+
+    - Make the title "Willingness to Pay and Consume Muscle Cola"
+    - Make the x-axis "Willingness to Pay"
+    - Make the y-axis "Quantity Consumed"
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: plot4
+muscle_cola_data <- read_csv("data/muscle_cola.csv")
+```
+
+```{webr}
+#| exercise: plot4
+glimpse(muscle_cola_data)
+ggplot()
+```
+
+## Hints
+
+::: {.hint exercise="plot4"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+Re-build your plot from layers beginning with specifying the dataset, then specifying aesthetic mapping of the x- and y-variables as well as the aesthetic mapping of gym membership to color. Inside a new aesthetic mapping in the point geometry, map the shape of the point to the length of the workout. Then declare the geometry to plot the data points. Then add the title and labels as instructed.
+:::
+
+::: {.hint exercise="plot4"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+Inside the `ggplot` function, add the argument that the dataset is `muscle_cola_data` and the aesthetic mapping `aes()` the specifies that willingness to pay `WTP` is the x variable and `Quantity` is the y variable. Add an argument inside the aesthetic mapping that maps color to `Gym_member`. Then call the `geom_point()` function to plot the data as points (scatter plot). Add an aesthetic mapping of `shape` to `Workout_length` inside the `geom_point()`. Then call the `labs()` function using arguments `title = "Willingness to Pay and Consume Muscle Cola", x = "Willingness to Pay", y = "Quantity Consumed"`.
+
+``` r
+  labs(title = "Willingness to Pay and Consume Muscle Cola", 
+       x = "Willingness to Pay", 
+       y = "Quantity Consumed"
+       )
+```
+
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="plot4"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+As arguments to the `ggplot()` function, declare the data as `muscle_cola_data` and the aesthetic mapping as `aes(x = WTP, y = Quantity, color = Gym_member)`.  Then call the `geom_point()` function to plot the data as points. Then call the `labs()` function to add the title and axes labels.
+
+``` r
+ggplot(muscle_cola_data,                                      #<1>
+       aes(x = WTP, y = Quantity, color = Gym_member)) +      #<2>
+  geom_point(aes(shape = Workout_length)) +                   #<3>
+  labs(title = "Willingness to Pay and Consume Muscle Cola",  #<4>
+       x = "Willingness to Pay",                              #<5>
+       y = "Quantity Consumed")                               #<6>
+```
+
+1.  Call the `ggplot()` function and specify `muscle_cola_data` as the data
+2.  Specify that aesthetic mapping with `WTP` plotted on the x-axis and `Quantity` on the y-axis, adding the mapping of color to `Gym_member`
+3.  Call the `geom_point()` function to get a scatter plot of points and add the aesthetic that maps `shape` to the `Workout_length`
+4.  Call the `labs()` function and specify the `title`
+5.  Specify the x-axis label
+6.  Specify the y-axis label
+:::
+::::::
+
+
+<hr style="border:4px solid #3370F4">
+
+<br>
+
+## 5. Scales
+Scales define how your data values are translated into visual properties such as axis ranges, color gradients, or point sizes. Scales are an important tool when you need to refine the default behavior of `ggplot2.`
+
+Adjusting Axis Scales
+You can use `scale_x_continuous()` and `scale_y_continuous()` to control the appearance of the x- and y-axes. For instance, you may want to limit the range of the axes or change the axis labels.
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +  # Color by shipyard
+  labs(title = "Liberty Ship Production Time vs. Labor Hours",
+       x = "Direct Labor Hours",
+       y = "Total Production Days") +
+  scale_x_continuous(limits = c(0, 1500000), breaks = seq(0, 1500000, 250000), labels = comma) +
+  scale_y_continuous(limits = c(0, 400), breaks = seq(0, 400, 50))
+```
+In this example:
+
+- __limits__: Define the minimum and maximum range for the axis.
+- __breaks__: Specify the intervals for the axis ticks to make the plot more readable.
+
+### Adjusting Color Scales
+You can control the color scale with `scale_color_manual()` or `scale_color_gradient()` when you want specific colors for categories or continuous data.
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +  # Color by shipyard
+  labs(title = "Liberty Ship Production Time vs. Labor Hours",
+       x = "Direct Labor Hours",
+       y = "Total Production Days") +
+  scale_color_manual(values = c("blue", "red", "green", "purple", "orange", "yellow"))
+```
+In this example, we manually assign colors to different shipyards using `scale_color_manual()`.
+
+Alternatively, for continuous data, you can use `scale_color_gradient()` to create a color gradient based on the data values:
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days, color = Total_ManHours)) +
+  geom_point() +                    # Points colored by total man-hours
+  labs(title = "Liberty Ship Production Time vs. Labor Hours",
+       x = "Direct Labor Hours",
+       y = "Total Production Days") +
+  scale_color_gradient(low = "blue", high = "red")
+```
+In this case:
+
+- `scale_color_gradient()`: Maps the values of `Total_ManHours` to a gradient ranging from blue (low values) to red (high values).
+
+### Adding Currency to Scales
+When dealing with financial data, you may need to format axis labels to display values as currency. In `ggplot2`, this can be done using the `scales` package, which provides a variety of formatting functions. The most common for financial data is `dollar()`.
+
+#### Example: Formatting Axis Labels as Currency
+Let’s say you want to display Total_Cost as a financial value (for instance, costs in dollars). You can use `scale_y_continuous()` (or `scale_x_continuous()` for the x-axis) and apply the `dollar()` function to format the axis values.
+
+```{r}
+#| echo: true
+#| warning: false
+library(scales)  # Load the scales package for currency formatting
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = TC)) +
+  geom_point(aes(color = Yard)) +  # Color by shipyard
+  labs(title = "Liberty Ship Production Time vs. Labor Hours",
+       x = "Direct Labor Hours",
+       y = "Total Cost") +
+  scale_x_continuous(labels = comma) +  
+  scale_y_continuous(labels = dollar)  # Format y-axis as currency
+```
+In this example:
+
+- `scales::dollar()`: Automatically formats the x-axis labels as currency, adding dollar signs and commas where appropriate.
+
+#### Example: Formatting Axis with Custom Currency or Units
+You can also customize the currency format (e.g., changing the currency symbol or specifying decimals).
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = TC)) +
+  geom_point(aes(color = Yard)) +  # Color by shipyard
+  labs(title = "Liberty Ship Production Time vs. Labor Hours",
+       x = "Direct Labor Hours",
+       y = "Total Cost") +
+  scale_x_continuous(labels = comma) +
+  scale_y_continuous(labels = dollar_format(prefix = "$", suffix = "K", scale = 0.001))
+```
+In this example:
+
+- `dollar_format(prefix = "$", suffix = "K", scale = 0.001)`: Adds a dollar sign prefix, a "K" suffix to represent thousands, and scales the values down by a factor of 1,000. For example, 1,000,000 becomes "$1,000K."
+
+#### Example: Formatting for Other Currencies
+You can also format the labels for other currencies by changing the prefix. Here’s how you might display values in euros or pounds:
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = TC)) +
+  geom_point(aes(color = Yard)) +  # Color by shipyard
+  labs(title = "Liberty Ship Production Time vs. Labor Hours",
+       x = "Direct Labor Hours",
+       y = "Total Cost (in €)") +
+  scale_x_continuous(labels = comma) +
+  scale_y_continuous(labels = dollar_format(prefix = "€", suffix = ""))
+```
+Here, the x-axis values will be displayed in euros (e.g., "€1,000").
+
+
+### Recap of Scales:
+
+- `scale_x_continuous()` / `scale_y_continuous()`: Adjust axis ranges, breaks, and labels.
+- `scale_color_manual()`: Manually assign specific colors to categories.
+- `scale_color_gradient()`: Create color gradients for continuous data.
+- `scales::dollar()`: Quickly formats axis labels as dollars.
+- `dollar_format()`: Allows you to customize the currency symbol, add suffixes like "K" or "M", and scale the values for better readability.
+- __Other Currencies__: You can use `dollar_format()` for any currency by modifying the prefix argument (e.g., "€" or "£").
+
+Using scales allows you to fine-tune how your data is presented visually, giving you more control over the plot's aesthetics. For example, currency formatting is a handy tool when dealing with financial data, making your plots clearer and more professional in entrepreneurial contexts.
+
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+1. Plot the relationship between willingness to pay `WTP` and monthly consumption `Quantity.`
+2. Map the variable `Gym_member` to color to show how gym membership affects the relationship between willingness to pay `WTP` and consumption `Quantity.`
+3. Map the length of the respondent's workout `Workout_length` to shape to show how workout length affects the relationship.
+4. Add title and axes labels 
+
+    - Make the title "Willingness to Pay and Consume Muscle Cola"
+    - Make the x-axis "Willingness to Pay"
+    - Make the y-axis "Quantity Consumed"
+    
+5.  Set the x-axis scale to be currency in dollars ($). Note that the `scales` library is already loaded so the scale functions are available to you.
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: plot6
+muscle_cola_data <- read_csv("data/muscle_cola.csv")
+```
+
+```{webr}
+#| exercise: plot6
+glimpse(muscle_cola_data)
+ggplot()
+```
+
+## Hints
+
+::: {.hint exercise="plot6"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+Re-build your plot from layers beginning with specifying the dataset, then specifying aesthetic mapping of the x- and y-variables as well as the aesthetic mapping of gym membership to color. Inside a new aesthetic mapping in the point geometry, map the shape of the point to the length of the workout. Then declare the geometry to plot the data points. Then add the title and labels.
+Then format the x-axis to have currency in dollars.
+:::
+
+::: {.hint exercise="plot6"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+Inside the `ggplot` function, add the argument that the dataset is `muscle_cola_data` and the aesthetic mapping `aes()` the specifies that willingness to pay `WTP` is the x variable and `Quantity` is the y variable. Add an argument inside the aesthetic mapping that maps color to `Gym_member`. Then call the `geom_point()` function to plot the data as points (scatter plot). Add an aesthetic mapping of `shape` to `Workout_length` inside the `geom_point()`. Then call the `labs()` function using arguments `title = "Willingness to Pay and Consume Muscle Cola", x = "Willingness to Pay", y = "Quantity Consumed"`. Then call the `scale_x_continuous()` function and specify the argument that the labels are `dollar` currency.
+
+``` r
+  labs(title = "Willingness to Pay and Consume Muscle Cola", 
+       x = "Willingness to Pay", 
+       y = "Quantity Consumed"
+       )
+```
+
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="plot6"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+As arguments to the `ggplot()` function, declare the data as `muscle_cola_data` and the aesthetic mapping as `aes(x = WTP, y = Quantity, color = Gym_member)`.  Then call the `geom_point()` function to plot the data as points. Then call the `labs()` function to add the title and axes labels. Then call the `scale_x_continuous()` function to specify the x-axis scale `labels` to be `dollar` currency.
+
+``` r
+ggplot(muscle_cola_data,                                      #<1>
+       aes(x = WTP, y = Quantity, color = Gym_member)) +      #<2>
+  geom_point(aes(shape = Workout_length)) +                   #<3>
+  labs(title = "Willingness to Pay and Consume Muscle Cola",  #<4>
+       x = "Willingness to Pay",                              #<5>
+       y = "Quantity Consumed") +                             #<6>
+  scale_x_continuous(labels = dollar)                         #<7>
+```
+
+1.  Call the `ggplot()` function and specify `muscle_cola_data` as the data
+2.  Specify that aesthetic mapping with `WTP` plotted on the x-axis and `Quantity` on the y-axis, adding the mapping of color to `Gym_member`
+3.  Call the `geom_point()` function to get a scatter plot of points and add the aesthetic that maps `shape` to the `Workout_length`
+4.  Call the `labs()` function and specify the `title`
+5.  Specify the x-axis label
+6.  Specify the y-axis label
+7.  Call the `scale_x_continuous()` function and specify the `labels` to be `dollar.`
+:::
+::::::
+
+<hr style="border:4px solid #3370F4">
+
+<br>
+
+## 6. Facets
+Faceting allows you to split your data into multiple panels or subplots based on the values of one or more categorical variables. This is useful when you want to compare the same relationship across different subsets of the data, such as different categories or groups.
+
+### Example: Using `facet_wrap()`
+The function `facet_wrap()` is used to create facets (small multiples) for a single variable. In the following example, we create a separate plot for each Yard to compare the relationship between `Direct_Hours` and `Total_Production_Days` across shipyards.
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +  # Color by shipyard
+  labs(title = "Liberty Ship Production Time vs. Labor Hours",
+       x = "Direct Labor Hours",
+       y = "Total Production Days") +
+  scale_x_continuous(labels = comma) +
+  facet_wrap(~ Yard)
+```
+Here:
+
+- `facet_wrap(~ Yard)`: Creates a separate panel for each shipyard, showing how the relationship between `Direct_Hours` and `Total_Production_Days` varies across shipyards.
+
+### Example: Using `facet_grid()`
+If you want to facet your data on two variables (one on the x-axis and one on the y-axis), you can use `facet_grid()`. This function creates a grid of plots where rows and columns represent different variables.
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data,
+       aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +  # Color by shipyard
+  labs(title = "Liberty Ship Production Time vs. Labor Hours",
+       x = "Direct Labor Hours",
+       y = "Total Production Days") +
+  scale_x_continuous(labels = comma) +
+  facet_grid(Way ~ Yard)
+```
+Here:
+
+- `facet_grid(Way ~ Yard)`: Creates a grid of plots where each row corresponds to a different production platform (way) and each column corresponds to a production yard.
+
+### Why Use Facets?
+
+- __Easy comparisons__: Facets make it easy to compare the same relationship across different categories without overcrowding a single plot.
+- __Clarity__: By splitting the data into smaller, separate plots, facets allow you to focus on specific subgroups of the data.
+
+Faceting is a powerful tool in ggplot2 for visualizing complex relationships in your data by dividing it into more digestible pieces. It can be particularly helpful when comparing categorical variables or exploring subsets of the data.
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+1. Plot the relationship between willingness to pay `WTP` and monthly consumption `Quantity.`
+2. Map the variable `Gym_member` to color to show how gym membership affects the relationship between willingness to pay `WTP` and consumption `Quantity.`
+3. Map the length of the respondent's workout `Workout_length` to shape to show how workout length affects the relationship.
+4. Add title and axes labels 
+
+    - Make the title "Willingness to Pay and Consume Muscle Cola"
+    - Make the x-axis "Willingness to Pay"
+    - Make the y-axis "Quantity Consumed"
+    
+5.  Set the x-axis scale to be currency in dollars ($)
+6.  Create facets to separate the effects of the relationship for the preferred drink `Drink_preferred` of the respondents.
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: plot7
+muscle_cola_data <- read_csv("data/muscle_cola.csv")
+```
+
+```{webr}
+#| exercise: plot7
+glimpse(muscle_cola_data)
+ggplot()
+```
+
+## Hints
+
+::: {.hint exercise="plot7"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+Re-build your plot from layers beginning with specifying the dataset, then specifying aesthetic mapping of the x- and y-variables as well as the aesthetic mapping of gym membership to color. Inside a new aesthetic mapping in the point geometry, map the shape of the point to the length of the workout. Then declare the geometry to plot the data points. Then add the title and labels.
+Then format the x-axis to have currency in dollars. Then wrap the plot facets by respondent drink preference.
+:::
+
+::: {.hint exercise="plot7"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+Inside the `ggplot` function, add the argument that the dataset is `muscle_cola_data` and the aesthetic mapping `aes()` the specifies that willingness to pay `WTP` is the x variable and `Quantity` is the y variable. Add an argument inside the aesthetic mapping that maps color to `Gym_member`. Then call the `geom_point()` function to plot the data as points (scatter plot). 
+4. Add an aesthetic mapping of `shape` to `Workout_length` inside the `geom_point()`. Then call the `labs()` function using arguments `title = "Willingness to Pay and Consume Muscle Cola", x = "Willingness to Pay", y = "Quantity Consumed"`. Then call the `scale_x_continuous()` function and specify the argument that the labels are `dollar` currency. Then call the `facet_wrap()` function and specify it to create facets for each `Drink_preferred`
+
+``` r
+ facet_wrap(~ Drink_preferred)
+```
+
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="plot7"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+As arguments to the `ggplot()` function, declare the data as `muscle_cola_data` and the aesthetic mapping as `aes(x = WTP, y = Quantity, color = Gym_member)`.  Then call the `geom_point()` function to plot the data as points. Then call the `labs()` function to add the title and axes labels. Then call the `scale_x_continuous()` function to specify the x-axis scale `labels` to be `dollar` currency. Then call the `facet_wrap()` function to specify the facets to be created and wrapped on `Drink_preferrence`.
+
+``` r
+ggplot(muscle_cola_data,                                      #<1>
+       aes(x = WTP, y = Quantity, color = Gym_member)) +      #<2>
+  geom_point(aes(shape = Workout_length)) +                   #<3>
+  labs(title = "Willingness to Pay and Consume Muscle Cola",  #<4>
+       x = "Willingness to Pay",                              #<5>
+       y = "Quantity Consumed") +                             #<6>
+  scale_x_continuous(labels = dollar) +                       #<7>
+  facet_wrap(~ Drink_preferred)                               #<8>  
+```
+
+1.  Call the `ggplot()` function and specify `muscle_cola_data` as the data
+2.  Specify that aesthetic mapping with `WTP` plotted on the x-axis and `Quantity` on the y-axis, adding the mapping of color to `Gym_member`
+3.  Call the `geom_point()` function to get a scatter plot of points and add the aesthetic that maps `shape` to the `Workout_length`
+4.  Call the `labs()` function and specify the `title`
+5.  Specify the x-axis label
+6.  Specify the y-axis label
+7.  Call the `scale_x_continuous()` function and specify the `labels` to be `dollar`.
+8.  Call the `facet_wrap()` function and specify the facets to be created for `Drink_preferred`.
+:::
+::::::
+
+
+
+<hr style="border:4px solid #3370F4">
+
+<br>
+
+## 7. Themes
+Themes in `ggplot2` control the non-data-related visual aspects of the plot, such as background color, gridlines, text size, and font. While the default theme in `ggplot2` works well in many cases, customizing the theme can make your plot more suitable for reports, presentations, or other specific formats.
+
+### Default Theme: `theme_gray()`
+The default theme in `ggplot2` is `theme_gray()`, which uses a gray background and white gridlines. This is a good starting point, but you might want to change the theme to fit your needs.
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data, aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +  # Color by shipyard
+  labs(title = "Liberty Ship Production Time vs. Labor Hours",
+       x = "Direct Labor Hours",
+       y = "Total Production Days") +
+  scale_x_continuous(labels = comma) +
+  theme_gray()
+```
+
+### Customizing the Theme
+You can use several built-in themes to quickly change the appearance of your plot. For example:
+
+- `theme_gray():` Gray background color and white grid lines. Put the data forward to make comparisons easy. This is the default theme in ggplot.
+- `theme_bw()`: White background and gray grid lines. May work better for presentations displayed with a projector.
+- `theme_light()`: A theme with light grey lines and axes, to direct more attention towards the data.
+- `theme_dark()`: Same as `theme_light` but with a dark background. Useful to make thin coloured lines pop out.
+- `theme_minimal()`: A clean, simple theme that removes unnecessary gridlines and backgrounds.
+- `theme_classic()`: A traditional theme with only axis lines and no gridlines.
+- `theme_void()`: A completely empty theme, useful for non-standard plots or creative visualizations.
+
+```{r}
+#| echo: false
+#| warning: false
+p <- ggplot(liberty_ship_data, aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +  
+  labs(x = "Direct Labor Hours",
+       y = "Total Production Days") +
+#  scale_x_continuous(labels = dollar_format(prefix = "", suffix = "M", scale = 0.000001))
+  scale_x_continuous(labels = comma)
+
+p0 <- p + theme_gray() +  theme(legend.position = "none")  + ggtitle("theme_gray()")
+p1 <- p + theme_bw() +  theme(legend.position = "none") + ggtitle("theme_bw()")
+p4 <- p + theme_minimal() +  theme(legend.position = "none") + ggtitle("theme_minimal()")
+p2 <- p + theme_light() +  theme(legend.position = "none") + ggtitle("theme_light()")
+p3 <- p + theme_dark() +  theme(legend.position = "none") + ggtitle("theme_dark()")
+p5 <- p + theme_void() +  theme(legend.position = "none") + ggtitle("theme_void()")
+
+library(cowplot)
+# Combine the plots into a 2x2 grid
+plot_grid(p0, p1, p4, p2, p3, p5, ncol = 2)
+```
+
+### Example: Customizing Specific Theme Elements
+In addition to using predefined themes, you can customize individual elements of the theme, such as the background, text size, or axis lines.
+
+```{r}
+#| echo: true
+#| warning: false
+ggplot(liberty_ship_data, aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +
+  labs(title = "Liberty Ship Production: Custom Theme") +
+  scale_x_continuous(labels = comma) +  
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold"),
+    axis.title = element_text(size = 12),
+    panel.grid.major = element_line(color = "gray", size = 0.5),
+    panel.background = element_rect(fill = "white"),
+    legend.position = "top"
+  )
+```
+In this example, we use `theme_minimal()` as a base and customize:
+
+- `plot.title`: Adjusting the font size and boldness of the title.
+- `axis.title`: Changing the font size of axis labels.
+- `panel.grid.major`: Customizing the major gridlines.
+- `panel.background`: Setting the background color.
+- `legend.position`: Moving the legend to the top of the plot.
+
+### Example: Using External Themes (`ggthemes`)
+In addition to built-in themes, you can use external packages like `ggthemes` to apply specialized themes, such as themes that mimic professional charts (e.g., from The Economist, Wall Street Journal).
+
+```{r}
+#| echo: true
+#| warning: false
+# install.packages("ggthemes") # Install and load ggthemes (if needed)
+library(ggthemes)
+ggplot(liberty_ship_data, aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +  
+  labs(title = "Liberty Ship Production: Economist Theme",
+       x = "Direct Labor Hours",
+       y = "Total Production Days") +
+  scale_x_continuous(labels = comma) +
+  theme_economist()  # Apply a theme from ggthemes
+```
+
+You can use several other themes from the `ggthemes` package to adopt their appearance. For example:
+
+- `theme_excel()`: theme mimicking default plot theme in Excel bridging the gap between `ggplot2` and Excel
+- `theme_tufte()`: a minimalist theme adhering to the principles espoused by Edward Tufte who is mentioned above 
+- `theme_economist()`: theme based on the plots in the Economist magazine 
+- `theme_wsj()`: theme based on plots in the Wall Street Journal with clean, professional visuals that mirror financial or business reporting
+- `theme_fivethirtyeight()`: modern chart theme often seen in political or sports analytics found in the popular data-driven news site FiveThirtyEight
+- `theme_hc()`: theme based on Highcharts JS
+
+```{r}
+#| echo: false
+#| warning: false
+p <- ggplot(liberty_ship_data, aes(x = Direct_Hours, y = Total_Production_Days)) +
+  geom_point(aes(color = Yard)) +  
+  labs(x = "Direct Labor Hours",
+       y = "Total Production Days") +
+  scale_x_continuous(labels = dollar_format(prefix = "", suffix = "M", scale = 0.000001))
+
+
+p6 <- p + theme_excel() +  theme(legend.position = "none")  + ggtitle("theme_excel()")
+p7 <- p + theme_tufte() +  theme(legend.position = "none") + ggtitle("theme_tufte()")
+p8 <- p + theme_economist_white() +  theme(legend.position = "none") + ggtitle("theme_economist_white()")
+p9 <- p + theme_wsj() +  theme(legend.position = "none") + ggtitle("theme_wsj()")
+p10 <- p + theme_fivethirtyeight() +  theme(legend.position = "none") + ggtitle("theme_fivethirtyeight()")
+p11 <- p + theme_hc() +  theme(legend.position = "none") + ggtitle("theme_hc()")
+
+library(cowplot)
+# Combine the plots into a 2x2 grid
+plot_grid(p6, p7, p8, p9, p10, p11, ncol = 2)
+```
+
+### Why Use Themes?
+
+- __Consistency__: Applying a consistent theme across multiple plots can give your visualizations a professional look.
+- __Readability__: Themes help you control elements that make your plots easier to read, especially when presenting in different formats (e.g., reports, presentations).
+- __Customization__: You can tailor your plot's appearance to your audience or purpose by fine-tuning individual elements.
+
+### Recap of Themes:
+
+- __Built-in themes__: ggplot2 offers several built-in themes like `theme_gray()`, `theme_minimal()`, `theme_classic()`, and more.
+- __External themes__: Packages like `ggthemes` provide additional styles to make your plots look more professional or specialized.
+- __Custom themes__: You can customize individual elements of a theme, such as text size, gridlines, and backgrounds, to match your specific needs.
+
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+1. Plot the relationship between willingness to pay `WTP` and monthly consumption `Quantity.`
+2. Map the variable `Gym_member` to color to show how gym membership affects the relationship between willingness to pay `WTP` and consumption `Quantity.`
+3. Map the length of the respondent's workout `Workout_length` to shape to show how workout length affects the relationship.
+4. Add title and axes labels 
+
+    - Make the title "Willingness to Pay and Consume Muscle Cola"
+    - Make the x-axis "Willingness to Pay"
+    - Make the y-axis "Quantity Consumed"
+    
+5.  Set the x-axis scale to be currency in dollars ($)
+6.  _Drop the facet wrap to reduce complexity._
+7.  Create the plot in at least two themes other than the default `theme_gray()`.  Note that `ggthemes` is already loaded so you can choose from any themes in that library as well.
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: plot8
+muscle_cola_data <- read_csv("data/muscle_cola.csv")
+```
+
+```{webr}
+#| exercise: plot8
+glimpse(muscle_cola_data)
+ggplot()
+```
+
+## Hints
+
+::: {.hint exercise="plot8"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+Re-build your plot from layers beginning with specifying the dataset, then specifying aesthetic mapping of the x- and y-variables as well as the aesthetic mapping of gym membership to color. Inside a new aesthetic mapping in the point geometry, map the shape of the point to the length of the workout. Then declare the geometry to plot the data points. Then add the title and labels.
+Then format the x-axis to have currency in dollars. Add a theme and evaluate your preferences for the appearance.
+:::
+
+::: {.hint exercise="plot8"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+Inside the `ggplot` function, add the argument that the dataset is `muscle_cola_data` and the aesthetic mapping `aes()` the specifies that willingness to pay `WTP` is the x variable and `Quantity` is the y variable. Add an argument inside the aesthetic mapping that maps color to `Gym_member`. Then call the `geom_point()` function to plot the data as points (scatter plot). 
+4. Add an aesthetic mapping of `shape` to `Workout_length` inside the `geom_point()`. Then call the `labs()` function using arguments `title = "Willingness to Pay and Consume Muscle Cola", x = "Willingness to Pay", y = "Quantity Consumed"`. Then call the `scale_x_continuous()` function and specify the argument that the labels are `dollar` currency. Call a `theme_name()` function to evaluate the appearance.
+
+``` r
+ theme_name() # replace "name" with the name of your chosen theme
+```
+
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="plot8"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+As arguments to the `ggplot()` function, declare the data as `muscle_cola_data` and the aesthetic mapping as `aes(x = WTP, y = Quantity, color = Gym_member)`.  Then call the `geom_point()` function to plot the data as points. Then call the `labs()` function to add the title and axes labels. Then call the `scale_x_continuous()` function to specify the x-axis scale `labels` to be `dollar` currency. Then call a theme function.  In this solution, we call `theme_fivethirtyeight`.
+
+``` r
+ggplot(muscle_cola_data,                                      #<1>
+       aes(x = WTP, y = Quantity, color = Gym_member)) +      #<2>
+  geom_point(aes(shape = Workout_length)) +                   #<3>
+  labs(title = "Willingness to Pay and Consume Muscle Cola",  #<4>
+       x = "Willingness to Pay",                              #<5>
+       y = "Quantity Consumed") +                             #<6>
+  scale_x_continuous(labels = dollar) +                       #<7>
+  theme_fivethirtyeight()                                     #<8>  
+```
+
+1.  Call the `ggplot()` function and specify `muscle_cola_data` as the data
+2.  Specify that aesthetic mapping with `WTP` plotted on the x-axis and `Quantity` on the y-axis, adding the mapping of color to `Gym_member`
+3.  Call the `geom_point()` function to get a scatter plot of points and add the aesthetic that maps `shape` to the `Workout_length`
+4.  Call the `labs()` function and specify the `title`
+5.  Specify the x-axis label
+6.  Specify the y-axis label
+7.  Call the `scale_x_continuous()` function and specify the `labels` to be `dollar`.
+8.  Call the `facet_wrap()` function and specify the facets to be created for `Drink_preferred`.
+:::
+::::::
+
+
+<hr style="border:4px solid #3370F4">
+
+<br><br>
+
+# Conclusion
+In this chapter, we explored the foundational principles of the Grammar of Graphics that underpin `ggplot2.` By breaking down the construction of a plot into distinct components—data, aesthetics, geometric objects, labels, scales, facets, and themes—you’ve learned how to build visualizations step by step. This approach allows you to customize your plots fully, making them both informative and visually appealing.
+
+Whether you’re transforming data, adjusting scales, or applying professional themes, `ggplot2` gives you the flexibility to create compelling data visualizations tailored to your audience. As you move forward, continue experimenting with different combinations of geoms, aesthetics, and themes to refine your plots for specific needs. The ability to clearly and effectively communicate your data insights through visualization is a critical skill in entrepreneurship and beyond.
+

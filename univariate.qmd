@@ -1,0 +1,1400 @@
+---
+title: "Univariate EDA"
+format:
+  live-html:
+    resources:
+      - data
+    webr:
+      packages:
+#        - tidyverse
+        - ggplot2
+        - dplyr
+        - tibble
+        - readr
+#        - readxl        
+#        - scales
+#        - ggthemes
+      render-df: default
+engine: knitr
+editor: source
+execute:
+  echo: true
+
+#bibliography: biblatex-refs.bib
+---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
+
+```{r}
+#| output: false
+#| include: false
+
+library(tidyverse)
+library(ggthemes)
+library(scales)
+library(gt)
+knitr::opts_chunk$set(echo = TRUE) 
+
+#########################
+
+entrepreneur_data <- tibble(
+  name = c("Alice", "Bob", "Charlie", "Diana", "Eve", "Frank", "Alice", "Gina", "Hank", NA),
+  age = c(34, 42, 29, NA, 25, 37, 34, 31, 48, 29),
+  gender = c("Female", "Male", "Male", "Female", "Female", "Male", "Female", "Female", "Male", "Male"),
+  sector = c("Tech", "Finance", "Tech", "Health", "Tech", "Health", "Tech", "Finance", "Health", "Tech"),
+  revenue_million = c(1.2, 2.3, 0.9, 1.8, NA, 1.1, 1.2, 2.4, 3.0, NA),
+  funding_million = c(3.5, 1.0, 0.5, 2.0, 1.8, NA, 3.5, 1.1, 2.8, 0.5),
+  years_experience = c(10, 15, 5, 12, 2, 8, 10, 7, 20, 5)
+)
+
+entrepreneur_data  <- entrepreneur_data %>% 
+  mutate(years_experience = as.integer(years_experience),
+           gender = as.factor(gender)
+           )
+
+##########################
+
+# Static dataset for demonstrating descriptive statistics
+set.seed(101)
+sales_data <- data.frame(
+  product_id = 1:300,
+  price = round(rnorm(300, mean = 20, sd = 5), 2),
+  quantity_sold = rpois(300, lambda = 30),
+  region = sample(c("North", "South", "East", "West"), 300, replace = TRUE)
+)
+
+
+############################################
+# Generate base data
+customer_data <- tibble(
+  age = round(rnorm(100, mean = 35, sd = 10)),               # Mean age of 35, SD of 10
+  spending = round(rnorm(100, mean = 500, sd = 150)),        # Mean spending of $500, SD $150
+  product_interest = sample(c("Tech", "Fashion", "Outdoors", "Health"), 100, replace = TRUE),
+  region = sample(c("North", "South", "East", "West"), 100, replace = TRUE)
+)
+
+# Introduce outliers
+customer_data$age[c(5, 15)] <- c(85, 90)                    # Outliers for age
+customer_data$spending[c(20, 40)] <- c(1500, 1600)          # Outliers for spending
+
+# Introduce missing values
+customer_data$age[c(10, 25, 50)] <- NA                      # Missing values for age
+customer_data$spending[c(30, 60)] <- NA                     # Missing values for spending
+customer_data$product_interest[c(35, 70)] <- NA             # Missing values for product interest
+```
+
+
+Univariate Exploratory Data Analysis (EDA) focuses on examining one variable at a time. By understanding each variable individually, we gain valuable insights that lay the groundwork for analyzing relationships and building predictive models. In the context of entrepreneurship, a thorough exploration of each variable provides clarity on customer demographics, financial projections, or product feedback, which is essential for making informed business decisions.
+
+<!-- In analytics, understanding univariate characteristics, including distribution shape and summary statistics, is essential for multiple practical reasons:
+
+Data Quality Assurance: Checking distribution properties like central tendency, spread, and skewness helps ensure data reliability. For example, detecting abnormality, such as extreme skew or high kurtosis, can reveal data quality issues or outliers, prompting further investigation before analysis.
+
+Appropriate Modeling Choices: Many statistical models assume data normality. For instance, linear regression models tend to perform best when data approximates a normal distribution. Knowing whether data is normal or not allows you to choose or transform the data appropriately (e.g., using log transformations on skewed data).
+
+Effective Comparison and Interpretation: Descriptive statistics (mean, median, mode, variance) allow for quick data comparisons across different groups. In business analytics, this could mean understanding customer spending habits, employee performance across departments, or differences in product popularity.
+
+Setting Benchmarks and Thresholds: In cases like quality control or risk analysis, knowing the natural variability in a data set lets you set realistic benchmarks. Identifying and analyzing the “normal” range helps to spot significant deviations, which might indicate issues or opportunities.
+
+Anomaly Detection and Risk Identification: Abnormal distributions can indicate underlying risks or rare events that might skew typical results, such as a heavy-tailed distribution indicating potential risk in financial data. Identifying these traits early can guide more robust analyses that account for potential volatility or risk.
+
+Customer Insights and Market Segmentation: In marketing analytics, for example, distribution patterns in customer demographics or purchase behaviors can reveal distinct market segments. Insights into the “shape” of this data help tailor products and campaigns to match customer profiles more closely.
+-->
+
+
+<!-- 
+The list above actually works very well as a logical progression for a chapter on univariate EDA, especially as it builds a strong foundation for more complex relationships and eventual modeling. Here's a refined outline that expands on each point, keeping in mind that your students are new to statistics:
+
+Introduction to Univariate EDA
+
+Briefly introduce what univariate analysis is and why it's important.
+Explain how understanding a single variable thoroughly helps in analyzing relationships and building models.
+
+Descriptive Statistics
+
+Measures of Central Tendency: Introduce mean, median, and mode, with examples to show when each measure is most informative (e.g., using median when there are outliers).
+Measures of Dispersion: Explain standard deviation and variance to help students grasp variability, perhaps using examples from daily life (like the range of commute times).
+
+Distribution Shapes and Visualization
+
+Histograms and Box Plots: Show how these plots reveal data distribution.
+Skewness: Explain positive and negative skew with visual examples and real-world scenarios (e.g., income or age distribution).
+Kurtosis: Briefly cover high/low kurtosis and its impact on outlier detection.
+
+The Normal Distribution
+
+Describe the properties of a normal distribution and why it's commonly used as a benchmark.
+Explain real-world contexts where normality is typical or expected, and introduce the concept of Z-scores for identifying outliers.
+
+Identifying and Understanding Outliers
+
+Teach how to identify outliers through descriptive statistics (mean ± 3 standard deviations) and visualizations (box plots).
+Discuss practical implications: when to keep or remove outliers, depending on the context.
+
+Testing for Normality
+
+Introduce basic normality tests like Shapiro-Wilk or visual methods (e.g., Q-Q plots).
+Explain why knowing normality helps determine which methods and models to use later.
+Interpretation and Practical Applications
+
+Wrap up by connecting each concept back to its importance in business analytics, preparing students for bivariate analysis.
+Mention how these insights lead to stronger decisions and more precise predictions in business contexts.
+-->
+
+-----
+
+<br>
+
+## Demonstration Data: UrbanFind
+Consider __UrbanFind__, a startup that specializes in curating personalized recommendations for city dwellers in several areas of their lives:
+
+- __Tech Gadgets__: Recommendations for the latest gadgets and devices that enhance convenience and connectivity in a fast-paced city life, such as smart home devices, wearable tech, and productivity tools.
+
+- __Fashion__: Curated fashion items and accessories that align with urban styles and seasonal trends, helping city dwellers look their best in a competitive, image-conscious environment.
+
+- __Outdoor Activities__: Gear and suggestions for outdoor activities that are accessible even in or near urban settings—like urban hiking, weekend getaways, and fitness equipment for both outdoor and indoor use.
+
+- __Health and Wellness Products__: Products focused on personal well-being, including fitness equipment, nutritional supplements, and relaxation tools to counterbalance the stresses of urban life.
+
+These recommendations aim to provide city residents with tailored options that fit their lifestyle and preferences, whether they're looking to upgrade their tech, update their wardrobe, stay active, or improve their wellness. By analyzing customer data, UrbanFind can better understand which areas resonate most with their audience and refine their product offerings and marketing strategies accordingly.
+
+By examining single variables—like customer age, income level, or product rating—UrbanFind can answer foundational questions: Who is the customer? What budget range can they afford? How satisfied are they with existing products? These insights, while simple, guide strategic decisions and set the stage for deeper analysis.
+
+-----
+
+## Why Univariate Analysis Matters
+
+In analytics, understanding one variable at a time helps us:
+
+- __Validate Data Quality__: Spot issues like outliers or missing values.
+- __Identify Patterns__: Observe distributions (e.g., age distribution) that inform customer targeting.
+- __Guide Future Analysis__: Set a foundation for examining relationships between variables and building models that predict customer behavior or business performance.
+
+This chapter will cover key univariate concepts, such as descriptive statistics, distribution shapes, and outlier detection. We'll use examples that relate directly to entrepreneurial questions, preparing you to leverage these techniques in real-world contexts.
+
+In the next sections, we'll dive deeper into specific univariate techniques, using the UrbanFind data to illustrate these foundational skills.
+
+> **Key Learning Objectives**  
+> - Understand what univariate analysis is and why it's important in business analytics.  
+> - Use univariate techniques to describe and interpret single-variable data.  
+> - Apply R tools for basic descriptive statistics and visualizations.  
+
+In the next sections, we'll dive deeper into specific univariate techniques. 
+
+-----
+
+## Variables and Data Distributions
+
+In data analysis, two core concepts provide the foundation for all other work: __variables__ and __distributions__. These concepts allow us to understand and interpret data by examining the values it takes on and the way those values are spread across a dataset.
+
+### What is a Variable?
+A __variable__ s a characteristic or quantity that can take on different values. Variables are the building blocks of data analysis, capturing information that helps us describe and understand patterns in our data. Variables might represent something __categorical__ (like product type or region) or __numerical__ (like age or spending).
+
+#### Variables in UrbanFind's Data
+UrbanFind conducted a survey to gather insights into customer demographics, spending habits, and interests. The dataset we're working with contains responses from 100 survey participants who are representative of UrbanFind's potential customer base. Each row is an __observation__, representing the responses of one unique respondent, with the following variables captured:
+
+- __Age__: The age of the customer in years. Age is an important demographic factor for UrbanFind, as different age groups may have distinct preferences for technology, fashion, or outdoor activities.
+
+- __Spending__: The amount (in dollars) each customer reported spending on lifestyle-related products in the past month. This includes items like tech gadgets, health products, and outdoor gear. UrbanFind aims to understand the range of spending to help design product bundles and set price points.
+
+- __Product Interest__: The product category the customer is most interested in, chosen from four options: Tech, Fashion, Outdoors, and Health. This helps UrbanFind determine which product lines to prioritize for marketing and inventory.
+
+- __Region__: The geographic region where each customer lives, categorized into North, South, East, and West. This variable provides insights into potential regional differences in product preferences and spending behaviors.
+
+Each of these variables gives us a unique lens through which to view the customer base. By examining them individually, we gain insights that will inform how UrbanFind can tailor its offerings to meet customer needs.
+
+#### Viewing the UrbanFind Dataset
+Here's a preview of the `customer_data` dataset. Notice how the values of each variable vary across observations. In other words, `age`, `spending`, `product_interest`, and `region` are all variables that provide different types of information.
+```{r}
+#| echo: false
+#| eval: true
+customer_data
+```
+
+Examining each variable on its own helps us understand data quality, spot trends, and set up analyses that explore relationships between variables. In the next section, we'll dive into data distributions, where we'll see how these values are spread across different levels or categories.
+
+### What is a Data Distribution?
+When we collect data for a variable, the values usually don't look the same. Instead, they spread out across a range, forming a distribution. A __distribution__ tells us how values of a variable are arranged, showing us which values are common, which are rare, and whether values tend to cluster or spread widely. The distribution of a variable reveals the "shape" of the data. Different distributions tell us different things about a dataset, and understanding this shape helps us interpret data accurately and make informed decisions.
+
+> **Why Distributions Matter**
+> In entrepreneurship analytics, understanding the distribution of data can reveal patterns critical to decision-making. For example, a distribution might show us if most customers are clustered within a specific age range, if spending varies widely across customer segments, or if there are peaks indicating strong customer preferences for certain products.
+
+#### Example Distributions
+While there are hundreds of known [probability distributions](https://en.wikipedia.org/wiki/List_of_probability_distributions), each with a different shape, there are a few shapes that are more commonly observed and used:
+
+- __Normal Distribution__: A bell-shaped, symmetric distribution where most values cluster around the center. Many naturally occurring variables (like heights or test scores) tend to have a normal distribution.
+```{r}
+#| echo: false
+#| warning: false
+
+# Load ggplot2 library
+library(ggplot2)
+
+# Generate normally distributed data (N(0,1))
+set.seed(42)
+normal_data <- data.frame(value = rnorm(500, mean = 0, sd = 1))
+
+# Plot with scatterplot of data points and overlayed normal density curve
+ggplot(normal_data, aes(x = value)) +
+  # Scatterplot of data points along the x-axis
+  geom_jitter(aes(y = 0), height = 0.015, color = "darkgray", size = 1.5, alpha = 0.5) +
+  # Smooth density curve for the normal distribution
+  geom_function(fun = dnorm, args = list(mean = 0, sd = 1), color = "steelblue", size = 2) +
+  labs(title = "Standard Normal Distribution ~ N(0,1) (with data points)",
+       x = "Values of Random Variable X",
+       y = "Density of Values of Random Variable X") +
+  theme_minimal() +
+  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank())  # Hide y-axis ticks/labels for clarity
+```
+> This plot shows individual data points of a random variable (x) that follow a pattern defined by a standard normal distribution (N(0,1)).  The values of the random variable (x) are spread along the x-axis, with the density curve illustrating the theoretical distribution shape that describes where values are most likely to occur; the height of the curve reflects the relative likelihood of values in different regions, with peaks indicating where data points cluster.
+
+- __Skewed Distributions__: These distributions lean to one side. 
+
+    - In a __right-skewed__ (positively skewed) distribution, values are pulled toward higher numbers. 
+    - In a __left-skewed__ (negatively skewed) distribution, values are pulled toward lower numbers.
+    
+```{r}
+#| echo: false
+#| warning: false
+
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(ggtext)
+
+# Simulate data for right-skewed and left-skewed distributions
+set.seed(42)
+right_skew <- rexp(500, rate = 0.2)           # Right-skewed data
+left_skew <- -rexp(500, rate = 0.2) + 10      # Left-skewed data shifted to overlap with right-skewed
+
+# Combine both distributions into a single data frame, filter to 0-10 range, and set y-positions
+combined_data <- data.frame(
+  value = c(right_skew, left_skew),
+  skew_type = rep(c("Right Skewed", "Left Skewed"), each = 500)
+) %>%
+  filter(value >= 0 & value <= 10) %>%                  # Filter values to range 0-10
+  mutate(y_position = ifelse(skew_type == "Right Skewed", 0.01, 0))  # Set different y-positions
+
+# Plot with jittered data points, colored by skew type, and overlayed density functions
+ggplot(combined_data, aes(x = value)) +
+  # Scatterplot of data points with specified y-positions
+  geom_jitter(aes(y = y_position, color = skew_type), height = 0.0045, size = 1.5, alpha = 0.5) +
+  # Right-skewed density curve
+  stat_function(fun = dgamma, args = list(shape = 2, rate = 0.5), color = "steelblue", linewidth = 1.5, n = 1000) +
+  # Left-skewed density curve (shifted to the right)
+  stat_function(fun = function(x) dgamma(10 - x, shape = 2, rate = 0.5), color = "red3", linewidth = 1.5, n = 1000) +
+  # Manual color scale for the jittered points
+  scale_color_manual(values = c("Right Skewed" = "steelblue", "Left Skewed" = "red3")) +
+  # Remove legend
+  guides(color = "none") +
+  # Set plot boundaries and labels
+  coord_cartesian(xlim = c(0, 10)) +
+  labs(title = "Distributions of <span style='color:steelblue;'>Right Skewed Variable A</span> <br> and <span style='color:red3;'>Left Skewed Variable B</span>", 
+       x = "Values of <span style='color:steelblue;'>Right Skewed Variable A</span> and <span style='color:red3;'>Left Skewed Variable B</span>", 
+       y = "Density") +
+  theme_minimal() +
+  theme(legend.title = element_blank() ,  # Hide legend title for clean presentation
+        plot.title = element_markdown(size = 13),  # Enable markdown for title with ggtext
+        axis.title.x = element_markdown(size = 11)  # Enable markdown for title with ggtext
+  )
+
+```
+> This plot displays individual data points for two random variables: Variable A (in blue) and Variable B (in red). Variable A exhibits a right skew, with values clustering toward the lower range and a longer tail extending to the right. In contrast, Variable B is left skewed, with values concentrated toward the higher range and a tail extending to the left. The smooth density curves represent the distributions of each variable in their respective colors..
+
+- __Bimodal Distribution__: This distribution has two peaks or clusters of values, which might occur if there are two main groups within a dataset. For instance, if UrbanFind's customers showed two main age groups interested in tech and fashion, the data might display a bimodal distribution.
+
+```{r}
+#| echo: false
+#| warning: false
+
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(ggtext)
+
+# Simulate data for a bimodal distribution by combining two normal distributions
+set.seed(42)
+bimodal_data <- data.frame(
+  value = c(rnorm(250, mean = 3, sd = 0.8), rnorm(250, mean = 7, sd = 0.8))
+)
+
+# Set y-positions for jittered points along the x-axis
+bimodal_data <- bimodal_data %>%
+  mutate(y_position = 0.00)  # Set a fixed y-position for jittered points
+
+# Plot with jittered data points and overlayed density curve
+ggplot(bimodal_data, aes(x = value)) +
+  # Scatterplot of data points along the x-axis to show density
+  geom_jitter(aes(y = y_position), height = 0.0045, color = "darkgray", size = 1.5, alpha = 0.5) +
+  # Density curve for the bimodal distribution
+  geom_density(aes(x = value), 
+               #fill = "skyblue", 
+               color = "steelblue", adjust = 1.5, alpha = 0.4, size = 2) +
+  # Set plot boundaries and labels with markdown-enabled titles
+  coord_cartesian(xlim = c(0, 10)) +
+  labs(title = "Bimodal Distribution of Variable X", 
+       x = "Value of Variable X", 
+       y = "Density") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 13), #, face = "normal"),
+    axis.title.x = element_text(size = 11)
+  )
+
+```
+> This plot shows individual data points for a random variable with a bimodal distribution, where values cluster around two distinct peaks. The smooth density curve highlights these two main groups within the data, reflecting areas of higher concentration on either side. The two peaks suggest the presence of two underlying subgroups or patterns within the data.
+
+### Working with a Grade Distribution
+When we talk about a "grading curve," we're referring to a process of normalizing scores from any distribution to align more closely with a normal distribution (bell-shaped curve). In a class where scores are naturally left-skewed (most students performed below average), applying a curve can raise scores, moving the class average higher and "helping" those below the mean. However, if scores are right-skewed (most students scored high), curving might shift grades downward, making a higher score necessary for an A grade. The idea is to standardize performance so that the distribution reflects the relative achievement of the class, rather than an absolute scale.
+
+Just as with any distribution, whether the curve benefits or lowers your score depends on the original shape of the data—in this case, the pattern of class scores. Curving aims to provide a fair comparison among students by normalizing grades based on the overall class distribution, regardless of whether the scores are clustered, skewed, or even bimodal.
+
+
+### Visualizing a Distribution
+Now that we've explored the shapes of various distributions, let's try plotting them to see how the distributions of different variables may look.
+
+One way to see a distribution is with a __histogram__, which shows the frequency of different value ranges within a variable. Histograms are useful for visualizing the shape of the data—whether it clusters in the middle, leans to one side, or has multiple peaks. Understanding this shape provides valuable insights for interpreting data trends and making decisions based on the data.
+
+### Demonstration: Visualizing a Normal Distribution {#sec-viz-normal}
+Let's start by creating a histogram of a variable that follows a __normal distribution__. The dataset includes 1000 observations of the normally-distributed variable called `normal_data`. A portion is shown here:
+
+```{r}
+#| echo: false
+#| warning: false
+# Generating data for a normal distribution
+set.seed(42)
+(normal_data <- tibble(value = rnorm(1000, mean = 0, sd = 1)))
+```
+Now, use the `ggplot2` package to plot a histogram of `normal_data`.
+
+```{r}
+#| echo: true
+#| eval: true
+# Visualizing the example data distribution
+library(ggplot2)
+ggplot(normal_data, aes(x = value)) +
+  geom_histogram(binwidth = 0.1, fill = "steelblue", color = "black") +
+  labs(title = "Example of a Normal Distribution", x = "Value", y = "Frequency") +
+  theme_minimal()
+```
+
+> __Reflection__: Observe how the values cluster around the mean (0) and taper off symmetrically in both directions. This characteristic bell shape is a hallmark of the normal distribution.
+
+### Exercise:  Visualizing Skewed and Bimodal Distributions
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+Data for a right-skewed variable is found in `skewed_data` and data for a bimodal variable is found in `bimodal_data`.  Visualizing the distributions of these variables using histograms. Compare the shapes to what you would expect from each distribution type.
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: viz-skew-bimodal
+# Set seed for reproducibility
+set.seed(123)
+
+#Right-Skewed: Use rexp(1000, rate = 0.2) for exponential data to create a right-skewed distribution.
+skewed_data <- tibble(variable = rexp(500, rate = 0.2))
+#Bimodal: Combine two normal distributions (e.g., rnorm(500, mean = 3, sd = 0.8) and rnorm(500, mean = 7, sd = 0.8)) for a bimodal shape.
+bimodal_data <- tibble(
+  variable = c(rnorm(250, mean = 3, sd = 0.8), rnorm(250, mean = 7, sd = 0.8))
+)
+
+```
+
+```{webr}
+#| exercise: viz-skew-bimodal
+# Display a preview of the data
+head(skewed_data)
+glimpse(skewed_data)
+
+head(bimodal_data)
+glimpse(bimodal_data)
+```
+
+## Hints
+
+::: {.hint exercise="viz-skew-bimodal"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+Build your histogram plot using the grammar of graphics by declaring the data, specifying the aesthetic mapping (a histogram maps a variable to the x-axis only), and calling the geometry (a histogram uses the `geom_histogram()` function).  Note that you can specify the `binwidth` (the span of the x-axis covered by one bar of the histogram), `fill` (the color of the bars of the histogram), and `color` (the color of the borders of the bars).
+:::
+
+::: {.hint exercise="viz-skew-bimodal"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+1. For the skewed distribution:
+    
+    1. Call the `ggplot()` function
+    2. Specify the data as `skewed_data`
+    3. Specify the geometry as `geom_histogram`
+    4. [optional] Specify `binwidth`, `fill`, and `color` as you like
+
+2. For the bimodal distribution:
+    
+    1. Call the `ggplot()` function
+    2. Specify the data as `bimodal_data`
+    3. Specify the geometry as `geom_histogram`
+    4. [optional] Specify `binwidth`, `fill`, and `color` as you like
+
+``` r
+  geom_histogram(binwidth = 1) 
+```
+
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="viz-skew-bimodal"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+1. For the skewed distribution:
+    
+    1. Call the `ggplot()` function
+    2. Specify the data as `skewed_data`
+    3. Specify the geometry as `geom_histogram` 
+    4. [optional] Specify `binwidth`, `fill`, and `color` as you like
+
+2. For the bimodal distribution:
+    
+    1. Call the `ggplot()` function
+    2. Specify the data as `bimodal_data`
+    3. Specify the geometry as `geom_histogram`
+    4. [optional] Specify `binwidth`, `fill`, and `color` as you like
+
+
+``` r
+ggplot(skewed_data,                  #<1>
+       aes(x = variable)) +          #<2>
+  geom_histogram()                   #<3>
+
+ggplot(bimodal_data,                 #<1>
+       aes(x = variable)) +          #<2>
+  geom_histogram()                   #<3>
+```
+
+1.  Call the `ggplot()` function and specify `skewed_data` or `bimodal_data` as the data
+2.  Specify that aesthetic mapping with `variable` plotted on the x-axis
+3.  Call the `geom_histogram()` function to get a histogram of the distributions [optional] then specify the `binwidth`, `fill`, `color`, or other aesthetics of `geom_histogram()`
+:::
+::::::
+
+<hr style="border:2px solid #3370F4">
+
+-----
+
+<br>
+
+
+## Descriptive Statistics
+
+Descriptive statistics are essential tools for summarizing the main features of a dataset. They help us understand the **central tendencies** (typical values) and **variability** (spread) of data, which can provide valuable insights into what's "usual" or "expected" in a given context.
+
+## Key Measures of Central Tendency
+
+1. **Mean**: The mean, or average, is calculated by summing all values and dividing by the number of observations. It's useful for understanding the overall level but can be influenced by extreme values (outliers).
+
+   - **Example**: If a customer base has a few extremely high spenders, the mean might be higher than what most customers spend on average.
+
+2. **Median**: The median is the middle value when data is sorted in ascending order. It provides a better measure of central tendency in skewed data because it is less affected by outliers.
+
+   - **Example**: The median income in a dataset might be a more representative measure than the mean if there are a few very high-income earners skewing the data.
+
+3. **Mode** (optional): The mode is the most frequent value of the variable, useful primarily for categorical data. Calculating the mode in R requires a custom function, which you'll learn how to build later. For now, think of the mode as the “most popular” value in a dataset, like the most frequently purchased product category.
+
+   - **Example**: In a dataset on customer product preferences, the mode could reveal the most popular product category.
+   
+> __Note__: In quantitative analysis, mean and median are more commonly used measures of central tendency, especially for numerical data.   
+
+### Entrepreneurial Insight
+
+Central tendency measures help answer questions such as, “What is the typical customer profile?” or “Are there any standout age groups among customers?” Knowing these tendencies supports tailored marketing, pricing, and product development.
+
+### Variation and Spread
+
+1. **Range**: The range is the difference between the highest and lowest values. While easy to understand, it's sensitive to outliers and doesn't show how data is distributed within the range.
+
+2. **Standard Deviation (SD)**: SD measures the average distance of each observation from the mean. A high SD suggests wide variability, while a low SD indicates consistency.
+
+   - **Example**: In a customer spending dataset, a high SD might indicate that some customers spend much more than others.
+
+3. **Variance**: Variance is the square of the standard deviation. It's often used in statistical models, although it's less intuitive than SD itself.
+
+   - **Example**: If customer age variance is high, it suggests diverse age groups within the customer base, which could indicate the need for targeted marketing.
+
+### Variability and Decision-making in Real Life
+
+When we talk about variability, we're trying to understand how much individual values differ from the average. Measures like **standard deviation** and **variance** help us grasp this concept by quantifying the spread around the mean. While the mean alone gives us a central value, understanding variability allows us to make smarter predictions and decisions based on how widely data points deviate from that average.
+
+One practical example is a daily commute. Imagine you and a friend predict the commute time each day. Most days might be close to an average time of 20 minutes, but occasionally, traffic or accidents cause delays. Here's how variability plays into this:
+
+- **Standard Deviation and Planning**: On a regular day, aiming for the mean commute time of 20 minutes might work fine. But if you need to get to school or work for an important event, like an exam or job interview, relying on the mean alone is risky. To reduce the chance of being late, you might plan for the upper range, or average time plus some buffer, effectively acknowledging that your commute has a certain **standard deviation**.
+
+- **Risk and Cost**: When the cost of being late increases (e.g., missing a test), knowing that commute times vary allows you to make decisions that minimize the chance of being late, even if it means investing extra time in a longer commute. This approach aligns with **standard deviation** as a measure of risk, where a higher standard deviation would indicate a more unpredictable commute and therefore a greater need to plan for delays.
+
+In this way, variability isn't just an abstract statistic; it directly impacts decisions and planning in real life. Just as we consider the variability of commute times, understanding the standard deviation and variance of a dataset can help us make informed choices in various fields, such as business and finance, where the cost of deviation from the mean can be substantial.
+
+### Entrepreneurial Insight
+
+Understanding the spread of data can reveal opportunities for segmentation. For example, if customer spending shows high variability, different marketing strategies might be needed for high versus low spenders.
+
+
+### Demonstration:  Calculating Descriptive Statistics
+
+The `sales_data` dataset represents a set of sales records for a fictional company named MetroMart, which operates across multiple regions. This dataset was created to demonstrate descriptive statistics and data exploration techniques, essential for understanding product performance and sales trends.
+
+#### Dataset Overview
+
+- __Product ID__: A unique identifier for each product (from 1 to 300).
+- __Price__: The selling price of each product, normally distributed with a mean price of $20 and some variation to represent typical pricing diversity.
+- __Quantity Sold__: The number of units sold, following a Poisson distribution to reflect typical purchase quantities.
+- __Region__: The region where each product was sold, categorized into North, South, East, and West regions.
+
+This dataset helps illustrate key statistical concepts such as __central tendency__ and __variability__, providing insights into average prices, sales volume, and regional sales differences. These metrics can reveal data patterns, outliers, and trends that are crucial for strategic decision-making in areas like pricing, inventory, and targeted marketing.
+
+#### Calculate Measures of Central Tendency
+
+Let's calculate the mean, median, and mode of the `price` and `quantity_sold` variables to understand the typical values for these sales metrics. We'll start with R's `summary()` function, which provides a quick overview of central tendency and spread.
+
+```{r}
+summary(sales_data)
+```
+
+From the summary, we see that the **mean price** is \$`r round(mean(sales_data$price),2)` and the **median price** is \$`r median(sales_data$price)`. Since the mean and median are close in value, we can infer that the `price` variable is approximately **symmetrically distributed**, with minimal skew. This symmetry suggests that the distribution is balanced around the average price.
+
+To understand whether most products fall near this average, however, we would look at measures of **spread**, such as variance or standard deviation. A smaller variance would indicate that most product prices are indeed close to the mean, while a larger variance would suggest a wider range of product prices.
+
+For the `quantity_sold` variable, these statistics help us understand typical sales volume and whether any products sell far more or less than average. Identifying such patterns can guide decisions about inventory levels, promotions, and product assortment across different regions.
+
+The summary shows thathe **mean quantity sold** is `r round(mean(sales_data$quantity_sold), 2)`, and the **median quantity sold** is `r median(sales_data$quantity_sold)`.
+
+> **Interpretation**  
+> When the mean and median are similar, as seen here, it suggests a **balanced, symmetrical distribution**. However, to determine how closely values cluster around the average, we would examine the variance or standard deviation.
+
+
+### Calculate Measures of Spread
+
+While measures of central tendency (like mean and median) give us an idea of typical values, measures of spread reveal how much the data varies around those central values. Understanding the spread is essential for interpreting data patterns, as it tells us whether values are tightly clustered around the mean or widely dispersed.
+
+Here, we'll explore three key measures of spread: **range**, **standard deviation**, and **variance**. Each provides a unique perspective on data variability.
+
+#### Range
+The simplest measure of spread, calculated as the difference between the maximum and minimum values. The range gives a quick sense of the data's full span but is sensitive to outliers.
+
+```{r}
+range(sales_data$price)
+range(sales_data$quantity_sold)
+```
+
+In `sales_data`, the range of `price` is from \$`r range(sales_data$price)[1]` to \$`r range(sales_data$price)[2]`, while the range of `quantity_sold` spans from `r range(sales_data$quantity)[1]` to `r range(sales_data$quantity)[2]`. These ranges show the full spectrum of prices and quantities but don't tell us how common values are within this span.
+
+
+#### Interquartile Range (IQR)
+The interquartile range (IQR) measures the spread of the middle 50% of data and is less affected by outliers than the range. It’s calculated as the difference between the first quartile (Q1) and the third quartile (Q3):
+
+- __First Quartile (Q1)__: The 25th percentile, where 25% of values fall below this point.
+- __Third Quartile (Q3)__: The 75th percentile, where 75% of values fall below this point.
+
+The IQR is calculated as:
+
+$$ \mathsf{IQR = Q_3 - Q_1} $$
+The IQR is especially useful in box plots, where it represents the range of the central box. It helps us understand the concentration of values around the median without the influence of extreme values (outliers).
+
+```{r}
+quantile(sales_data$price, na.rm = TRUE)
+IQR(sales_data$price, na.rm = TRUE)
+
+quantile(sales_data$quantity_sold, na.rm = TRUE)
+IQR(sales_data$quantity_sold, na.rm = TRUE)
+```
+
+The IQR of `price` is \$`r round(IQR(sales_data$price, na.rm = TRUE), 2)`, meaning the middle 50% of prices fall within this range. For `quantity_sold`, the IQR is `r round(IQR(sales_data$quantity_sold, na.rm = TRUE), 2)`.
+
+#### Standard Deviation (SD)
+SD measures the average distance of each value from the mean. A low SD indicates that values are clustered near the mean, while a high SD suggests more variability. Standard deviation is useful for interpreting consistency in data.
+
+```{r}
+sd(sales_data$price, na.rm = TRUE)
+sd(sales_data$quantity_sold, na.rm = TRUE)
+```
+
+The standard deviation for product `price` is `r sd(sales_data$price, na.rm = TRUE)`, and for `quantity` sold, it's `r sd(sales_data$quantity_sold, na.rm = TRUE)`. These values show how much individual prices and sales quantities typically vary from their respective means.
+
+#### Variance
+Variance is the square of the standard deviation and represents the average squared deviation from the mean. While less interpretable than standard deviation, variance is widely used in statistical modeling and analysis.
+
+```{r}
+var(sales_data$price)
+var(sales_data$quantity_sold)
+```
+
+The variance for product `price` is `r var(sales_data$price)`, and for `quantity_sold`, it's `r var(sales_data$quantity_sold)`. Larger variance values indicate greater dispersion in the data.
+
+> **Interpretation**:
+> Measures of spread are crucial for understanding data variability. For example, a low standard deviation in product prices could imply consistent pricing across products, while a higher standard deviation in quantity sold might indicate diverse customer buying patterns. Understanding variability helps MetroMart plan for inventory, adjust pricing strategies, and prepare for fluctuations in sales.
+
+
+### Exercise:  Calculating Descriptive Statistics
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+Calculate the measures of central tendency (mean and median) and spread (range, IQR, standard deviation, and variance) for the `age` and `spending` variables in UrbanFind's `customer_data.`
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: descriptive-stats
+############################################
+# Generate base data
+customer_data <- tibble(
+  age = round(rnorm(100, mean = 35, sd = 10)),               # Mean age of 35, SD of 10
+  spending = round(rnorm(100, mean = 500, sd = 150)),        # Mean spending of $500, SD $150
+  product_interest = sample(c("Tech", "Fashion", "Outdoors", "Health"), 100, replace = TRUE),
+  region = sample(c("North", "South", "East", "West"), 100, replace = TRUE)
+)
+
+# Introduce outliers
+customer_data$age[c(5, 15)] <- c(85, 90)                    # Outliers for age
+customer_data$spending[c(20, 40)] <- c(1500, 1600)          # Outliers for spending
+
+# Introduce missing values
+customer_data$age[c(10, 25, 50)] <- NA                      # Missing values for age
+customer_data$spending[c(30, 60)] <- NA                     # Missing values for spending
+customer_data$product_interest[c(35, 70)] <- NA             # Missing values for product interest
+```
+
+```{webr}
+#| exercise: descriptive-stats
+# Display a preview of the data
+head(customer_data)
+glimpse(customer_data)
+```
+
+## Hints
+
+::: {.hint exercise="descriptive-stats"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+1. Calculate descriptive statistics for mean and median using the `summary()` function.  
+2. Calculate descriptive statistics for spread (range, IQR, standard deviation, and variance) using the appropriate R functions.
+:::
+
+::: {.hint exercise="descriptive-stats"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+1. For descriptive statistics about central tendencies:
+    
+    1. Call the `summary()` function
+    2. Specify the data as `customer_data`
+
+1. For descriptive statistics about spread:
+    
+    1. Call the `range()` function for `customer_data` and the `age` and `spending` variables -- be sure to remove `NA` values from the calculation
+    2. Call the `IQR()` function for `customer_data` and the `age` and `spending` variables -- be sure to remove `NA` values from the calculation
+    3. Call the `sd()` function for `customer_data` and the `age` and `spending` variables -- be sure to remove `NA` values from the calculation
+    4. Call the `var()` function for `customer_data` and the `age` and `spending` variables -- be sure to remove `NA` values from the calculation
+
+``` r
+  summary()
+  range()
+  IQR()
+  sd()  
+  var()    
+```
+
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="descriptive-stats"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+
+``` r
+summary(customer_data)                           #<1>
+range(customer_data$age, na.rm = TRUE)           #<2>
+range(customer_data$spending, na.rm = TRUE)      #<2>
+IQR(customer_data$age, na.rm = TRUE)           #<3>
+IQR(customer_data$spending, na.rm = TRUE)      #<3>
+sd(customer_data$age, na.rm = TRUE)              #<4>
+sd(customer_data$spending, na.rm = TRUE)         #<4>
+var(customer_data$age, na.rm = TRUE)             #<5>
+var(customer_data$spending, na.rm = TRUE)        #<5>
+```
+
+1. Call the `summary()` function for `customer_data` 
+2. Call the `range()` function for `customer_data` and the `age` and `spending` variables removing `NA` values from the calculation
+3. Call the `IQR()` function for `customer_data` and the `age` and `spending` variables removing `NA` values from the calculation
+4. Call the `sd()` function for `customer_data` and the `age` and `spending` variables removing `NA` values from the calculation
+5. Call the `var()` function for `customer_data` and the `age` and `spending` variables removing `NA` values from the calculation
+:::
+::::::
+
+- Compare mean and median to see if the data may be skewed.
+- What does the spread of the data suggest about the diversity of customer ages? spending?
+
+<hr style="border:2px solid #3370F4">
+
+<br>
+
+## Distribution Shapes and Visualization
+
+Understanding the shape of a data distribution is essential in EDA, as it reveals important characteristics about the data. In this section, we'll explore two key visualization tools—**histograms** and **box plots**—and discuss distribution shapes, including skewness and kurtosis.
+
+### Histograms and Box Plots
+
+**Histograms** and **box plots** are two common ways to visualize the shape of a distribution, each with unique strengths:
+
+#### Histogram
+A histogram shows the frequency of values within specified ranges (bins) along the x-axis. It's ideal for understanding the overall shape, identifying peaks, and detecting skewness.
+  
+```{r}
+#| echo: false
+
+  # Histogram of the price variable
+  ggplot(sales_data, aes(x = price)) +
+    geom_histogram(binwidth = 1, fill = "skyblue", color = "black") +
+    labs(title = "Histogram of Product Prices", x = "Price", y = "Frequency") +
+    theme_minimal()
+```
+
+
+#### Box Plot
+A box plot displays the data's quartiles and highlights potential outliers. The box represents the interquartile range (IQR), while the whiskers extend to the minimum and maximum values within 1.5 times the IQR. Outliers appear as individual points beyond the whiskers.
+
+```{r}
+#| echo: false
+# Load necessary libraries
+library(ggplot2)
+
+# Create example data with outliers for demonstration
+set.seed(42)
+example_data <- data.frame(value = c(rnorm(100, mean = 20, sd = 5), 5, 35))
+
+# Calculate box plot statistics manually
+box_stats <- boxplot.stats(example_data$value)
+median_val <- median(example_data$value)
+mean_val <- mean(example_data$value)
+lower_whisker <- box_stats$stats[1]
+upper_whisker <- box_stats$stats[5]
+q1 <- quantile(example_data$value, 0.25)
+q3 <- quantile(example_data$value, 0.75)
+iqr_val <- q3 - q1
+
+# Plotting the box plot with a reduced width and annotations
+ggplot(example_data, aes(x = "", y = value)) +
+  geom_boxplot(outlier.shape = 21, outlier.fill = "red", outlier.color = "red", width = 0.25, fill = "lightgreen", color = "black") +  # Reduce width of box
+  stat_summary(fun = "mean", geom = "point", shape = 23, size = 4, fill = "blue") +
+  
+  # Adding labels for each component
+  annotate("text", x = 0.75, y = mean_val, label = "Mean", color = "blue", hjust = 0) +
+  annotate("text", x = 1.15, y = median_val, label = "Median", color = "black", hjust = 0) +
+  #
+#  annotate("text", x = 1.15, y = q1, label = "Q1 (25th Percentile)", color = "black", hjust = 0) +
+  annotate("text", x = 1.15, y = q1 + 0.5, label = "25th Percentile", color = "black", hjust = 0) +  
+  annotate("text", x = 1.15, y = q1 - 1.0, label = paste("Q1 =", round(q1, 2)), color = "gray40", hjust = 0) +    
+  #
+  annotate("text", x = 1.4, y = median_val + 0, label = paste("IQR =", round(iqr_val, 2)), color = "black", hjust = 0) +
+# Adding an IQR segment
+  annotate("segment", x = 1.375, y = q3, xend = 1.375, yend = q1, arrow = arrow(length = unit(0.15, "cm"), type = "closed"), size = 0.4) +
+  annotate("segment", x = 1.375, y = q1, xend = 1.375, yend = q3, arrow = arrow(length = unit(0.15, "cm"), type = "closed"), size = 0.4) +
+  #
+#  annotate("text", x = 1.15, y = q3 + 1, label = "Q3 (75th Percentile)", color = "black", hjust = 0) +
+  annotate("text", x = 1.15, y = q3 + 1, label = "75th Percentile", color = "black", hjust = 0) +  
+  annotate("text", x = 1.15, y = q3 - 0.5, label = paste("Q3 =", round(q3, 2)), color = "gray40", hjust = 0) +    
+  #
+  annotate("text", x = 1.03, y = lower_whisker + 2, label = "Lower Whisker", color = "black", hjust = 0) +
+  annotate("text", x = 1.03, y = lower_whisker + 0.5, label = paste("Min =", round(lower_whisker, 1)), color = "gray40", hjust = 0) +
+  #
+  annotate("text", x = 1.03, y = upper_whisker - 0.5, label = "Upper Whisker", color = "black", hjust = 0) +
+  annotate("text", x = 1.03, y = upper_whisker - 2, label = paste("Max =", round(upper_whisker, 1)), color = "gray40", hjust = 0) +
+  #
+  annotate("text", x = .91, y = 33.7, label = "Outlier", color = "red", vjust = -1) +
+  annotate("text", x = .91, y = 5, label = "Outliers", color = "red", vjust = -1) +  
+  
+  # Customizing plot aesthetics
+  labs(title = "Box Plot with Labeled Components", y = "Value") +
+  theme_minimal() +
+  theme(axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+
+```
+
+
+
+### Skewness
+__Skewness__ indicates the asymmetry of a distribution:
+
+- __Positive Skew (Right Skew)__: When the right tail of the distribution is longer, most values cluster on the lower end. Examples include income and property prices, where a few high values increase the mean but don't affect the median as much.
+
+```{r}
+#| echo: false
+
+# Simulating and plotting a right-skewed distribution
+right_skewed_data <- data.frame(value = rexp(1000, rate = 0.5))
+ggplot(right_skewed_data, aes(x = value)) +
+  geom_histogram(binwidth = 0.5, fill = "steelblue", color = "black") +
+  labs(title = "Right-Skewed Distribution", x = "Value", y = "Frequency") +
+  theme_minimal()
+```
+
+- __Negative Skew (Left Skew)__: When the left tail is longer, values cluster on the higher end. For example, age at retirement or employee tenure can often show left skew, where most people retire at later ages with only a few retiring early.
+
+```{r}
+#| echo: false
+
+# Simulating and plotting a left-skewed distribution
+left_skewed_data <- data.frame(value = -rexp(1000, rate = 0.5) + 10)
+ggplot(left_skewed_data, aes(x = value)) +
+  geom_histogram(binwidth = 0.5, fill = "tomato", color = "black") +
+  labs(title = "Left-Skewed Distribution", x = "Value", y = "Frequency") +
+  theme_minimal()
+```
+
+Skewness affects the interpretation of central tendency, as a highly skewed distribution means that the mean may not be a good representative of "typical" values. In such cases, the **median** can provide a better sense of central tendency.
+
+### Kurtosis
+**Kurtosis** measures the "tailedness" or the presence of extreme values in a distribution:
+
+- __High Kurtosis (Leptokurtic)__: Distributions with high kurtosis have thicker, heavier tails, which means more extreme values (outliers). This may be typical in data where rare events occur frequently, like stock market returns.
+
+- __Low Kurtosis (Platykurtic)__: Distributions with low kurtosis have lighter tails, meaning fewer extreme values. This suggests that values are more uniformly spread without large outliers.
+
+While kurtosis is less commonly used in EDA, it's helpful for assessing the likelihood of outliers. High kurtosis may signal that a dataset includes extreme values requiring attention.
+
+
+### Testing for Outliers
+
+Outliers are data points that deviate significantly from other observations. They can indicate unusual values, errors, or meaningful deviations within the data. Identifying outliers is crucial in EDA, as they can influence statistical analyses and impact insights. There are several methods to test for and detect outliers.
+
+
+### Testing for Outliers with Z-Scores
+The normal distribution serves as a basis for identifying outliers. When data is approximately normal, we can use Z-scores to determine how far a specific value deviates from the mean in terms of standard deviations.
+
+- __Z-score__: The Z-score of a value tells us how many standard deviations it is from the mean:
+
+    $$ \mathsf{Z = \dfrac{X - \mu}{\sigma}} $$
+
+where $\mathsf{X}$ is the observed value, $\mathsf{\mu}$ is the mean, and $\mathsf{\sigma}$ is the standard deviation. Values with a Z-score greater than 2 or less than -2 are considered unusual, and values beyond ±3 are typically classified as outliers.  We see the unusual values and outlier values based on their Z-scores.
+
+```{r}
+#| echo: false
+
+# Calculate Z-scores for the normal_data dataset
+normal_data$z_score <- (normal_data$value - mean(normal_data$value)) / sd(normal_data$value)
+
+# Plotting Z-scores on the normal distribution
+ggplot(normal_data, aes(x = value)) +
+  geom_histogram(aes(y = after_stat(density)), binwidth = 0.2, fill = "skyblue", color = "black") +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 1), color = "darkblue", linewidth = 1.5) +
+  geom_vline(xintercept = c(-2, 2), color = "red", linetype = "dashed", linewidth = 1) +
+  geom_vline(xintercept = c(-3, 3), color = "red", linetype = "dotted", linewidth = 1) +
+  labs(title = "Z-scores on a Normal Distribution", 
+       x = "Value", y = "Density",
+       caption = "Dashed red lines show ±2 SD; dotted red lines show ±3 SD") +
+  theme_minimal()
+```
+
+In this plot, the dashed red lines at ±2 standard deviations and the dotted red lines at ±3 standard deviations illustrate where values are likely to be considered unusual or outliers based on their Z-scores. 
+
+#### Demonstration of the Z-score Test
+To test for outliers with Z-scores, we calculate Z-scores and search for values that are more than 3 standard deviations from the mean.  This code calculates Z-scores for the price variable and filters out points with a Z-score beyond ±3.
+  
+```{r}
+# Calculate Z-scores for sales_data
+sales_data$z_score_price <- (sales_data$price - mean(sales_data$price, na.rm = T)) / sd(sales_data$price, na.rm = T)
+
+# Filtering potential outliers based on Z-scores
+z_score_outliers <- sales_data %>% filter(abs(z_score_price) > 3)
+z_score_outliers
+```
+
+Since there are zero rows in the list of `z_score_outliers` we can conclude there are no outliers in the `sales_data` `price` variable.
+
+
+### Testing for Outliers with Interquartile Range (IQR) 
+The IQR method is useful for data that is not normally distributed. This method defines outliers as values that fall below $\mathsf{Q1 - 1.5 \cdot IQR}$ or above $\mathsf{Q3 + 1.5 * IQR}$.
+
+#### Demonstration of the IQR Test
+```{r}
+# Calculate IQR and define bounds for potential outliers
+q1 <- quantile(sales_data$price, 0.25, na.rm = T)
+q3 <- quantile(sales_data$price, 0.75, na.rm = T)
+iqr <- q3 - q1
+
+# Define lower and upper bounds for outliers
+lower_bound <- q1 - 1.5 * iqr
+upper_bound <- q3 + 1.5 * iqr
+
+# Filter potential outliers based on IQR bounds
+iqr_outliers <- sales_data %>% filter(price < lower_bound | price > upper_bound)
+iqr_outliers
+```
+
+Using the IQR calculation, we can conclude that there is one outlier in the `price` variable from `sales_data`, namely the observation of `product_id` = 156.  Notice that the Z-score for this observation is `r iqr_outliers$z_score_price` meaning that the Z-score was also close to identifying this observation as an outlier.
+
+The IQR method is especially effective for detecting outliers in skewed data, as it isn’t influenced by extreme values on either end.
+
+### Testing for Outliers with Box Plot Visualization
+A box plot visually identifies outliers as individual points beyond the whiskers. In a standard box plot, whiskers extend up to 1.5 times the IQR. Points beyond this range are considered potential outliers.
+
+#### Demonstration of the Box Plot Test
+```{r}
+# Box plot to visually identify outliers in price
+ggplot(sales_data, aes(x = "", y = price)) +
+  geom_boxplot(outlier.color = "red", outlier.shape = 16) +
+  labs(title = "Box Plot of Product Prices with Outliers Highlighted", y = "Price") +
+  theme_minimal()
+```
+
+This box plot clearly identifies a single value, the minimum value, of `price` as an outlier.  Checking the data we can verify that the lowest `price` in `sales_data` is the observation for `product_id` = 156.
+
+```{r}
+# slice and display the observation (row) with minimum price
+sales_data |> slice_min(price)
+```
+
+
+### Choosing an Outlier Detection Method
+The best method depends on the data distribution and the context of analysis:
+
+- Z-scores are suitable for normally distributed data.
+- IQR is robust and works well with skewed data.
+- Box plots provide a quick, visual approach for outlier detection.
+
+> __Takeaway__: Detecting outliers helps identify unusual or potentially erroneous data points. By carefully assessing outliers, we can refine data quality and uncover valuable insights for analysis and decision-making.
+
+Each method offers different insights, making it beneficial to combine them for a comprehensive approach to outlier detection.
+
+### Exercise:  Testing for Outliers with Statistics and Visalization
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+Perform the Z-score, IQR, and box plot tests to determine whether the `age` and/or `spending` variables in UrbanFind's `customer_data` have outliers.  Which test is more appropriate?
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: outliers
+############################################
+# Generate base data
+customer_data <- tibble(
+  age = round(rnorm(100, mean = 35, sd = 10)),               # Mean age of 35, SD of 10
+  spending = round(rnorm(100, mean = 500, sd = 150)),        # Mean spending of $500, SD $150
+  product_interest = sample(c("Tech", "Fashion", "Outdoors", "Health"), 100, replace = TRUE),
+  region = sample(c("North", "South", "East", "West"), 100, replace = TRUE)
+)
+
+# Introduce outliers
+customer_data$age[c(5, 15)] <- c(85, 90)                    # Outliers for age
+customer_data$spending[c(20, 40)] <- c(1500, 1600)          # Outliers for spending
+
+# Introduce missing values
+customer_data$age[c(10, 25, 50)] <- NA                      # Missing values for age
+customer_data$spending[c(30, 60)] <- NA                     # Missing values for spending
+customer_data$product_interest[c(35, 70)] <- NA             # Missing values for product interest
+```
+
+```{webr}
+#| exercise: outliers
+# Display a preview of the data
+head(customer_data)
+glimpse(customer_data)
+```
+
+## Hints
+
+::: {.hint exercise="outliers"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+1. Calculate the Z-score and the IQR test score for both variables.
+2. Visualize the box plot for both variables.
+
+:::
+
+::: {.hint exercise="outliers"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+1. For Z-scores:
+    
+    1. Calculate (age - mean(age)) / sd(age) 
+    2. Calculate (spending - mean(spending)) / sd(spending)     
+    3. Filter the data to identify cases where the Z-score is more than 3 standard deviations from the variable value
+
+``` r
+(variable - mean(variable)) / sd(variable)
+data |> filter (abs(z_score) > 3)
+```
+
+2. For the IQR test
+    
+    1. Calculate the IQR test values Q1 - 1.5 * IQR and Q3 + 1.5 * IQR for age
+    2. Calculate the IQR test values Q1 - 1.5 * IQR and Q3 + 1.5 * IQR for spending 
+    3. Filter the data to identify cases where the value of an observation is less than the lower bound or greater than the upper bound
+
+``` r
+# Calculate quantiles and IQR 
+q1 <- quantile(variable, 0.25)
+q3 <- quantile(variable, 0.75)
+iqr <- q3 - q1
+
+# Define lower and upper bounds for outliers
+lower_bound <- q1 - 1.5 * iqr
+upper_bound <- q3 + 1.5 * iqr
+
+# Filter potential outliers based on IQR bounds
+data |> filter(variable < lower_bound | variable > upper_bound)
+```
+
+3. For the box plot test
+
+    1. Plot the box plot for age and for spending
+    2. Visually check for outliers
+    3. Filter or slice to identify the observations with outliers
+    
+``` r
+ggplot(data, aes(x = "", y = variable)) +
+  geom_boxplot() 
+data |> slice_min(order_by = variable, n = number_of_outliers)
+data |> slice_max(order_by = variable, n = number_of_outliers)
+filter(condition)  
+```
+    
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="outliers"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+
+``` r
+customer_data$z_score_age <- (customer_data$age - mean(customer_data$age, na.rm = T)) / sd(customer_data$age, na.rm = T) #<1>
+customer_data |> filter(abs(z_score_age) > 3)
+## 
+customer_data$z_score_spending <- (customer_data$spending - mean(customer_data$spending, na.rm = T)) / sd(customer_data$spending, na.rm = T) #<1>
+customer_data |> filter(abs(z_score_spending) > 3)
+
+q1 <- quantile(customer_data$age, 0.25, na.rm = T) #<2>
+q3 <- quantile(customer_data$age, 0.75, na.rm = T)
+iqr <- q3 - q1
+lower_bound <- q1 - 1.5 * iqr
+upper_bound <- q3 + 1.5 * iqr
+customer_data %>% filter(age < lower_bound | age > upper_bound)
+#
+q1 <- quantile(customer_data$spending, 0.25, na.rm = T) #<2>
+q3 <- quantile(customer_data$spending, 0.75, na.rm = T)
+iqr <- q3 - q1
+lower_bound <- q1 - 1.5 * iqr
+upper_bound <- q3 + 1.5 * iqr
+customer_data %>% filter(spending < lower_bound | spending > upper_bound)
+
+
+ggplot(customer_data, aes(x = "", y = age)) +
+  geom_boxplot(outlier.color = "red", outlier.shape = 16) #<3>
+customer_data |> slice_max(order_by = age, n = 2)  
+#
+ggplot(customer_data, aes(x = "", y = spending)) +
+  geom_boxplot(outlier.color = "red", outlier.shape = 16) #<3>
+customer_data |> slice_max(order_by = spending, n = 2)    
+customer_data |> slice_max(order_by = spending, n = 1)    
+
+```
+1. Calculate the Z-score and filter for observations greater than 3 standard deviations.
+2. Calculate the IQR upper- and lower-bounds and filter for observations above or below them.
+3. Plot the box plot, visually check for outliers, filter/slice the outliers
+:::
+::::::
+
+- What observations may be outliers?
+- Which test seems more appropriate to test for outliers in these variables?
+
+<hr style="border:2px solid #3370F4">
+
+<br>
+
+
+
+### Interpretation in EDA
+Understanding distribution shape allows us to make better data-driven decisions:
+
+- __Detecting Skew__: Skewness tells us if a variable's distribution leans towards higher or lower values. For instance, if product prices are right-skewed, most products are affordable, but a few are premium-priced.
+- __Identifying Outliers__: Box plots make it easy to spot outliers. Outliers could indicate data errors or valuable insights, like a product that sells exceptionally well or poorly.
+- __Assessing Variability__: Histograms and box plots help in quickly visualizing data spread, giving insight into whether values cluster tightly around the mean or are widely dispersed.
+
+By combining histograms, box plots, and an understanding of skewness and kurtosis, we gain a clearer view of data characteristics, which aids in further analysis and informs decision-making.
+
+
+
+-----
+
+
+## The Normal Distribution
+The **normal distribution** is one of the most commonly encountered probability distributions in statistics. Often called a "bell curve," the normal distribution is symmetric, with most values clustering around the mean and tapering off as they move away. This distribution is particularly useful as a benchmark for identifying patterns and detecting outliers.
+
+### Properties of a Normal Distribution
+
+A normal distribution has several key properties:
+
+1. **Symmetry**: It’s perfectly symmetric around the mean, meaning values are equally likely to be higher or lower than the mean.
+2. **Mean, Median, and Mode Alignment**: In a normal distribution, the mean, median, and mode all lie at the center.
+3. **Standard Deviations and Proportion of Data**: The data follows a predictable pattern:
+   - Approximately 68% of values fall within 1 standard deviation of the mean.
+   - Approximately 95% of values fall within 2 standard deviations.
+   - Nearly all values (99.7%) fall within 3 standard deviations.
+
+Let’s visualize a normal distribution to see these properties in action. 
+```{r}
+#| echo: false
+# Simulating normal distribution data
+set.seed(42)
+normal_data <- data.frame(value = rnorm(1000, mean = 0, sd = 1))
+
+# Plotting the normal distribution
+library(ggplot2)
+ggplot(normal_data, aes(x = value)) +
+  geom_histogram(aes(y = after_stat(density)), binwidth = 0.2, fill = "skyblue", color = "black") +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 1), color = "darkblue", linewidth = 1.5) +
+  labs(title = "Visualization of a Normal Distribution", x = "Value", y = "Density") +
+  theme_minimal()
+```
+
+This plot shows a classic bell-shaped curve, highlighting the central clustering and symmetry of a normal distribution.
+
+### Real-World Contexts for Normal Distributions
+Normal distributions are frequently observed in various real-world contexts:
+
+- __Human Characteristics__: Many biological traits, like height and blood pressure, are approximately normally distributed.
+- __Measurement Errors__: In scientific and engineering measurements, errors often follow a normal distribution due to random variations.
+- __Business and Economics__: Some financial metrics, like daily stock returns (under certain conditions), are assumed to be normally distributed for modeling and forecasting.
+
+These contexts rely on the normal distribution to create reliable benchmarks, allowing us to predict outcomes and assess what’s typical or unusual within a dataset.
+
+
+### Why the Normal Distribution Matters
+The normal distribution helps us make sense of what’s typical in our data and identify values that stand out. By using Z-scores, we can quickly assess whether a value is within an expected range or if it’s unusually high or low. This can be invaluable for detecting anomalies, setting benchmarks, and making decisions across various fields.
+
+> **Takeaway**:
+> When a dataset is normally distributed, it’s easier to interpret central tendency and variability. We can confidently use Z-scores to detect outliers and make informed decisions about unusual data points. Understanding the normal distribution’s properties gives us a powerful tool for data analysis and decision-making.
+
+### Testing for Normality
+
+Once we understand the concept of a normal distribution, it’s often important to test whether our data approximates this distribution. Many statistical methods assume normality, and knowing whether data meets this assumption can guide our approach to analysis.
+
+#### Visual Methods
+
+1. **Histogram**: Plotting the data as a histogram and comparing it visually to a bell curve is a straightforward way to check for normality. If the histogram approximates a symmetric, bell-shaped curve, the data may be normally distributed.
+
+2. **Q-Q Plot (Quantile-Quantile Plot)**: A Q-Q plot compares the quantiles of our data to the quantiles of a theoretical normal distribution. If the data is normally distributed, points in a Q-Q plot will approximately follow a straight line.
+
+```{r}
+   # Plotting a Q-Q plot
+ggplot(normal_data, aes(sample = value)) +
+  stat_qq(color = "blue") +
+  stat_qq_line(color = "red", linetype = "dashed") +
+  labs(title = "Q-Q Plot for Normality Check", x = "Theoretical Quantiles", y = "Sample Quantiles") +
+  theme_minimal()
+```
+
+In this plot, if the points closely follow the dashed line, the data can be considered approximately normal. Deviations from this line indicate departures from normality.
+
+#### Statistical Tests
+
+3. __Shapiro-Wilk Test__: The Shapiro-Wilk test is a common statistical test for normality. It produces a p-value that helps us decide whether to reject the null hypothesis (that the data is normally distributed). A small p-value (typically < 0.05) indicates that the data is unlikely to be normally distributed.
+
+```{r}
+
+# Shapiro-Wilk test for normality
+shapiro_test <- shapiro.test(normal_data$value)
+shapiro_test
+```
+
+In the output, the test’s p-value tells us whether the data significantly deviates from a normal distribution. A p-value greater than 0.05 suggests that the data may approximate a normal distribution. Since the p-value of `r shapiro_test[[2]]` is much greater than 0.05, we have greater confidence that the variable has a normal distribution.
+
+4. __Kolmogorov-Smirnov Test__: Another test, the Kolmogorov-Smirnov test, compares the cumulative distribution of our data with that of a normal distribution. Like the Shapiro-Wilk test, it returns a p-value to indicate normality.
+
+```{r}
+
+# Kolmogorov-Smirnov test for normality
+ks_test <- ks.test(normal_data$value, "pnorm", mean = mean(normal_data$value), sd = sd(normal_data$value))
+ks_test
+```
+
+Here, a p-value greater than 0.05 suggests that the data may approximate normality, while a lower p-value indicates a deviation. The p-value of `r ks_test[[2]]` is much greater than 0.05 giving us greater confidence that the variable has a normal distribution.
+
+> __Note__: Visual methods provide a general sense of normality, while statistical tests offer more rigor. However, keep in mind that large sample sizes can make tests overly sensitive, rejecting normality for minor deviations.
+
+### Exercise:  Testing for Normality with Statistics and Visalization
+
+#### [Try it yourself:]{style="color:#3370F4"}
+
+<hr style="border:2px solid #3370F4">
+
+Perform the Q-Q plot, Shapiro-Wilk, and Kolmogorov-Smirnov tests to determine whether the `age` and/or `spending` variables in UrbanFind's `customer_data` are normally distributed.  Which test is more appropriate?
+
+:::::: panel-tabset
+## Exercise
+
+```{webr}
+#| setup: true
+#| exercise: normal
+############################################
+# Generate base data
+customer_data <- tibble(
+  age = round(rnorm(100, mean = 35, sd = 10)),               # Mean age of 35, SD of 10
+  spending = round(rnorm(100, mean = 500, sd = 150)),        # Mean spending of $500, SD $150
+  product_interest = sample(c("Tech", "Fashion", "Outdoors", "Health"), 100, replace = TRUE),
+  region = sample(c("North", "South", "East", "West"), 100, replace = TRUE)
+)
+
+# Introduce outliers
+customer_data$age[c(5, 15)] <- c(85, 90)                    # Outliers for age
+customer_data$spending[c(20, 40)] <- c(1500, 1600)          # Outliers for spending
+
+# Introduce missing values
+customer_data$age[c(10, 25, 50)] <- NA                      # Missing values for age
+customer_data$spending[c(30, 60)] <- NA                     # Missing values for spending
+customer_data$product_interest[c(35, 70)] <- NA             # Missing values for product interest
+```
+
+```{webr}
+#| exercise: normal
+# Display a preview of the data
+head(customer_data)
+glimpse(customer_data)
+```
+
+## Hints
+
+::: {.hint exercise="normal"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 1
+
+1. Plot the Q-Q plot for both variables.
+2. Calculate the Shapiro-Wilk test statistic
+2. Calculate the Kolmogorov-Smirnov test statistic
+:::
+
+::: {.hint exercise="normal"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+### Hint 2
+
+1. For the Q-Q plot: ggplot(data, aes(sample = variable)) + stat_qq() + stat_qq_line()
+
+``` r
+ggplot(data, aes(sample = variable)) + stat_qq() + stat_qq_line()
+```
+
+2. For the Shapiro-Wilk test statistic: shapiro.test(data$variable)
+
+``` r
+shapiro.test(data$variable)
+```
+
+3. For the Kolmogorov-Smirnov test: ks.test(variable, "pnorm", mean = mean(variable), sd = sd(variable))
+
+``` r
+ks.test(variable, "pnorm", mean = mean(variable), sd = sd(variable))
+```
+    
+<!--:::-->
+:::
+
+## Solution
+
+::: {.solution exercise="normal"}
+<!-- ::: {.callout-tip collapse="false"}-->
+
+## Fully worked solution:
+
+
+``` r
+ggplot(customer_data, aes(sample = age)) +  stat_qq() + stat_qq_line()       #<1> 
+ggplot(customer_data, aes(sample = spending)) +  stat_qq() + stat_qq_line()  #<1> 
+#
+shapiro.test(customer_data$age)      #<2>
+shapiro.test(customer_data$spending) #<2>
+#
+ks.test(customer_data$age, "pnorm", mean = mean(customer_data$age), sd = sd(customer_data$age))    #<3>
+ks.test(customer_data$spending, "pnorm", mean = mean(customer_data$spending), sd = sd(customer_data$spending))    #<3>
+```
+1. Plot the Q-Q plot and check for deviations from normal
+2. Calculate the Shapiro-Wilks test and compare the p-value to 0.05
+3. Calculate the Kolmogorov-Smirnov test compare the p-value to 0.05
+:::
+::::::
+
+- Which variables may not be normally distributed?
+- Which test seems more appropriate to test for normality in these variables?
+
+<hr style="border:2px solid #3370F4">
+
+
+
+#### When to Test for Normality
+Testing for normality is particularly relevant when:
+
+- We plan to use parametric tests that assume normality, such as t-tests or ANOVA.
+- We want to identify and interpret outliers accurately.
+- Our goal is to understand the overall shape and spread of data, especially in comparison to a benchmark.
+
+> __Summary__: Testing for normality ensures we’re using the right statistical methods and assumptions. Combining visual inspection with statistical tests gives a well-rounded perspective on the normality of our data.
+
+By assessing normality before further analysis, we set up our workflow with greater confidence in the reliability of our conclusions.
+
+## Wrapping Up: The Role of Univariate Analysis in Business Analytics
+
+In business analytics, understanding each variable individually provides the foundation for more complex analysis. Univariate analysis not only allows us to gain insights into data distributions and identify potential issues like outliers, but it also sets the stage for exploring relationships between variables.
+
+### Key Takeaways
+
+- **Descriptive Statistics**: Measures of central tendency and spread reveal typical values and the variability in data, helping us summarize large datasets quickly. Knowing the mean, median, and standard deviation of variables like product prices or customer age provides a snapshot that can inform pricing strategies, target markets, and resource allocation.
+
+- **Distribution Shapes and Visualization**: Histograms and box plots give us a visual sense of how data is distributed. Detecting skewness or unusual shapes helps us understand customer segments or product lines, allowing for more tailored marketing and inventory decisions.
+
+- **Normality and Outliers**: By identifying whether data follows a normal distribution, we can decide when to apply statistical techniques that rely on this assumption. Detecting outliers allows us to spot anomalies, which could indicate data errors or highlight exceptional cases worth further investigation—like products that underperform or customers with unusual purchasing patterns.
+
+### Why This Matters for Business Decisions
+
+Univariate analysis provides the initial, crucial insights that business leaders need. Each of these concepts—mean, median, standard deviation, skewness, and outliers—contributes to more informed decision-making. Whether setting realistic sales targets, evaluating customer demographics, or pricing products, univariate insights offer the clarity needed to make effective choices.
+
+> **Looking Ahead**: As we move into bivariate analysis, where we examine relationships between two variables, these foundational skills will help us understand how different factors interact. For example, understanding individual distributions prepares us to explore questions like: "How does price relate to sales volume?" or "What is the relationship between customer age and spending behavior?"
+
+In business analytics, univariate analysis is just the beginning. By understanding each variable on its own, you’re now prepared to investigate how variables work together to shape stronger business strategies and enable more precise predictions.
+

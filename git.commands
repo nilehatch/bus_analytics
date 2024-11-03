@@ -1,0 +1,12 @@
+git status
+git init  often done by RStudio project creation
+git add .
+git commit -m "Initial website setup"
+git remote add origin https://github.com/USERNAME/REPOSITORY.git
+git push -u origin main
+
+
+git push origin main --force   use when created a new repository and want to overwrite github
+
+
+
